@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from blog import views as blog_views
 
 from blog.urls import router as blog_router
 from django.urls import path
@@ -22,6 +23,14 @@ from django.urls import path
 
 
 urlpatterns = [
+
+    path('top',blog_views.top, name = 'top'),
+    path('home',blog_views.home, name = 'home'),
+    path('home/task',blog_views.Atask, name = 'task'),
+    path('home/purpose',blog_views.Bpurpose, name = 'purpose'),
+    path('home/reserve',blog_views.Creserve, name = 'reserve'),
+    path('home/tag',blog_views.Dtag, name = 'tag'),
+    path('home/rec',blog_views.Erec, name = 'rec'),
     path(r'admin/', admin.site.urls),
     path(r'api/', include(blog_router.urls)),
 ]

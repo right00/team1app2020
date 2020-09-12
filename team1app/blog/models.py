@@ -1,6 +1,6 @@
 from django.db import models
 
-
+"""
 class User(models.Model):
     name = models.CharField(max_length=32)
     mail = models.EmailField()
@@ -25,3 +25,4 @@ class Entry(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(choices=STATUS_SET, default=STATUS_DRAFT, max_length=8)
     author = models.ForeignKey(User, related_name='entries', on_delete=models.CASCADE)
+"""

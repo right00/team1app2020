@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from blog.urls import router as blog_router
-from django.urls import path
+from django.urls import path, include
+
 
 
 
@@ -24,5 +25,7 @@ urlpatterns=[
     path(r'admin/', admin.site.urls),
     path(r'api/', include(blog_router.urls)),
     path(r'', include('blog.web_urls')),
-    path(r'account/',include('django.contrib.auth.urls'))
+    path(r'accounts/',include('django.contrib.auth.urls')),
+    path(r'accounts/', include('accounts.urls')),
+    
 ]

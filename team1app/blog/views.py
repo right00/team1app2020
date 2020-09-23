@@ -1,4 +1,4 @@
-
+"""
 import django_filters
 from rest_framework import viewsets, filters
 
@@ -15,3 +15,4 @@ class EntryViewSet(viewsets.ModelViewSet):
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
     filter_fields = ('author', 'status')
+"""

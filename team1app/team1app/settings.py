@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blog',
     'rest_framework',
     'django_filters',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -147,4 +148,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 2
 }
 
-
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'top'

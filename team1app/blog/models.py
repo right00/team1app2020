@@ -28,34 +28,29 @@ class Entry(models.Model):
     status = models.CharField(choices=STATUS_SET, default=STATUS_DRAFT, max_length=8)
     author = models.ForeignKey(User, related_name='entries', on_delete=models.CASCADE)
 """
+class Teachers(models.Model):
+    name = models.CharField(max_length=32)
+    person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
+
+class Students(models.Model):
+    name = models.CharField(max_length=32)
+    person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
+    
 class Base(models.Model):
     base_name = models.CharField(max_length=128)
     password = models.CharField(max_length=32,default="0000")
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    teachers = models.ManyToManyField(Teachers)
+    students = models.ManyToManyField(Students)
 
-class Teachers(models.Model):
-    name = models.CharField(max_length=32)
-    person = models.ManyToManyField(settings.AUTH_USER_MODEL)
-    base = models.ForeignKey(Base,on_delete=models.CASCADE)
-
-class Students(models.Model):
-    name = models.CharField(max_length=32)
-    person = models.ManyToManyField(settings.AUTH_USER_MODEL)
-    base = models.ForeignKey(Base,on_delete=models.CASCADE)
 #クラス関係
 
 class Classes(models.Model):
     class_name=models.CharField(max_length=32)
     base = models.ForeignKey(Base,on_delete=models.CASCADE)
     password = models.CharField(max_length=32,default=0000)
-
-class ClassTeachers(models.Model):
-    person = models.ManyToManyField(Teachers)
-    tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
-
-class ClassStudents(models.Model):
-    person = models.ManyToManyField(Students)
-    tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
+    teachers = models.ManyToManyField(Teachers)
+    students = models.ManyToManyField(Students)
 
 class Tags(models.Model):
     tag = models.CharField(max_length=32)
@@ -64,25 +59,16 @@ class Tags(models.Model):
 class Tasks(models.Model):
     name = models.CharField(max_length=32)
     contents = models.TextField()
+    auther = models.OneToOneField(Teachers,on_delete=models.CASCADE,default=None)
     tag = models.ManyToManyField(Tags)
     tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
-
-#教師関係
-class TeacherClasses(models.Model):
-    classmodel = models.ManyToManyField(Classes)
-    person = models.ForeignKey(Teachers,on_delete=models.CASCADE)
-
-#生徒関係
-class StudentClasses(models.Model):
-    classmodel = models.ManyToManyField(Classes)
-    person = models.ForeignKey(Teachers,on_delete=models.CASCADE)
 
 class StudentTasks(models.Model):
     task = models.ManyToManyField(Tasks)
     limit = models.DateField()
     finish = models.BooleanField(default=False)
     result = models.BooleanField(default=False)
-    person = models.ForeignKey(Teachers,on_delete=models.CASCADE)
+    person = models.ForeignKey(Students,on_delete=models.CASCADE)
 
     
 

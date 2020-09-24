@@ -30,6 +30,7 @@ class Entry(models.Model):
 """
 class Base(models.Model):
     base_name = models.CharField(max_length=128)
+    password = models.CharField(max_length=32,default="0000")
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
 class Teachers(models.Model):
@@ -46,6 +47,7 @@ class Students(models.Model):
 class Classes(models.Model):
     class_name=models.CharField(max_length=32)
     base = models.ForeignKey(Base,on_delete=models.CASCADE)
+    password = models.CharField(max_length=32,default=0000)
 
 class ClassTeachers(models.Model):
     person = models.ManyToManyField(Teachers)

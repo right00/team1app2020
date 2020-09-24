@@ -4,6 +4,7 @@ from . import web_views_private as priv
 
 urlpatterns = [
     path('', pub.top , name='top'),
-    path('home/',priv.home,name='home')
+    path('home/',priv.home,name='home'),
+    path('NewGroup',priv.makegroup,name='newgroup'),
 
 ]

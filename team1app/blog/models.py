@@ -39,6 +39,7 @@ class Students(models.Model):
 class Base(models.Model):
     base_name = models.CharField(max_length=128)
     password = models.CharField(max_length=32,default="0000")
+    password2 = models.CharField(max_length=32,default="1111")
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL)
     teachers = models.ManyToManyField(Teachers)
     students = models.ManyToManyField(Students)
@@ -59,7 +60,7 @@ class Tags(models.Model):
 class Tasks(models.Model):
     name = models.CharField(max_length=32)
     contents = models.TextField()
-    auther = models.OneToOneField(Teachers,on_delete=models.CASCADE,default=None)
+    auther = models.ManyToManyField(Teachers)
     tag = models.ManyToManyField(Tags)
     tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
 

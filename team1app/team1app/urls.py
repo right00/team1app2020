@@ -17,6 +17,9 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from blog.urls import router as blog_router
 from django.urls import path, include
+from teachers.views import home as tehome
+from students.views import home as sthome
+from blog import web_views_private as priv
 
 
 
@@ -24,8 +27,13 @@ from django.urls import path, include
 urlpatterns=[
     path(r'admin/', admin.site.urls),
     path(r'api/', include(blog_router.urls)),
+    path('home/',priv.home,name='home'),
     path(r'', include('blog.web_urls')),
     path(r'accounts/',include('django.contrib.auth.urls')),
     path(r'accounts/', include('accounts.urls')),
+    path(r'student/',include('students.urls')),
+    path(r'teacher/',include('teachers.urls')),
+    path(r'teacher/home/',tehome,name='tehome'),
+    path(r'student/home/',sthome,name='sthome'),
     
 ]

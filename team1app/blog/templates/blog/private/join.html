@@ -12,7 +12,7 @@
     <form action="" method="post">
         {% csrf_token %}
         <input type="radio" name="role" value="teacher">教師
-        <input type="radio" name="role" value="student">生徒
+        <input type="radio" name="role" value="student" checked="checked">生徒
         <h4>グループ名</h4>
         <input type="text" minlength = "1" name="groupname" />
         <h4>パスワード</h4>

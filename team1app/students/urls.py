@@ -6,5 +6,4 @@ from . import views
 app_name = 'students'
 
 urlpatterns = [
-path('home/', views.home, name='st_home'),
 ]

@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-import datetime
 
 """
 class User(models.Model):
@@ -29,20 +28,25 @@ class Entry(models.Model):
     status = models.CharField(choices=STATUS_SET, default=STATUS_DRAFT, max_length=8)
     author = models.ForeignKey(User, related_name='entries', on_delete=models.CASCADE)
 """
+#教師
 class Teachers(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank=True)
-
+#生徒
 class Students(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank = True)
-    
+
+#学校    
 class Base(models.Model):
     base_name = models.CharField(max_length=128)
+    #先生用
     password = models.CharField(max_length=32,default="0000")
+    #生徒用
     password2 = models.CharField(max_length=32,default="1111")
+    #管理者
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL)
     teachers = models.ManyToManyField(Teachers)
     students = models.ManyToManyField(Students,blank=True)
@@ -66,7 +70,7 @@ class Tasks(models.Model):
     auther = models.ManyToManyField(Teachers)
     tag = models.ManyToManyField(Tags,blank=True)
     tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
-    make = models.DateField(default=datetime.datetime.now())
+    make = models.DateField(default=timezone.now)
 
 class StudentTasks(models.Model):
     task = models.ManyToManyField(Tasks)

@@ -5,8 +5,24 @@ from django.contrib.auth.decorators import login_required
 def check(request):
     user = request.user
     if Teachers.objects.filter(person = user).count() > 0:
+        if Teachers.objects.get(person = user).use_base ==None:
+            try:
+                me = Teachers.objects.get(person = user)
+                bases = me.base_set.all()
+                me.use_base = bases[0].id
+                me.save()
+            except:
+                return Teachers.objects.get(person = user),1
         return Teachers.objects.get(person = user),1
     if Students.objects.filter(person = user).count() > 0:
+        if Students.objects.get(person = user).use_base ==None:
+            try:
+                me = Students.objects.get(person = user)
+                bases = me.base_set.all()
+                me.use_base = bases[0].id
+                me.save()
+            except:
+                return Students.objects.get(person = user),2
         return Students.objects.get(person = user),2
     else:
         return None,0
@@ -37,9 +53,9 @@ def makegroup(request):
                 return render(request,'blog/private/makegroup.html',content)
             else:
                 user = request.user
-                teacher = Teachers.objects.create(name = request.POST["name"],person = user)
-                teacher.save()
                 base = Base.objects.create(base_name = request.POST["groupname"],password = request.POST["password"],password2=request.POST["password2"])
+                teacher = Teachers.objects.create(name = request.POST["name"],person = user,use_base=base.id)
+                teacher.save()
                 base.administrator.add(user)
                 base.teachers.add(teacher)
                 base.save()

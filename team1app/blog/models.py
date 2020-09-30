@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+import datetime
 
 """
 class User(models.Model):
@@ -31,10 +32,12 @@ class Entry(models.Model):
 class Teachers(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
+    use_base = models.IntegerField(default=None,null=True,blank=True)
 
 class Students(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
+    use_base = models.IntegerField(default=None,null=True,blank = True)
     
 class Base(models.Model):
     base_name = models.CharField(max_length=128)
@@ -42,7 +45,7 @@ class Base(models.Model):
     password2 = models.CharField(max_length=32,default="1111")
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL)
     teachers = models.ManyToManyField(Teachers)
-    students = models.ManyToManyField(Students)
+    students = models.ManyToManyField(Students,blank=True)
 
 #クラス関係
 
@@ -51,7 +54,7 @@ class Classes(models.Model):
     base = models.ForeignKey(Base,on_delete=models.CASCADE)
     password = models.CharField(max_length=32,default=0000)
     teachers = models.ManyToManyField(Teachers)
-    students = models.ManyToManyField(Students)
+    students = models.ManyToManyField(Students,blank=True)
 
 class Tags(models.Model):
     tag = models.CharField(max_length=32)
@@ -61,8 +64,9 @@ class Tasks(models.Model):
     name = models.CharField(max_length=32)
     contents = models.TextField()
     auther = models.ManyToManyField(Teachers)
-    tag = models.ManyToManyField(Tags)
+    tag = models.ManyToManyField(Tags,blank=True)
     tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
+    make = models.DateField(default=datetime.datetime.now())
 
 class StudentTasks(models.Model):
     task = models.ManyToManyField(Tasks)

@@ -6,4 +6,11 @@ from . import views
 app_name = 'students'
 
 urlpatterns = [
+
+    path(r'', views.home, name = 'home'),
+    path(r'task', views.task, name = 'task'),
+    path(r'propose', views.propose, name = 'propose'),
+    path(r'reserve', views.reserve, name = 'reserve'),
+    path(r'tag', views.tag, name = 'tag'),
+
 ]

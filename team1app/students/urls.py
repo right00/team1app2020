@@ -7,10 +7,10 @@ app_name = 'students'
 
 urlpatterns = [
 
-    path(r'', views.home, name = 'home'),
-    path(r'task', views.task, name = 'task'),
-    path(r'propose', views.propose, name = 'propose'),
-    path(r'reserve', views.reserve, name = 'reserve'),
-    path(r'tag', views.tag, name = 'tag'),
+    path('', views.home, name = 'home'),
+    path('home/task/', views.task, name = 'task'),
+    path('home/propose/', views.propose, name = 'propose'),
+    path('home/reserve/', views.reserve, name = 'reserve'),
+    path('home/tag/', views.tag, name = 'tag'),
 
 ]

@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <h4><a href="{% url 'teacher:CreateClass'%}">クラス作成はこちら</a></h4>
     <form action="" method="post">
         {% csrf_token %}
         <input type="hidden" name="type" value="my">
-        <input type="hidden" name="join" value="">
+        <input type="hidden" name="join" value=""> 
         <input type="submit" value="MyClass"/>
     </form>
     <form action="" method="post">

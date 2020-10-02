@@ -47,3 +47,29 @@ def edit_class(request):
             return render(request,'teachers/class.html',data)
     return render(request,'teachers/class.html')
 
+
+def create_class(request):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    elif request.method !="POST":
+        return render(request,'teachers/CreateClass.html')
+    else:
+        base = Base.objects.get(id = teacher.use_base)
+        if (base.classes_set.all()):
+            classes=base.classes_set.all()
+            for tarclass in classes:
+                if(tarclass.class_name==request.POST["name"]):
+                    result ="すでに存在するクラス名です。"
+                    return render(request,'teachers/CreateClass.html',{"result":result})
+        thisclass=Classes.objects.create(class_name=request.POST["name"],password = request.POST["password"],base=base)
+        thisclass.teachers.add(teacher)
+        thisclass.save()
+        return redirect("/teacher/class/")
+
+        
+    
+    
+
+
+

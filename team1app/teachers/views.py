@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from blog.web_views_private import check
 from blog.models import * 
+from teachers.tools import * 
+
+
 
 # Create your views here.
 def home(request):
@@ -66,6 +69,50 @@ def create_class(request):
         thisclass.teachers.add(teacher)
         thisclass.save()
         return redirect("/teacher/class/")
+
+def class_content(request,classid):
+    #教師以外はリダイレクト
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    #ユーザーが使用しているベースにクラスが属しているか確認
+    have,thisclass=checkCL(teacher.use_base,classid)
+    #クラスが属していた
+    if have :
+            #クラスに生徒がいる場合
+            if (thisclass.students.all()!= None):
+                sts = thisclass.students.all()
+                data={"thisclass":thisclass,"sts":sts}
+                return render(request,'teachers/Content.html',data)
+            #クラスに生徒がいない場合
+            else:
+                data={"thisclass":thisclass}
+                return render(request,'teachers/Content.html',data)
+    #クラスが属していない
+    else:
+        return redirect("/teacher/class/")
+
+def create_task(request,classid):
+    #教師以外はリダイレクト
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    #ユーザーが使用しているベースにクラスが属しているか確認
+    have,thisclass=checkCL(teacher.use_base,classid)
+    #クラスが属していた
+    if have :
+        #メソッドがPOSTでなければタスク作成ページに移動    
+        if request.method != "POST":
+            return render(request,'teachers/TaskCreate.html')
+        else:
+            task=Tasks.objects.create(name=request.POST["name"],contents=request.POST["content"],tarclass=thisclass)
+            task.auther.add(teacher)
+            task.save()
+            return redirect("/teacher/class/"+str(classid)+"/")
+    else:
+        return redirect("/teacher/class/")
+
+
 
         
     

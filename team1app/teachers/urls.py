@@ -8,6 +8,8 @@ from django.urls import path
 app_name = 'teachers'
 
 urlpatterns = [
-    path('',views.edit_class,name='teclass'),
+    path('class/',views.edit_class,name='teclass'),
     path('create_class/',views.create_class,name='CreateClass'),
+    path('class/<int:classid>/',views.class_content,name='ClassContent'),
+    path('class/<int:classid>/task/create/',views.create_task,name='CreateTask'),
 ]

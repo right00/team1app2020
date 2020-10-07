@@ -34,7 +34,7 @@ urlpatterns=[
     path(r'accounts/',include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('student/',include('students.urls')),
-    path('teacher/',include('teachers.urls')),
+    path('teacher/',include('teachers.urls',namespace="teacher")),
     path('teacher/home/',tehome,name='tehome'),
     path('student/home/',sthome,name='sthome'),
     

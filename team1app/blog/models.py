@@ -48,40 +48,62 @@ class Base(models.Model):
     password2 = models.CharField(max_length=32,default="1111")
     #管理者
     administrator = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    #在籍する教師
     teachers = models.ManyToManyField(Teachers)
+    #在籍する生徒
     students = models.ManyToManyField(Students,blank=True)
 
 #クラス関係
 
+#クラス
 class Classes(models.Model):
+    #クラスの名前
     class_name=models.CharField(max_length=32)
+    #所属するbase
     base = models.ForeignKey(Base,on_delete=models.CASCADE)
+    #クラスのパスワード
     password = models.CharField(max_length=32,default=0000)
+    #在籍する教師
     teachers = models.ManyToManyField(Teachers)
+    #在籍する生徒
     students = models.ManyToManyField(Students,blank=True)
 
+#タグ
 class Tags(models.Model):
+    #タグの名前
     tag = models.CharField(max_length=32)
+    #タグのあるクラス
     tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
 
+#宿題
 class Tasks(models.Model):
+    #宿題の名前
     name = models.CharField(max_length=32)
+    #宿題の内容
     contents = models.TextField()
+    #作った人
     auther = models.ManyToManyField(Teachers)
+    #宿題につけられたタグ
     tag = models.ManyToManyField(Tags,blank=True)
+    #タグが置かれたクラス
     tarclass = models.ForeignKey(Classes,on_delete=models.CASCADE)
+    #作られた日付
     make = models.DateField(default=timezone.now)
 
+#生徒に出された宿題
 class StudentTasks(models.Model):
+    #出された宿題
     task = models.ManyToManyField(Tasks)
+    #期限
     limit = models.DateField()
+    #終わったかどうか
     finish = models.BooleanField(default=False)
+    #宿題の正誤
     result = models.BooleanField(default=False)
+    #出された人
     person = models.ForeignKey(Students,on_delete=models.CASCADE)
 
     
-
-
     
 
 

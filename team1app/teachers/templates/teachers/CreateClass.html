@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {%if result%}
+        <h4><font color="red">{{result}}</font></h4>
+        {%endif%}
+        {% csrf_token %}
+        <h4>クラス名</h4>
+        <input type="input" name="name" minlength="1" maxlength="32">
+        <h4>クラスのパスワード</h4>
+        <input type="input" name="password" minlength="4" maxlength="32">
+        <input type="submit" value="create"/>
+    </form>
+</body>
+</html>

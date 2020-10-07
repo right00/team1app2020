@@ -13,18 +13,34 @@ def home(request):
 
 def task(request):
     """task画面"""
-    return render(request,'task.html')
+    _,num = check(request)
+    if num == 2:
+        return render(request,'task.html')
+    else:
+        return redirect('home')
   
 
 def propose(request):
     """propose画面"""
-    return render(request, 'propose.html')
+    _,num = check(request)
+    if num == 2:
+        return render(request, 'propose.html')
+    else:
+        return redirect('home')
 
 def reserve(request):
     """reserve画面"""
-    return render(request, 'reserve.html')
+    _,num = check(request)
+    if num == 2:
+        return render(request, 'reserve.html')
+    else:
+        return redirect('home')
 
 def tag(request):
     """tag画面"""
-    return render(request, 'tag.html')
+    _,num = check(request)
+    if num == 2:
+        return render(request, 'tag.html')
+    else:
+        return redirect('home')
 

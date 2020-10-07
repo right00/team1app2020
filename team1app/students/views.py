@@ -13,17 +13,18 @@ def home(request):
 
 def task(request):
     """task画面"""
-    return render(request, 'students/home/task.html')
+    return render(request,'task.html')
+  
 
 def propose(request):
     """propose画面"""
-    return render(request, 'students/propose.html')
+    return render(request, 'propose.html')
 
 def reserve(request):
     """reserve画面"""
-    return render(request, 'students/reserve.html')
+    return render(request, 'reserve.html')
 
 def tag(request):
     """tag画面"""
-    return render(request, 'students/tag.html')
+    return render(request, 'tag.html')
 

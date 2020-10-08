@@ -113,6 +113,28 @@ def create_task(request,classid):
         return redirect("/teacher/class/")
 
 
+def TasksList(request,classid):
+    #教師以外はリダイレクト
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    #ユーザーが使用しているベースにクラスが属しているか確認
+    if(not Classes.objects.get(id=classid).teachers.filter(id=teacher.id).exists()):
+        return redirect("/teacher/class/")
+    have,thisclass=checkCL(teacher.use_base,classid)
+    #クラスが属していた
+    if have :
+        #メソッドがPOSTでなければタスク作成ページに移動    
+        if(thisclass.tasks_set.all().filter(auther = teacher).exists()):
+            tasks=thisclass.tasks_set.all().filter(auther = teacher)
+            data = {"tasks":tasks}
+            return render(request,'teachers/TaskList.html',data)
+        else:
+            return render(request,'teachers/TaskList.html')
+    else:
+        return redirect("/teacher/class/")
+
+
 
         
     

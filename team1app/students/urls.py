@@ -8,9 +8,10 @@ app_name = 'students'
 urlpatterns = [
 
     path('', views.home, name = 'home'),
+    #path('home/<int:classid>', views.class_page, name = "class_page"), 
     path('home/task/', views.task, name = 'task'),
     path('home/propose/', views.propose, name = 'propose'),
     path('home/reserve/', views.reserve, name = 'reserve'),
-    path('tag/', views.tag, name = 'tag'),
+    path('home/tag/', views.tag, name = 'tag'),
 
 ]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {%if thisclass%}
+    <h2>{{thisclass.class_name}}</h2>
+    <br>
+
+
+    <p><a href="{% url 'students:task' %}">Task</a></p>
+    <p><a href="{% url 'students:propose' %}">Propose</a></p>
+    <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
+    <p><a href="{% url 'students:tag' %}">Tag</a></p>
+
+
+    <p><a href="{% url 'top' %}">Top</a></p>
+    
+   
+    
+    
+</body>
+</html>

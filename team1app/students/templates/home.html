@@ -8,12 +8,46 @@
 <body>
     <h4>Your student</h4>
     <h4>クラスに参加</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="my">
+        <input type="hidden" name="join" value=""> 
+        <input type="submit" value="My_Class"/>
+    </form>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="all">
+        <input type="hidden" name="join" value="">
+        <input type="submit" value="All"/>
+    </form>
+    {% if classes %}
+    {% if all %}
+    {% for class in classes %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h4>{{class.class_name}}</h4>
+        <input type="hidden" name="join" value="{{class.id}}">
+        <input type="hidden" name="type" value="all">
+        <input type="submit" value="Join"/> 
+    </form>
+    {% endfor %}
+    {%else%}
+    {% for class in classes %}
+    <h1><a href="student/home/{{class.id}}/">{{class.class_name}}</a></h1>
+    <p><a href="/student/home/{{class.id}}/">class_page</a></p>
+    {% endfor %}
+    {%endif%}
+    {%else%}
+    <h4>クラスはまだありません</h4>
+    {%endif%}
+    {%if result%}
+    <script>
+        alert("{{result}}");
+    </script>
+    {%endif%}
+
     
-
-    <h4>あなたのクラスは</h4>
-
-
-    
+   
     <p><a href="{% url 'students:task' %}">Task</a></p>
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
     <p><a href="{% url 'students:reserve' %}">Reserve</a></p>

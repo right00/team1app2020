@@ -58,6 +58,28 @@ def home(request):
     #クラスが属していない
     #else:
      #   return redirect("home")
+def class_page(request,classid):
+    #生徒以外はリダイレクト
+    student,num = check(request)
+    if num != 2:
+        return redirect('home')
+    #ユーザーが使用しているベースにクラスが属しているか確認
+    have, thisclass = checkCL(student.use_base, classid)
+    #クラスが属していた
+    if have :
+            #クラスに生徒がいる場合
+            if (thisclass.students.all()!= None):
+                sts = thisclass.students.all()
+                data={"thisclass":thisclass,"sts":sts}
+                return render(request,'class_page.html',data)
+            #クラスに生徒がいない場合
+            else:
+                data= { "thisclass" : thisclass }
+                return render(request,'class_page.html',data)
+    #クラスが属していない
+    else:
+        return redirect("/student/home/")
+
 
 def task(request):
     """task画面"""

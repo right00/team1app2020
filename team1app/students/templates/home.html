@@ -33,8 +33,7 @@
     {% endfor %}
     {%else%}
     {% for class in classes %}
-    <h1><a href="student/home/{{class.id}}/">{{class.class_name}}</a></h1>
-    <p><a href="/student/home/{{class.id}}/">class_page</a></p>
+    <h1><a href="/student/home/{{class.id}}">{{class.class_name}}</a></h1>
     {% endfor %}
     {%endif%}
     {%else%}

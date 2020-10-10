@@ -42,22 +42,6 @@ def home(request):
             return render(request, 'home.html', data)
     return render(request, 'home.html')
 
-
-#def class_page(request, classid):
-    #""""画面"""
-     #生徒以外はリダイレクト
-    #stu,num = check(request)
-    #if num != 2:
-     #   return redirect('home')
-    #ユーザーが使用しているベースにクラスが属しているか確認
-    #have,thisclass = checkCL(stu.use_base,classid)
-    #クラスが属していた
-    #if have :
-     #           data={"thisclass":thisclass}
-      #          return render(request,'students/class_page.heml',data)
-    #クラスが属していない
-    #else:
-     #   return redirect("home")
 def class_page(request,classid):
     #生徒以外はリダイレクト
     student,num = check(request)

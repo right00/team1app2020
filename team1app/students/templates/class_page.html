@@ -12,7 +12,20 @@
     {%endif%}
     <br>
 
+    {% if tasks %}
+    {% for task in tasks %}
+  
+    <div class="diary">
+       <td class="text2">{{ task.text }}</td>
+    </div>
+  
+  
+    {% endfor %}
+    {% else %}
+    <p>No task.</p>
+    {% endif %}
 
+    <br>
     <p><a href="{% url 'students:task' %}">Task</a></p>
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
     <p><a href="{% url 'students:reserve' %}">Reserve</a></p>

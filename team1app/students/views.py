@@ -60,9 +60,23 @@ def class_page(request,classid):
             else:
                 data= { "thisclass" : thisclass }
                 return render(request,'class_page.html',data)
-    #クラスが属していない
+    #クラスに属していない
     else:
         return redirect("/student/home/")
+
+    # クラスに出された宿題を表示する
+    if request.method =='POST':
+        tasks = Tasks(name = request.POST["name"], contents = request.POST['text'], tarclass=thisclass)
+        tasks.save()
+
+    context = {'tasks':tasks}
+    return render(request, 'class_page.html', context)
+
+    #tasks = Tasks.objects.get(pk = classid)
+    #context ={
+     #           'tasks': tasks
+     #       }
+    #return render(request,'class_page.html',context)
 
 
 def task(request):

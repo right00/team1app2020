@@ -71,12 +71,6 @@ def class_page(request,classid):
     context = {'tasks':tasks}
     return render(request, 'class_page.html', context)
 
-    #tasks = Tasks.objects.get(pk = classid)
-    #context ={
-     #           'tasks': tasks
-     #       }
-    #return render(request,'class_page.html',context)
-
 
 def task(request):
     """task画面"""

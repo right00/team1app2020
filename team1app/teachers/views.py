@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from blog.web_views_private import check
 from blog.models import * 
 from teachers.tools import * 
+from django.utils import timezone
+import datetime
 
 
 
@@ -133,6 +135,43 @@ def TasksList(request,classid):
             return render(request,'teachers/TaskList.html')
     else:
         return redirect("/teacher/class/")
+
+def taskContent(request,classid,taskid):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    #ユーザーが使用しているベースにクラスが属しているか確認
+    if(not Classes.objects.get(id=classid).teachers.filter(id=teacher.id).exists()):
+        return redirect("/teacher/class/")
+    have,thisclass=checkCL(teacher.use_base,classid)
+    #クラスが属していた
+    if have :
+        #メソッドがPOSTでなければタスク作成ページに移動
+        if request.method == "POST":
+            if request.POST["type"] == "students":
+                if request.POST.getlist("students"):
+                    studentsid=request.POST.getlist("students")
+                    thistask = Tasks.objects.get(id = taskid)
+                    day=int(request.POST["days"])
+                    days=[datetime.timedelta(days=1),datetime.timedelta(days=2),datetime.timedelta(days=3),datetime.timedelta(days=4),datetime.timedelta(days=5),datetime.timedelta(days=6),datetime.timedelta(weeks=1),datetime.timedelta(weeks=2),datetime.timedelta(weeks=4)]
+                    for studentid in studentsid :
+                        student = Students.objects.get(id=studentid)
+                        homework=StudentTasks.objects.create(person=student,limit=timezone.now()+days[day])
+                        homework.task.add(thistask)
+                        homework.save()
+                    return redirect("/teacher/class/")
+        if(thisclass.tasks_set.all().filter(auther = teacher).exists()):
+            tasks=thisclass.tasks_set.all().filter(auther = teacher)
+            for task in tasks:
+                if(task.id==taskid):
+                    sts = thisclass.students.all()
+                    data={"task":task,"students":sts}
+                    return render(request,'teachers/TaskContent.html',data)
+        else:
+            return redirect("/teacher/class/")
+    else:
+        return redirect("/teacher/class/")
+
 
 
 

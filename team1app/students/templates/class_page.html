@@ -14,12 +14,9 @@
 
     {% if tasks %}
     {% for task in tasks %}
-  
-    <div class="diary">
-       <td class="text2">{{ task.text }}</td>
-    </div>
-  
-  
+    <h2>{{ task.name }}</h2>
+    <td>{{ task.contents }}</td>
+    
     {% endfor %}
     {% else %}
     <p>No task.</p>

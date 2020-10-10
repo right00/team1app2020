@@ -66,9 +66,8 @@ def class_page(request,classid):
 
     # クラスに出された宿題を表示する
     if request.method =='POST':
-        tasks = Tasks(name = request.POST["name"], contents = request.POST['text'], tarclass=thisclass)
+        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
         tasks.save()
-
     context = {'tasks':tasks}
     return render(request, 'class_page.html', context)
 

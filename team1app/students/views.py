@@ -52,11 +52,12 @@ def class_page(request,classid):
     have, thisclass = checkCL(student.use_base, classid)
     #クラスが属していた
     if have :
-            #クラスに生徒がいる場合
-            if (thisclass.students.all()!= None):
-                sts = thisclass.students.all()
-                data={"thisclass":thisclass,"sts":sts}
-                return render(request,'class_page.html',data)
+             # クラスに出された宿題を表示する
+            if request.method =='POST':
+                tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
+                tasks.save()
+                context = {'tasks':tasks}
+                return render(request, 'class_page.html', context)
             #クラスに生徒がいない場合
             else:
                 data= { "thisclass" : thisclass }
@@ -64,13 +65,6 @@ def class_page(request,classid):
     #クラスに属していない
     else:
         return redirect("/student/home/")
-
-    # クラスに出された宿題を表示する
-    if request.method =='POST':
-        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
-        tasks.save()
-    context = {'tasks':tasks}
-    return render(request, 'class_page.html', context)
 
 
 def task(request):

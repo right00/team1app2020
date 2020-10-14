@@ -54,9 +54,17 @@ def class_page(request,classid):
     if have :
             #クラスに生徒がいる場合
             if (thisclass.students.all()!= None):
-                sts = thisclass.students.all()
-                data={"thisclass":thisclass,"sts":sts}
-                return render(request,'class_page.html',data)
+                if(student.studenttasks_set.all().exists()):
+                    tasks=student.studenttasks_set.all()
+                    tasks2=[]
+                    for i in tasks:
+                        task=gettask(i)
+                        if(task.tarclass==thisclass):
+                            data={"task":i,"name":task.name,"contents":task.contents}
+                            tasks2.append(data)
+                    context = {'tasks':tasks2}
+                    return render(request, 'class_page.html', context)
+                return render(request, 'class_page.html')
             #クラスに生徒がいない場合
             else:
                 data= { "thisclass" : thisclass }
@@ -66,9 +74,11 @@ def class_page(request,classid):
         return redirect("/student/home/")
 
     # クラスに出された宿題を表示する
-    if request.method =='POST':
-        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
-        tasks.save()
+    #if request.method =='POST':
+        #tasks=students.studentTasks_set.all()
+
+     #   tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
+     #   tasks.save()
     context = {'tasks':tasks}
     return render(request, 'class_page.html', context)
 
@@ -104,4 +114,5 @@ def tag(request):
         return render(request, 'tag.html')
     else:
         return redirect('home')
+
 

@@ -8,7 +8,7 @@
 <body>
     {%if tasks%}
     {%for task in tasks%}
-    <h4>{{task.name}}</h4>
+    <h4><a href="../task/{{task.id}}/">{{task.name}}</a></h4>
     <h5><font color=gray>{{task.contents}}</font></h5>
     <h5>{{task.make}}</h5>
     {%endfor%}

@@ -43,6 +43,7 @@ def home(request):
     return render(request, 'home.html')
 
 def class_page(request,classid):
+    """studentのclass_page画面"""
     #生徒以外はリダイレクト
     student,num = check(request)
     if num != 2:

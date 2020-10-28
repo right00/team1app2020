@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {%if thisclass%}
+    <h2>{{thisclass.class_name}}</h2>
+    {%endif%}
+    <br>
+
+    {% if tasks %}
+    {% for task in tasks %}
+    <h2>{{ task.name }}</h2>
+    <td>{{ task.contents }}</td>
+    <td>{{ task.task.limit }}</td>
+    
+    {% endfor %}
+    {% else %}
+    <p>No task.</p>
+    {% endif %}
+
+    <br>
+    <p><a href="{% url 'students:task' %}">Task</a></p>
+    <p><a href="{% url 'students:propose' %}">Propose</a></p>
+    <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
+    <p><a href="{% url 'students:tag' %}">Tag</a></p>
+
+
+    <p><a href="{% url 'top' %}">Top</a></p>
+    
+   
+    
+    
+</body>
+</html>

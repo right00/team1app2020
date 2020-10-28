@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%if tasks%}
+    {%for task in tasks%}
+    <h4><a href="../task/{{task.id}}/">{{task.name}}</a></h4>
+    <h5><font color=gray>{{task.contents}}</font></h5>
+    <h5>{{task.make}}</h5>
+    {%endfor%}
+    {%else%}
+    <h4>まだ宿題は作成されていません</h4>
+    {%endif%}
+</body>
+</html>

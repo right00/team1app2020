@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%if task%}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h4>宿題</h4>
+        <input type="input" name="name" minlength="1" maxlength="32" value="{{task.name}}">
+        <h4>内容</h4>
+        <textarea name="content" maxlengt="800"　rows="4" cols="60">{{task.contents}}</textarea>
+        <input type="submit" value="create"/>
+    </form>
+    <h5>{{task.make}}</h5>
+    {%endif%}
+
+    {%if students%}
+    <form action="" method="post">
+        {% csrf_token %}
+    <input type="hidden" name="type" value="students"/>
+    <input type="radio" name="days" value="0">1日後
+    <input type="radio" name="days" value="1">2日後
+    <input type="radio" name="days" value="2">3日後
+    <input type="radio" name="days" value="3">4日後
+    <input type="radio" name="days" value="4">5日後
+    <input type="radio" name="days" value="5">6日後
+    <input type="radio" name="days" value="6">1週間後
+    <input type="radio" name="days" value="7">2週間後
+    <input type="radio" name="days" value="8">4週間後
+    {% for student in students %}
+    <ul>
+    <li><input type="checkbox" name="students" value ="{{student.id}}"/>{{student.name}}</li>
+    </ul>
+    {%endfor%}
+    <input type="submit" value="create"/>
+    </form>
+    {%endif%}
+
+</body>
+</html>

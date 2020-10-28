@@ -115,6 +115,7 @@ def create_task(request,classid):
         return redirect("/teacher/class/")
 
 
+
 def TasksList(request,classid):
     #教師以外はリダイレクト
     teacher,num = check(request)
@@ -171,6 +172,7 @@ def taskContent(request,classid,taskid):
             return redirect("/teacher/class/")
     else:
         return redirect("/teacher/class/")
+
 
 
 

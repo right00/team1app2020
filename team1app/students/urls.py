@@ -18,4 +18,5 @@ urlpatterns = [
     path('home/reserve/', views.reserve, name = 'reserve'),
     path('home/tag/', views.tag, name = 'tag'),
 
+
 ]

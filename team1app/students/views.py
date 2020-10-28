@@ -3,6 +3,7 @@ from blog.web_views_private import check
 from blog.models import * 
 from students.tools import * 
 
+
 # Create your views here.
 def home(request):
     """studentのhome画面"""
@@ -92,6 +93,26 @@ def propose(request):
         return render(request, 'propose.html')
     else:
         return redirect('home')
+
+
+
+def task(request):
+    """task画面"""
+    _,num = check(request)
+    if num == 2:
+        return render(request,'task.html')
+    else:
+        return redirect('home')
+  
+
+def propose(request):
+    """propose画面"""
+    _,num = check(request)
+    if num == 2:
+        return render(request, 'propose.html')
+    else:
+        return redirect('home')
+
 
 def reserve(request):
     """reserve画面"""

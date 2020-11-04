@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+
+{% block content %}
+
     <form action="" method="post">
         {%if result%}
         <h4><font color="red">{{result}}</font></h4>
@@ -14,8 +19,12 @@
         <h4>宿題</h4>
         <input type="input" name="name" minlength="1" maxlength="32">
         <h4>内容</h4>
-        <textarea name="content" maxlengt="800" rows="4" cols="60">ここに内容を書いてください。</textarea>
+        <textarea name="content" maxlengt="800"　rows="4" cols="60">ここに内容を書いてください。</textarea>
         <input type="submit" value="create"/>
     </form>
-</body>
-</html>
+
+
+
+{% endblock content %}
+
+

@@ -9,5 +9,3 @@ def checkCL(baseid,classid):
                 return True,tarclass
     else:
         return False,None
-
-

@@ -34,6 +34,7 @@ def home(request):
             classes=base.classes_set.all()
             data = {"classes":classes,"all":True,"result":result}
             return render(request,'home.html',data)
+            
     else:
         base = Base.objects.get(id = user_student.use_base)
         if (base.classes_set.all()):
@@ -73,6 +74,7 @@ def class_page(request,classid):
     return render(request, 'class_page.html', context)
 
 
+
 def task(request):
     """task画面"""
     _,num = check(request)
@@ -89,6 +91,7 @@ def propose(request):
     else:
         return redirect('home')
 
+
 def reserve(request):
     """reserve画面"""
     _,num = check(request)
@@ -104,4 +107,5 @@ def tag(request):
         return render(request, 'tag.html')
     else:
         return redirect('home')
+
 

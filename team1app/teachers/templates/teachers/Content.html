@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+
+
     {%if thisclass%}
     <h2>{{thisclass.class_name}}</h2>
     <br>
@@ -23,5 +28,7 @@
     <h4>参加している生徒はいません</h4>
     {%endif%}
 
-</body>
-</html>
+
+
+
+{% endblock content %}

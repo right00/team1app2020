@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base_student.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+{% block content %}
+
+
     <h4>Your student</h4>
     <h4>クラスに参加</h4>
     <form action="" method="post">
@@ -45,8 +49,6 @@
     </script>
     {%endif%}
 
-    
-   
     <p><a href="{% url 'students:task' %}">Task</a></p>
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
     <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
@@ -58,5 +60,4 @@
    
     
     
-</body>
-</html>
+{% endblock content %}

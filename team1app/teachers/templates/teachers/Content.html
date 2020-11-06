@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+
+
     {%if thisclass%}
     <h2>{{thisclass.class_name}}</h2>
     <br>
     <h3><a href="/teacher/class/{{thisclass.id}}/task/create/">宿題を追加</a></h3>
+    <h3><a href="./tasks">宿題一覧</a></h3>
     {%endif%}
     
     {%if sts%}
-    <H3>生徒一覧</H3>
-    <ul>
+    <h3>生徒一覧</h3>
+    <br>
     {%for st in sts%}
     <li>{{st.name}}</li>
     {%endfor%}
@@ -22,5 +28,7 @@
     <h4>参加している生徒はいません</h4>
     {%endif%}
 
-</body>
-</html>
+
+
+{% endblock content %}
+

@@ -104,5 +104,4 @@ def signincrassroom(request):
                 content = {'poste':poste,'error':error}
                 return render(request,'blog/private/join.html',content)
 
-    print("aaa")
     return render(request,'blog/private/join.html')

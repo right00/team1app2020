@@ -1,3 +1,4 @@
+
 {% extends 'base_student.html' %}
 
 
@@ -9,6 +10,7 @@
 
 
 {% block content %}
+
 
 
     {%if thisclass%}
@@ -28,8 +30,10 @@
     {% endif %}
 
     <br>
+
     <p><a href="{% url 'students:task' %}" class="btn btn-success">Task</a></p>
     <p><a href="{% url 'students:propose' %}" >Propose</a></p>
+
     <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
     <p><a href="{% url 'students:tag' %}">Tag</a></p>
 
@@ -38,5 +42,6 @@
     
    
     
-    
+
 {% block content %}
+

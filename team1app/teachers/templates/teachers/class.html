@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+{% block content %}
+
+
     <h4><a href="{% url 'teacher:CreateClass'%}">クラス作成はこちら</a></h4>
     <form action="" method="post">
         {% csrf_token %}
@@ -45,5 +49,4 @@
     {%endif%}
 
 
-</body>
-</html>
+{% endblock content %}

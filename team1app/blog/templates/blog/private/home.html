@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}
+<title></title>
+
 Top
 {% endblock title %}
 
@@ -15,7 +17,6 @@ Top
 
 <div class="alert alert-primary" role="alert">
   <p>選択してください</P>
-
   <a href="{% url 'newgroup' %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">グループを作成する</a>
   <a href="{% url 'join' %}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">グループに参加する</a>
 

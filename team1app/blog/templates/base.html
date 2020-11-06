@@ -15,7 +15,23 @@
     <link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand:400,700" rel="stylesheet">
     {% block title %}  {% endblock title %} 
   </head>
-  <body>      
+  <body>  
+    <header>
+      <h1 class="headline">
+        <a>+NoteBook</a>
+      </h1>
+      <ul class="nav-list">
+        <li class="nav-list-item">
+          <a href="{% url 'home' %}" >Home</a>
+        </li>
+        <li class="nav-list-item"><a  href="{% url 'login' %}" >SignOut</a></li>
+        <li class="nav-list-item">Topic</li>
+      </ul>
+
+      <p class = "headline" >ユーザー名：{{ user.username }}</p>
+    </header>    
+    
+
    {% block header %}
    {% endblock header %}
    {% block content %}

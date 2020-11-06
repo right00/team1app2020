@@ -1,0 +1,42 @@
+{% extends 'base_student.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+
+
+    {%if thisclass%}
+    <h2>{{thisclass.class_name}}</h2>
+    {%endif%}
+    <br>
+
+    {% if tasks %}
+    {% for task in tasks %}
+    <h2>{{ task.name }}</h2>
+    <td>{{ task.contents }}</td>
+    <td>{{ task.task.limit }}</td>
+    
+    {% endfor %}
+    {% else %}
+    <p>No task.</p>
+    {% endif %}
+
+    <br>
+    <p><a href="{% url 'students:task' %}" class="btn btn-success">Task</a></p>
+    <p><a href="{% url 'students:propose' %}" >Propose</a></p>
+    <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
+    <p><a href="{% url 'students:tag' %}">Tag</a></p>
+
+
+    <p><a href="{% url 'top' %}">Top</a></p>
+    
+   
+    
+    
+{% block content %}

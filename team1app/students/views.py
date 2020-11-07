@@ -42,14 +42,14 @@ def home(request):
             return render(request, 'home.html', data)
     return render(request, 'home.html')
 
-def class_page(request,classid):
+def class_page(request,class_id):
     """studentのclass_page画面"""
     #生徒以外はリダイレクト
     student,num = check(request)
     if num != 2:
         return redirect('home')
     #ユーザーが使用しているベースにクラスが属しているか確認
-    have, thisclass = checkCL(student.use_base, classid)
+    have, thisclass = checkCL(student.use_base, class_id)
     #クラスが属していた
     if have :
 
@@ -81,9 +81,10 @@ def task(request):
     """task画面"""
     _,num = check(request)
     if num == 2:
-        return render(request,'task.html')
+        return render(request, 'task.html')
     else:
         return redirect('home')
+    
   
 def propose(request):
     """propose画面"""

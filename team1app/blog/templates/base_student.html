@@ -20,19 +20,23 @@
   </head>
   <body>  
    
-    <header class = "p">
-      <h1 class="headline">
-        <a>+NoteBook</a>
+    <header class = "base_header">
+      <h1 class = "notebook">
+        +NoteBook
       </h1>
-      <ul class="nav-list">
-        <li class="nav-list-item">
-          <a href="{% url 'home' %}" >Home</a>
-        </li>
-        <li class="nav-list-item"><a  href="{% url 'login' %}" >SignOut</a></li>
-        <li class="nav-list-item">Topic</li>
-      </ul>
 
-      <p  class = "nav-list-item" >ユーザー名：{{ user.username }}</p>
+      <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">ここに中身を入れる</div>
+    </div>
+
+        <div class = "top">
+        <a  href="{% url 'top' %}" >TOP</a>
+        <a href="{% url 'login' %}" >SignOut</a>
+        <p class = "nav-list-item" >ユーザー名：{{ user.username }}</p>
+        </div>
     </header>        
 
    {% block header %}

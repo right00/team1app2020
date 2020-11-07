@@ -35,19 +35,14 @@
           <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
           <p><a href="{% url 'students:tag' %}">Tag</a></p>
 
-
-    <p><a href="{% url 'top' %}">Top</a></p>
-
         </div>
-    </div>
 
         <div class = "top">
         <a  href="{% url 'top' %}" >TOP</a>
         <a href="{% url 'login' %}" >SignOut</a>
         <p class = "nav-list-item" >ユーザー名：{{ user.username }}</p>
         </div>
-
-        
+      </div>   
     </header>        
 
    {% block header %}
@@ -57,8 +52,6 @@
 
    {% endblock content %}
   </div>
-  <p class = "p">何か適用あり</p>
-  <p>何か適用あり</p>
 
     <!-- java html -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -29,7 +29,16 @@
         <input id="nav-input" type="checkbox" class="nav-unshown">
         <label id="nav-open" for="nav-input"><span></span></label>
         <label class="nav-unshown" id="nav-close" for="nav-input"></label>
-        <div id="nav-content">ここに中身を入れる</div>
+        <div id="nav-content">
+          <p><a href="{% url 'students:task' %}" class="btn btn-success">Task</a></p>
+          <p><a href="{% url 'students:propose' %}" >Propose</a></p>
+          <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
+          <p><a href="{% url 'students:tag' %}">Tag</a></p>
+
+
+    <p><a href="{% url 'top' %}">Top</a></p>
+
+        </div>
     </div>
 
         <div class = "top">
@@ -37,6 +46,8 @@
         <a href="{% url 'login' %}" >SignOut</a>
         <p class = "nav-list-item" >ユーザー名：{{ user.username }}</p>
         </div>
+
+        
     </header>        
 
    {% block header %}

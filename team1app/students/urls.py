@@ -3,6 +3,7 @@ from . import views
 
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import static
 
 
 # set the application namespace

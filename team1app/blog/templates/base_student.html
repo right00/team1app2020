@@ -8,18 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'student/base_student.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'student/form_student.css' %}">
+    
     {% block css %} 
     
     {% endblock css %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'form.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand:400,700" rel="stylesheet">
+   
     {% block title %}  {% endblock title %} 
+    
   </head>
   <body>  
-    <header>
+   
+    <header class = "p">
       <h1 class="headline">
-        <a>+NoteBookaaa</a>
+        <a>+NoteBook</a>
       </h1>
       <ul class="nav-list">
         <li class="nav-list-item">
@@ -29,14 +32,18 @@
         <li class="nav-list-item">Topic</li>
       </ul>
 
-      <p class = "headline" align="right">ユーザー名：{{ user.username }}</p>
+      <p  class = "nav-list-item" >ユーザー名：{{ user.username }}</p>
     </header>        
 
    {% block header %}
    {% endblock header %}
+   <div style="background: url();" class = "p">
    {% block content %}
 
    {% endblock content %}
+  </div>
+  <p class = "p">何か適用あり</p>
+  <p>何か適用あり</p>
 
     <!-- java html -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

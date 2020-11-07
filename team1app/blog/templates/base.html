@@ -6,7 +6,8 @@
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/base_teacher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/form_teacher.css' %}">
     {% block css %} 
     
     {% endblock css %}
@@ -16,6 +17,8 @@
     {% block title %}  {% endblock title %} 
   </head>
   <body>  
+    
+    
     <header>
       <h1 class="headline">
         <a>+NoteBook</a>
@@ -28,9 +31,8 @@
         <li class="nav-list-item">Topic</li>
       </ul>
 
-      <p class = "headline" >ユーザー名：{{ user.username }}</p>
-    </header>    
-    
+      <p class = "headline" align="right">ユーザー名：{{ user.username }}</p>
+    </header>        
 
    {% block header %}
    {% endblock header %}

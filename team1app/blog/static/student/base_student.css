@@ -1,4 +1,3 @@
-
 @font-face {
 	font-family: 'MyFont';
 	src: url("../img/tem.ttf");
@@ -14,17 +13,16 @@
 }
 body{
   font-family:MyFont;
-  
- 
   background-image: url("../img/example.png");
   background-size: cover;
   }
-  p{font-family:sans-serif; }
+
+p{
+  font-family:sans-serif;
+}
 
   .position-absolute{
-    
     position: absolute;  
-    
     top: 0;
     right: 0;
     bottom: 0;
@@ -34,11 +32,6 @@ body{
     height: 100px;
     font-family: Kokuban;
   }
-
-
-
-
-
 
 
 @media screen and ( max-width: 480px ){

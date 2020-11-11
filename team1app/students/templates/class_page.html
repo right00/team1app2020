@@ -12,6 +12,7 @@
 {% block content %}
 
 
+
     {%if thisclass%}
     <h2>{{thisclass.class_name}}</h2>
     {%endif%}
@@ -28,8 +29,12 @@
     {% endif %}
 
     <br>
-    <p><a href="{% url 'students:task' %}">Task</a></p>
-    <p><a href="{% url 'students:propose' %}">Propose</a></p>
+
+
+    <p><a href="{% url 'students:task' %}" class="btn btn-success">Task</a></p>
+    <p><a href="{% url 'students:propose' %}" >Propose</a></p>
+
+
     <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
     <p><a href="{% url 'students:tag' %}">Tag</a></p>
 
@@ -37,7 +42,10 @@
     <p><a href="{% url 'top' %}">Top</a></p>
     
    
-    
-    
+
 {% block content %}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dev_front_teacher

@@ -13,5 +13,6 @@ urlpatterns = [
     path('class/<int:classid>/',views.class_content,name='ClassContent'),
     path('class/<int:classid>/task/create/',views.create_task,name='CreateTask'),
     path('class/<int:classid>/tasks/',views.TasksList,name='TasksList'),
-    path('class/<int:classid>/task/<int:taskid>/',views.taskContent,name="taskContent")
+    path('class/<int:classid>/task/<int:taskid>/',views.taskContent,name="taskContent"),
+    path('class/<int:classid>/tags/',views.edit_tags),
 ]

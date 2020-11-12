@@ -9,15 +9,40 @@
     {%if task%}
     <form action="" method="post">
         {% csrf_token %}
+        <input type="hidden" name="type" value="change"/>
         <h4>宿題</h4>
         <input type="input" name="name" minlength="1" maxlength="32" value="{{task.name}}">
         <h4>内容</h4>
         <textarea name="content" maxlengt="800"　rows="4" cols="60">{{task.contents}}</textarea>
-        <input type="submit" value="create"/>
+        <input type="submit" value="change"/>
     </form>
     <h5>{{task.make}}</h5>
     {%endif%}
-
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="delete"/>
+        <h4>タグ一覧</h4>
+        {% for tag in thistags %}
+        <div class="outbox">
+        <input type="checkbox" id="tags{{tag.id}}" name="tags" value="{{tag.id}}">
+        <label for="tags{{tag.id}}">{{tag.tag}}</label>
+        </div>
+        {%endfor%}
+        <input type="submit" value="delete"/>
+    </form>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="addtags"/>
+        <h4>タグ一覧</h4>
+        {%for tag in tags%}
+        <div class="outbox">
+        <input type="checkbox" id="tags{{tag.id}}" name="tags" value="{{tag.id}}">
+        <label for="tags{{tag.id}}">{{tag.tag}}</label>
+        </div>
+        {%endfor%}
+        <input type="submit" value="add"/>
+    </form>
+    <br>
     {%if students%}
     <form action="" method="post">
         {% csrf_token %}

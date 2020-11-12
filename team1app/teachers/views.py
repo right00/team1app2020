@@ -110,7 +110,7 @@ def create_task(request,classid):
             task=Tasks.objects.create(name=request.POST["name"],contents=request.POST["content"],tarclass=thisclass)
             task.auther.add(teacher)
             task.save()
-            return redirect("/teacher/class/"+str(classid)+"/")
+            return redirect("/teacher/class/"+str(classid)+"/task/"+str(task.id)+"/")
     else:
         return redirect("/teacher/class/")
 
@@ -161,18 +161,98 @@ def taskContent(request,classid,taskid):
                         homework.task.add(thistask)
                         homework.save()
                     return redirect("/teacher/class/")
+            if request.POST["type"] == "change":
+                if(thisclass.tasks_set.all().filter(auther = teacher).exists()):
+                    tasks=thisclass.tasks_set.all().filter(auther = teacher)
+                    for task in tasks:
+                        if(task.id==taskid):
+                            task.name=request.POST["name"]
+                            task.contents=request.POST["content"]
+                            task.save()
+
+            if request.POST["type"] == "addtags":
+                tasks=thisclass.tasks_set.all().filter(auther = teacher)
+                for task in tasks:
+                    if(task.id==taskid):
+                        if(task.tag.all().exists()):
+                            nowtags = task.tag.all()
+                            for tagid in request.POST.getlist("tags"):
+                                if(nowtags.filter(id=int(tagid)).exists()):
+                                    alert = "aleady exists"
+                                    print(alert)
+                                else:
+                                    task.tag.add(Tags.objects.get(id = int(tagid)))
+                                    task.save()
+                        else:
+                            for tagid in request.POST.getlist("tags"):
+                                task.tag.add(Tags.objects.get(id = int(tagid)))
+                                task.save()
+            if request.POST["type"] == "delete":
+                tasks=thisclass.tasks_set.all().filter(auther = teacher)
+                for task in tasks:
+                    if(task.id==taskid):
+                        tagids=request.POST.getlist("tags")
+                        for tagid in tagids :
+                            tag = Tags.objects.get(id = int(tagid))
+                            task.tag.remove(tag)
+                        task.save()
         if(thisclass.tasks_set.all().filter(auther = teacher).exists()):
             tasks=thisclass.tasks_set.all().filter(auther = teacher)
             for task in tasks:
                 if(task.id==taskid):
                     sts = thisclass.students.all()
-                    data={"task":task,"students":sts}
+                    thistags = None
+                    tags = None
+                    if (task.tag.all().exists()):
+                        thistags = task.tag.all()
+                    if(Tags.objects.filter(tarclass = thisclass).exists()):
+                        tags = Tags.objects.filter(tarclass = thisclass)
+                        data = {"tags":tags}
+                    data={"task":task,"students":sts,"tags":tags,"thistags":thistags}
                     return render(request,'teachers/TaskContent.html',data)
         else:
             return redirect("/teacher/class/")
     else:
         return redirect("/teacher/class/")
 
+def edit_tags(request,classid):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    have,thisclass=checkCL(teacher.use_base,classid)
+    if have :   
+        if request.method != "POST":
+            data = {}
+            if(Tags.objects.filter(tarclass = thisclass).exists()):
+                tags = Tags.objects.filter(tarclass = thisclass)
+                data = {"tags":tags}
+            return render(request,'teachers/tagsEdit.html',data)
+        else:
+            if request.method == "POST":
+                alert = None
+                tags = None
+                if request.POST["type"] == "delete":
+                    tagids=request.POST.getlist("tags")
+                    for tagid in tagids :
+                        tag = Tags.objects.get(id = int(tagid))
+                        tag.delete()
+                if request.POST["type"] == "add":
+                    if(Tags.objects.filter(tarclass = thisclass,tag = request.POST["name"]).exists()):
+                        alert = "aleady exists"
+                    else:
+                        tag = Tags.objects.create(tag=request.POST["name"],tarclass = thisclass)
+                        tag.save()
+
+                if(Tags.objects.filter(tarclass = thisclass).exists()):
+                    tags = Tags.objects.filter(tarclass = thisclass)
+                    data = {"tags":tags}
+
+                data = {"tags":tags,"alert":alert}
+                return render(request,'teachers/tagsEdit.html',data)
+    else:
+        return redirect("/teacher/class/")
+
+    
 
 
         

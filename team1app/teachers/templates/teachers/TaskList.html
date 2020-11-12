@@ -10,6 +10,11 @@
     {%for task in tasks%}
     <h4><a href="../task/{{task.id}}/">{{task.name}}</a></h4>
     <h5><font color=gray>{{task.contents}}</font></h5>
+    <div style = "color:red;">
+    {%for tag in task.tag.all %}
+    <span>{{tag.tag}}</span>
+    {%endfor%}
+    </div>
     <h5>{{task.make}}</h5>
     {%endfor%}
     {%else%}

@@ -38,6 +38,19 @@ class Students(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank = True)
+    
+    def getHomework(self):
+        return self.studenttasks_set.all()
+    
+    def getHomeworkT(self,teacher):
+        hws = []
+        for hw in self.studenttasks_set.all():
+            for t in hw.task.all():
+                for a in t.auther.all():
+                    if(a == teacher):
+                        hws.append(hw)
+                        break
+        return hws
 
 #学校    
 class Base(models.Model):

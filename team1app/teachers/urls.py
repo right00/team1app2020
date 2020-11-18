@@ -15,4 +15,6 @@ urlpatterns = [
     path('class/<int:classid>/tasks/',views.TasksList,name='TasksList'),
     path('class/<int:classid>/task/<int:taskid>/',views.taskContent,name="taskContent"),
     path('class/<int:classid>/tags/',views.edit_tags),
+    path('class/<int:classid>/st/<int:studentid>/',views.studentContents),
+    
 ]

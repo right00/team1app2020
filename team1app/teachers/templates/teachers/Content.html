@@ -16,7 +16,7 @@
     <br>
     <h3><a href="/teacher/class/{{thisclass.id}}/task/create/">宿題を追加</a></h3>
     <h3><a href="./tasks">宿題一覧</a></h3>
-    <h3><a href="./tags/">タグ一覧</a></h3>
+    <h3><a href="./tags/">タグ</a></h3>
 
     {%endif%}
     
@@ -24,7 +24,7 @@
     <h3>生徒一覧</h3>
     <br>
     {%for st in sts%}
-    <li>{{st.name}}</li>
+    <li><a href="./st/{{st.id}}/">{{st.name}}</a></li>
     {%endfor%}
     {%else%}
     <h4>参加している生徒はいません</h4>

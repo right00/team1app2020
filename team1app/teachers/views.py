@@ -252,6 +252,36 @@ def edit_tags(request,classid):
     else:
         return redirect("/teacher/class/")
 
+def studentContents(request,classid,studentid):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home')
+    have,thisclass=checkCL(teacher.use_base,classid)
+    
+    if not have :
+        print(0)
+        return redirect("/teacher/class/")
+    
+    cl,st = checkStudent(classid,studentid)
+    
+    if(cl == None):
+        print(1)
+        return redirect("/teacher/class/")
+
+    data = {"Homeworks":st.getHomeworkT(teacher)}
+    return render(request,'teachers/studentContents.html',data)
+    
+    
+    
+
+
+
+        
+    
+
+
+
+
     
 
 

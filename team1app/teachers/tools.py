@@ -9,3 +9,16 @@ def checkCL(baseid,classid):
                 return True,tarclass
     else:
         return False,None
+
+def checkStudent(classid,studentid):
+    try:
+        student = Students.objects.get(id = studentid)
+        cl = Classes.objects.get(id = classid)
+        sts = cl.students.all()
+        for st in sts:
+            if(st == student):
+                return cl,student
+        return None,None
+    except:
+        return None,None
+

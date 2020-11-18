@@ -11,20 +11,48 @@
 {% block content %}
 
 
-    <h4>Your student</h4>
+    <h3>生徒ページ</h3>
     <h4>クラスに参加</h4>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="type" value="my">
-        <input type="hidden" name="join" value=""> 
-        <input type="submit" value="My_Class"/>
-    </form>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="type" value="all">
-        <input type="hidden" name="join" value="">
-        <input type="submit" value="All"/>
-    </form>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"><img class = "image" src = "../../static/img/ICON/1-01.png" height="100" width="100"></div>
+          <div class="swiper-slide"><img src = "../../static/img/ICON/3-01.png"  height="100" width="100"></div>
+          <div class="swiper-slide"><img src = "../../static/img/ICON/1-01.png" height="100" width="100"></div>
+          <div class="swiper-slide"><img src = "../../static/img/ICON/3-01.png"  height="100" width="100"></div>
+          <div class="swiper-slide"><img src = "../../static/img/ICON/1-01.png" height="100" width="100"></div>
+          <div class="swiper-slide"><img src = "../../static/img/ICON/3-01.png"  height="100" width="100"></div>
+          <div class="swiper-slide"><img src = "../../static/img/ICON/1-01.png" height="100" width="100"></div>
+      
+        </div>
+
+        
+        
+      </div>
+      <table>
+          <tr>
+              <td>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="type" value="my">
+                    <input type="hidden" name="join" value=""> 
+                    <input class="btn btn--orange btn--radius" type="submit" value="My_Class"/>
+                </form>
+              </td>
+              <td>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="type" value="all">
+                    <input type="hidden" name="join" value="">
+                    <input class="btn btn--orange btn--radius" type="submit" value="All"/>
+                </form>
+              </td>
+          </tr>
+    
+       </table>
+    
+    
+   
     {% if classes %}
     {% if all %}
     {% for class in classes %}
@@ -32,7 +60,7 @@
         {% csrf_token %}
         <h4>{{class.class_name}}</h4>
         <input type="hidden" name="join" value="{{class.id}}">
-        <input type="hidden" name="type" value="all">
+        <a href="" ><input type="hidden" name="type" value="all"></a>
         <input type="submit" value="Join"/> 
     </form>
     {% endfor %}
@@ -59,6 +87,9 @@
 
 
     <p><a href="{% url 'top' %}">Top</a></p>
+</div>
+<!-- Swiper -->
+
     
    
     

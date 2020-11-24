@@ -19,7 +19,16 @@
     <h3><a href="./tags/">タグ</a></h3>
 
     {%endif%}
-    
+    {%for tag in tags%}
+    <br>
+    ==============================<br>
+    {{tag.tag.tag}}
+    合計:{{tag.all}}
+    正解:{{tag.true}}
+    不正解:{{tag.false}}<br>
+    ==============================
+    <br>
+    {%endfor%}
     {%if sts%}
     <h3>生徒一覧</h3>
     <br>

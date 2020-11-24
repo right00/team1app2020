@@ -84,7 +84,7 @@ def class_content(request,classid):
             #クラスに生徒がいる場合
             if (thisclass.students.all()!= None):
                 sts = thisclass.students.all()
-                data={"thisclass":thisclass,"sts":sts}
+                data={"thisclass":thisclass,"sts":sts,"tags":tagsstate(thisclass,teacher)}
                 return render(request,'teachers/Content.html',data)
             #クラスに生徒がいない場合
             else:

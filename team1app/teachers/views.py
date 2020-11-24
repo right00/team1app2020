@@ -270,6 +270,28 @@ def studentContents(request,classid,studentid):
 
     data = {"Homeworks":st.getHomeworkT(teacher)}
     return render(request,'teachers/studentContents.html',data)
+
+def schedule(request):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home') 
+    if(not Schedule.objects.filter(person = teacher).exists()):
+        sd = Schedule.objects.create(person = teacher)
+        sd.save()
+        data = {"hs":range(24),"ms":range(60)}
+        return render(request,"teachers/schedule.html",data)
+    else:
+        sd = Schedule.objects.get(person = teacher)
+        if(request.method == "POST"):
+            sd.add(int(request.POST["week"]),int(request.POST["sh"]),int(request.POST["sm"]),int(request.POST["eh"]),int(request.POST["em"]))
+        data = {"schedules":sd.getScheduleData(),"hs":range(24),"ms":range(60)}
+    return render(request,"teachers/schedule.html",data)
+
+    
+
+    
+    
+    
     
     
     

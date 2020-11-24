@@ -8,6 +8,8 @@ admin.site.register(models.Classes)
 admin.site.register(models.Tags)
 admin.site.register(models.Tasks)
 admin.site.register(models.StudentTasks)
+admin.site.register(models.Schedule)
+admin.site.register(models.ScheduleData)
 
 #from .models import User, Entry
 

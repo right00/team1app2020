@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+import re
 
 """
 class User(models.Model):
@@ -116,7 +117,98 @@ class StudentTasks(models.Model):
     #出された人
     person = models.ForeignKey(Students,on_delete=models.CASCADE)
 
+class Schedule(models.Model):
+    person = models.ForeignKey(Teachers,on_delete=models.CASCADE)
+    def add(self,week,start_h,start_m,end_h,end_m):
+        data = None
+        datas = self.getScheduleData()
+        if(datas != None):
+            if(datas[week] != None):
+                for i in datas[week]['data']:
+                    sh,sm = i.getStartInt()
+                    eh,em = i.getEndInt()
+
+                    if(start_h < sh or (start_h == sh and start_m < sm)):
+                        if(end_h < sh or (end_h == sh and end_m < sm)):
+                            continue
+
+                        elif(start_h < sh or (start_h == sh and start_m < sm)):
+                            i.start="{:0>2}:{:0>2}".format(str(start_h),str(start_m))
+                            if(data != None):
+                                data.delete()
+                            data = i
+                            data.save()
+                            end_h = eh
+                            end_m = em
+                            continue
+
+                        else:
+                            i.start="{:0>2}:{:0>2}".format(str(start_h),str(start_m))
+                            i.end="{:0>2}:{:0>2}".format(str(end_h),str(end_m))
+                            if(data != None):
+                                data.delete()
+                            data = i
+                            data.save()
+                            continue
+
+                    elif(start_h < eh or (start_h == eh and start_m <= sm)):
+                        if(start_h < sh or (start_h == sh and start_m < sm)):
+                            data = i
+                            break
+
+                        else:
+                            i.end="{:0>2}:{:0>2}".format(str(end_h),str(end_m))
+                            if(data != None):
+                                data.delete()
+                            data = i
+                            data.save()
+                            start_h = eh
+                            start_m = em
+                            continue
+
+                    else:
+                        continue
+        if(data == None):
+            data = ScheduleData.objects.create(schedule = self,start = "{:0>2}:{:0>2}".format(start_h,start_m),end = "{:0>2}:{:0>2}".format(end_h,end_m))
+            data.save()
+        
+        return 0
+
+    def getScheduleData(self):
+        strweek = "月火水木金土日"
+        lst = None
+        if(ScheduleData.objects.filter(schedule = self).exists()):
+            scheduledatas = ScheduleData.objects.filter(schedule = self)
+            lst = []
+            for i in range(7):
+                if(scheduledatas.filter(week = i).exists()):
+                    d = scheduledatas.filter(week = i)
+                    data = {"data":d,"weekstr":strweek[i]}
+                    lst.append(data)
+                else:
+                    lst.append(None)
+        return lst
+
+
+class ScheduleData(models.Model):
+    schedule = models.ForeignKey(Schedule,on_delete=models.CASCADE)
+    week = models.IntegerField(default=0)
+    start = models.CharField(max_length=5)
+    end = models.CharField(max_length=5)
+
+    def getStartInt(self):
+        match = re.match(r"(\d+):(\d+)",self.start)
+        return int(match.group(1)),int(match.group(2))
+
+    def getEndInt(self):
+        match = re.match(r"(\d+):(\d+)",self.end)
+        return int(match.group(1)),int(match.group(2))
+
+
+
+
     
+        
     
 
 

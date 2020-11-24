@@ -1,0 +1,50 @@
+<form action="" method="post">
+    {%if result%}
+    <h4><font color="red">{{result}}</font></h4>
+    {%endif%}
+    {% csrf_token %}
+    <h4>week</h4>
+    <select name="week">
+        <option value='0'>月</option>
+        <option value='1'>火</option>
+        <option value='2'>水</option>
+        <option value='3'>木</option>
+        <option value='4'>金</option>
+        <option value='5'>土</option>
+        <option value='6'>日</option>
+    </select>
+    <h4>time</h4>
+    <select name="sh">
+       {%for h in hs%}
+       <option value='{{h}}'>{{h}}</option>
+       {%endfor%}
+    </select>:
+    <select name="sm">
+        {%for m in ms%}
+       <option value='{{m}}'>{{m}}</option>
+       {%endfor%}
+    </select>
+    〜
+    <select name="eh">
+        {%for h in hs%}
+       <option value='{{h}}'>{{h}}</option>
+       {%endfor%}
+    </select>:
+    <select name="em">
+        {%for m in ms%}
+       <option value='{{m}}'>{{m}}</option>
+       {%endfor%}
+    </select>        
+    <input type="submit" value="create"/>
+</form>
+
+{%for schedule in schedules%}
+{%if schedule%}
+{%for d in schedule.data%}
+<div>
+    {{schedule.weekstr}}曜日 {{d.start}}〜{{d.end}}
+</div>
+{%endfor%}
+{%endif%}
+{%endfor%}
+

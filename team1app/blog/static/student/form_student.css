@@ -1,7 +1,10 @@
-
+@font-face {
+	font-family: 'MyFont';
+	src: url("../img/SansitaSwashed-Black.ttf");
+}
 
 .headword{
-	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-family: MyFont;
 	text-align: center;
 	color:rgb(255, 151, 32);
 }

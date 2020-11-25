@@ -32,9 +32,9 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li>課題 <span>かだい</span></li>
-      <li>タグ</li>
-      <li>トップ</li>
+      <a href="{% url 'students:task' %}"><li>課題 <span>かだい</span></li></a>
+      <a href="{% url 'students:tag' %}"><li>タグ</li></a>
+      <a href="{% url 'home' %}"><li>トップ</li></a>
       <li>設定  <span>せってい</span></li>
 
     </ul>
@@ -73,6 +73,9 @@
 
     
   </script>
+  <footer>
+    
+  </footer>
    
   </body>
 </html>

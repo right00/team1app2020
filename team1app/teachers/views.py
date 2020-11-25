@@ -287,6 +287,16 @@ def schedule(request):
         data = {"schedules":sd.getScheduleData(),"hs":range(24),"ms":range(60)}
     return render(request,"teachers/schedule.html",data)
 
+
+def questions(request):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home') 
+    q = teacher.getQuestions()
+    data = {"questions":q}
+    return render(request,"teachers/questions.html",data)
+
+
     
 
     

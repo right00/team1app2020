@@ -34,6 +34,13 @@ class Teachers(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank=True)
+
+    def getQuestions(self):
+        result = None
+        if(Question.objects.filter(toTe = self).exists):
+            result = Question.objects.filter(toTe = self)
+        return result
+
 #生徒
 class Students(models.Model):
     name = models.CharField(max_length=32)
@@ -203,6 +210,88 @@ class ScheduleData(models.Model):
     def getEndInt(self):
         match = re.match(r"(\d+):(\d+)",self.end)
         return int(match.group(1)),int(match.group(2))
+
+
+
+class Question(models.Model):
+    task = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    title = models.CharField(max_length=32)
+    fromSt =  models.ForeignKey(Students,on_delete=models.CASCADE)
+    toTe = models.ForeignKey(Teachers,on_delete=models.CASCADE)
+    finalup = models.DateTimeField(default=timezone.now)
+
+    #AppoTimeを追加:days(何日後),何時(h),何分(m)
+    def addAppo(self,days,h,m):
+        now = timezone.now
+        if(days > 0):
+            now = now + datetime.timedelta(days = days)
+        appo = AppoTime.objects.create(question = self,day = now,time = "{:0>2}:{:0>2}".format(h,m))
+        appo.save()
+        self.finalup = timezone.now
+    
+    def deleteAppoAll(self):
+        if(AppoTime.objects.filter(question = self).exists()):
+            appos = AppoTime.objects.filter(question = self)
+            for appo in appos:
+                appo.delete()
+
+
+    def addAccept(self,appo):
+        ac = Accept.objects.create(question = self,day = appo.day,time = appo.time)
+        ac.save()
+        self.deleteAppoAll()
+        self.finalup = timezone.now
+        
+    #コメントの追加|生徒用    
+    def addCommentSt(self,comment):
+        comment = Comment.objects.create(question = self,comment = comment,isStudent = True)
+        comment.save()
+        self.finalup = timezone.now
+
+    #コメントの追加|教師用
+    def addCommenT(self,comment):
+        comment = Comment.objects.create(question = self,comment = comment,isStudent = False)
+        comment.save()
+        self.finalup = timezone.now
+
+    def getAppo(self):
+        if(AppoTime.objects.filter(question = self).exists()):
+            return AppoTime.objects.filter(question = self)
+        else:
+            return None
+
+    def getAccept(self):
+        if(Accept.objects.filter(question = self).exists()):
+            return Accept.objects.filter(question = self)
+        else:
+            return None
+
+    def getComment(self):
+        if(Comment.objects.filter(question = self).exists()):
+            return Comment.objects.filter(question = self)
+        else:
+            return None
+
+    def gatAll(self):
+        return self.getAppo(),self.getAccept(),self.getComment
+        
+
+class AppoTime(models.Model):
+    question = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    day = models.DateField(default=timezone.now) 
+    time = models.CharField(max_length=5)
+
+class Accept(models.Model):
+    question = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    day = models.DateField(default=timezone.now) 
+    time = models.CharField(max_length=5)
+
+class Comment(models.Model): 
+    question = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    comment = models.TextField()
+    isStudent = models.BooleanField(default=False)
+    
+    
 
 
 

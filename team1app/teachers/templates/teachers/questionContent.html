@@ -1,0 +1,34 @@
+<div style = "border: solid 3px 3px 3px 3px black;">
+    <h5>FROM. {{q.fromSt.name}}</h5>
+    <h5>{{q.title}}</h5>
+    <h6> Task → |{{q.task.name}}|</h6>
+    <h5>最終更新</h5>
+    <h5>{{q.finalup}}</h5>
+</div>
+
+<h4>日程</h4>
+{%for a in Accept%}
+<h5>日程:{{a.day}} {{a.time}}〜</h5>
+{%endfor%}
+<br>
+<h4>希望日程</h4>
+{%for a in Appo%}
+<h5>日程:{{a.day}} {{a.time}}〜</h5>
+{%endfor%}
+<h4>コメント一覧</h4>
+{%for c in Comment%}
+<H5>
+{%if c.isStudent%}
+    auther:{{student.name}}
+{%else%}
+    auther:{{teacher.name}}
+{%endif%}
+</H5>
+<H5>{{c.comment}}</H5>
+{%endfor%}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <textarea name = "comment" minlength="1"　rows="5" cols="40">コメントを書いてください</textarea>
+    <input type="submit" value="create"/>
+</form>

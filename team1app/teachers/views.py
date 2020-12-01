@@ -296,6 +296,21 @@ def questions(request):
     data = {"questions":q}
     return render(request,"teachers/questions.html",data)
 
+def question(request,id):
+    teacher,num = check(request)
+    if num != 1:
+        return redirect('home') 
+    if Question.objects.filter(id = id,toTe = teacher).exists():
+        q = Question.objects.get(id=id)
+        if request.method == "POST":
+            q.addCommentT(request.POST["comment"])
+        data = {"q":q,"Accept":q.getAccept(),"Appo":q.getAppo(),"Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
+        return render(request,"teachers/questionContent.html",data)
+    else:
+        return redirect('home') 
+
+
+
 
     
 

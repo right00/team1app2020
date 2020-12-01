@@ -2,7 +2,7 @@
 {%for q in questions%}
 <div style = "border: solid 3px 3px 3px 3px black;">
     <h5>FROM. {{q.fromSt.name}}</h5>
-    <h5>{{q.title}}</h5>
+    <h5><a href = "./{{q.id}}">{{q.title}}</a></h5>
     <h6> Task → |{{q.task.name}}|</h6>
     <h5>{{q.finalup}}</h5>
 </div>

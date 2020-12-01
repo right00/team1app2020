@@ -19,5 +19,6 @@ urlpatterns = [
 
     path('schedule/',views.schedule),
     path('questions/',views.questions),
+    path('questions/<int:id>/',views.question),
     
 ]

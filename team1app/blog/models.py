@@ -249,7 +249,7 @@ class Question(models.Model):
         self.finalup = timezone.now
 
     #コメントの追加|教師用
-    def addCommenT(self,comment):
+    def addCommentT(self,comment):
         comment = Comment.objects.create(question = self,comment = comment,isStudent = False)
         comment.save()
         self.finalup = timezone.now
@@ -277,17 +277,17 @@ class Question(models.Model):
         
 
 class AppoTime(models.Model):
-    question = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
     day = models.DateField(default=timezone.now) 
     time = models.CharField(max_length=5)
 
 class Accept(models.Model):
-    question = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
     day = models.DateField(default=timezone.now) 
     time = models.CharField(max_length=5)
 
 class Comment(models.Model): 
-    question = models.ForeignKey(Tasks,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
     comment = models.TextField()
     isStudent = models.BooleanField(default=False)
     

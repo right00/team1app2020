@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
 
 
 
@@ -9,44 +13,47 @@
 
 {% block content %}
 
+    <div class ="container">
+        <div class ="content">
+            <h4><a href="{% url 'teacher:CreateClass'%}">クラス作成はこちら</a></h4>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="type" value="my">
+                <input type="hidden" name="join" value=""> 
+                <input type="submit" value="MyClass"/>
+            </form>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="type" value="all">
+                <input type="hidden" name="join" value="">
+                <input type="submit" value="All"/>
+            </form>
+            {% if classes %}
+            {% if all %}
+            {% for class in classes %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <h4>{{class.class_name}}</h4>
+                <input type="hidden" name="join" value="{{class.id}}">
+                <input type="hidden" name="type" value="all">
+                <input type="submit" value="join"/>
+            </form>
+            {% endfor %}
+            {%else%}
+            {% for class in classes %}
+            <h4><a href="/teacher/class/{{class.id}}/">{{class.class_name}}</a></h4>
+            {% endfor %}
+            {%endif%}
+            {%else%}
+            <h4 class = "a">クラスはまだありません</h4>
+            {%endif%}
+            {%if result%}
+            <script>
+                alert("{{result}}");
+            </script>
+            {%endif%}
+        </div>
 
-    <h4><a href="{% url 'teacher:CreateClass'%}">クラス作成はこちら</a></h4>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="type" value="my">
-        <input type="hidden" name="join" value=""> 
-        <input type="submit" value="MyClass"/>
-    </form>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="type" value="all">
-        <input type="hidden" name="join" value="">
-        <input type="submit" value="All"/>
-    </form>
-    {% if classes %}
-    {% if all %}
-    {% for class in classes %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <h4>{{class.class_name}}</h4>
-        <input type="hidden" name="join" value="{{class.id}}">
-        <input type="hidden" name="type" value="all">
-        <input type="submit" value="join"/>
-    </form>
-    {% endfor %}
-    {%else%}
-    {% for class in classes %}
-    <h4><a href="/teacher/class/{{class.id}}/">{{class.class_name}}</a></h4>
-    {% endfor %}
-    {%endif%}
-    {%else%}
-    <h4>クラスはまだありません</h4>
-    {%endif%}
-    {%if result%}
-    <script>
-        alert("{{result}}");
-    </script>
-    {%endif%}
-
+    </div>    
 
 {% endblock content %}

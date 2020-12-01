@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
-
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
 
 {% block title %}
 <title>Document</title>
@@ -10,23 +13,24 @@
 
 {% block content %}
 
-
-    {%if thisclass%}
-    <h2>{{thisclass.class_name}}</h2>
-    <br>
-    <h3><a href="/teacher/class/{{thisclass.id}}/task/create/">宿題を追加</a></h3>
-    <h3><a href="./tasks">宿題一覧</a></h3>
-    {%endif%}
-    
-    {%if sts%}
-    <h3>生徒一覧</h3>
-    <br>
-    {%for st in sts%}
-    <li>{{st.name}}</li>
-    {%endfor%}
-    {%else%}
-    <h4>参加している生徒はいません</h4>
-    {%endif%}
+    <div class ="container">
+        {%if thisclass%}
+        <h2>{{thisclass.class_name}}</h2>
+        <br>
+        <h3><a href="/teacher/class/{{thisclass.id}}/task/create/">宿題を追加</a></h3>
+        <h3><a href="./tasks">宿題一覧</a></h3>
+        {%endif%}
+        
+        {%if sts%}
+        <h3>生徒一覧</h3>
+        <br>
+        {%for st in sts%}
+        <li>{{st.name}}</li>
+        {%endfor%}
+        {%else%}
+        <h4>参加している生徒はいません</h4>
+        {%endif%}
+    </div>
 
 
 

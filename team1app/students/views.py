@@ -87,13 +87,18 @@ def class_page(request,class_id):
 
 
 
-def task(request):
+def task(request, class_id):
     """task画面"""
-    _,num = check(request)
-    if num == 2:
-        return render(request, 'task.html')
-    else:
+    student,num = check(request)
+    if num != 2:
         return redirect('home')
+    # クラスに出された宿題を表示する
+    if request.method =='POST':
+        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
+        tasks.save()
+    context = {'tasks':tasks}
+    return render(request, 'task.html', context)
+    
     
   
 def propose(request):

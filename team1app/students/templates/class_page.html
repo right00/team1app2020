@@ -12,9 +12,10 @@
 
     {% if tasks %}
     {% for task in tasks %}
-    <h2>{{ task.name }}</h2>
+    <td>{{ task.name }}</td>
     <td>{{ task.contents }}</td>
-    
+    <td>{{ task.task.limit }}</td>
+
     {% endfor %}
     {% else %}
     <p>No task.</p>
@@ -24,7 +25,5 @@
     
 {% block content %}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/dev_front_teacher
+

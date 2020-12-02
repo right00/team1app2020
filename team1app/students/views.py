@@ -43,21 +43,32 @@ def home(request):
             return render(request, 'home.html', data)
     return render(request, 'home.html')
 
-def class_page(request,classid):
+def class_page(request,class_id):
     """studentのclass_page画面"""
     #生徒以外はリダイレクト
     student,num = check(request)
     if num != 2:
         return redirect('home')
     #ユーザーが使用しているベースにクラスが属しているか確認
-    have, thisclass = checkCL(student.use_base, classid)
+    have, thisclass = checkCL(student.use_base, class_id)
     #クラスが属していた
     if have :
+
+
             #クラスに生徒がいる場合
             if (thisclass.students.all()!= None):
-                sts = thisclass.students.all()
-                data={"thisclass":thisclass,"sts":sts}
-                return render(request,'class_page.html',data)
+                if(student.studenttasks_set.all().exists()):
+                    tasks=student.studenttasks_set.all()
+                    tasks2=[]
+                    for i in tasks:
+                        task=gettask(i)
+                        if(task.tarclass==thisclass):
+                            data={"task":i,"name":task.name,"contents":task.contents}
+                            tasks2.append(data)
+                    context = {'tasks':tasks2}
+                    return render(request, 'class_page.html', context)
+                return render(request, 'class_page.html')
+
             #クラスに生徒がいない場合
             else:
                 data= { "thisclass" : thisclass }
@@ -75,13 +86,15 @@ def class_page(request,classid):
 
 
 
+
 def task(request):
     """task画面"""
     _,num = check(request)
     if num == 2:
-        return render(request,'task.html')
+        return render(request, 'task.html')
     else:
         return redirect('home')
+    
   
 def propose(request):
     """propose画面"""

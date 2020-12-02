@@ -1,0 +1,12 @@
+.container-fluid{
+    margin-right: 5%;
+    margin-left: 5%;
+    width: 90%;
+    height:100%;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly
+    /* text-align: center; */
+}
+

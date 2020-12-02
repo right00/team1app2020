@@ -1,5 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base_teacher.html' %}
 
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
 
 
 {% block title %}
@@ -10,18 +14,19 @@
 
 
 {% block content %}
-
-    <form action="" method="post">
-        {%if result%}
-        <h4><font color="red">{{result}}</font></h4>
-        {%endif%}
-        {% csrf_token %}
-        <h4>宿題</h4>
-        <input type="input" name="name" minlength="1" maxlength="32">
-        <h4>内容</h4>
-        <textarea name="content" maxlengt="800"　rows="4" cols="60">ここに内容を書いてください。</textarea>
-        <input type="submit" value="create"/>
-    </form>
+    <div class ="container">
+        <form action="" method="post">
+            {%if result%}
+            <h4><font color="red">{{result}}</font></h4>
+            {%endif%}
+            {% csrf_token %}
+            <h4>宿題</h4>
+            <input type="input" name="name" minlength="1" maxlength="32">
+            <h4>内容</h4>
+            <textarea name="content" maxlengt="800"　rows="4" cols="60">ここに内容を書いてください。</textarea>
+            <input type="submit" value="create"/>
+        </form>
+    </div>
 
 
 

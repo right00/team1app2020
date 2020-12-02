@@ -18,6 +18,4 @@ urlpatterns = [
     path('home/propose/', views.propose, name = 'propose'),
     path('home/reserve/', views.reserve, name = 'reserve'),
     path('home/tag/', views.tag, name = 'tag'),
-
-
 ]

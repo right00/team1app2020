@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+
+ {%for hw in Homeworks%}
+ {%for task in hw.task.all%}
+ <a href="../../../{{task.tarclass.id}}/task/{{task.id}}/">{{task.name}}</a>
+ <span style="width:10px"></span>
+ {%endfor%}
+ {{hw.limit}}
+ <span style="width:10px"></span>
+ {%if hw.finish%}
+ 済
+ <span style="width:10px"></span>
+ {%if hw.result%}
+ 正
+ {%else%}
+ 誤
+ {%endif%}
+ {%else%}
+ 未
+ {%endif%}
+ <br>
+ <br>
+ 
+ {%endfor%}
+
+
+
+
+{% endblock content %}

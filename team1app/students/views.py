@@ -3,7 +3,6 @@ from blog.web_views_private import check
 from blog.models import * 
 from students.tools import * 
 
-
 # Create your views here.
 def home(request):
     """studentのhome画面"""
@@ -35,6 +34,7 @@ def home(request):
             classes=base.classes_set.all()
             data = {"classes":classes,"all":True,"result":result}
             return render(request,'home.html',data)
+            
     else:
         base = Base.objects.get(id = user_student.use_base)
         if (base.classes_set.all()):
@@ -53,21 +53,11 @@ def class_page(request,classid):
     have, thisclass = checkCL(student.use_base, classid)
     #クラスが属していた
     if have :
-
             #クラスに生徒がいる場合
             if (thisclass.students.all()!= None):
-                if(student.studenttasks_set.all().exists()):
-                    tasks=student.studenttasks_set.all()
-                    tasks2=[]
-                    for i in tasks:
-                        task=gettask(i)
-                        if(task.tarclass==thisclass):
-                            data={"task":i,"name":task.name,"contents":task.contents}
-                            tasks2.append(data)
-                    context = {'tasks':tasks2}
-                    return render(request, 'class_page.html', context)
-                return render(request, 'class_page.html')
-
+                sts = thisclass.students.all()
+                data={"thisclass":thisclass,"sts":sts}
+                return render(request,'class_page.html',data)
             #クラスに生徒がいない場合
             else:
                 data= { "thisclass" : thisclass }
@@ -76,23 +66,12 @@ def class_page(request,classid):
     else:
         return redirect("/student/home/")
 
-
-
-def task(request):
-    """task画面"""
-    _,num = check(request)
-    if num == 2:
-        return render(request,'task.html')
-    else:
-        return redirect('home')
-  
-def propose(request):
-    """propose画面"""
-    _,num = check(request)
-    if num == 2:
-        return render(request, 'propose.html')
-    else:
-        return redirect('home')
+    # クラスに出された宿題を表示する
+    if request.method =='POST':
+        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
+        tasks.save()
+    context = {'tasks':tasks}
+    return render(request, 'class_page.html', context)
 
 
 
@@ -104,7 +83,6 @@ def task(request):
     else:
         return redirect('home')
   
-
 def propose(request):
     """propose画面"""
     _,num = check(request)

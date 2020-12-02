@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tag</title>
+
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="add"/>
+        <h4>タグ名</h4>
+        <input type="input" name="name" minlength="1" maxlength="32" value="{{task.name}}">
+        <input type="submit" value="create"/>
+    </form>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="delete"/>
+        <h4>タグ一覧</h4>
+        {%for tag in tags%}
+        <div class="outbox">
+        <input type="checkbox" id="tags{{tag.id}}" name="tags" value="{{tag.id}}">
+        <label for="tags{{tag.id}}">{{tag.tag}}</label>
+        </div>
+        {%endfor%}
+        <input type="submit" value="delete"/>
+    </form>
+    {%if alert%}
+    <script>alert("{{alert}}")</script>
+    {%endif%}
+</body>
+</html>

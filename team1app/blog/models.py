@@ -46,7 +46,12 @@ class Students(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank = True)
-    
+    def getQuestions(self):
+        result = None
+        if(Question.objects.filter(toTe = self).exists):
+            result = Question.objects.filter(fromSt = self)
+        return result
+
     def getHomework(self):
         return self.studenttasks_set.all()
     

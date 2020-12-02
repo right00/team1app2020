@@ -8,6 +8,12 @@ admin.site.register(models.Classes)
 admin.site.register(models.Tags)
 admin.site.register(models.Tasks)
 admin.site.register(models.StudentTasks)
+admin.site.register(models.Schedule)
+admin.site.register(models.ScheduleData)
+admin.site.register(models.Question)
+admin.site.register(models.AppoTime)
+admin.site.register(models.Accept)
+admin.site.register(models.Comment)
 
 #from .models import User, Entry
 

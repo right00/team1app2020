@@ -1,0 +1,220 @@
+@font-face {
+	font-family: 'MyFont';
+	src: url("../img/SansitaSwashed-Black.ttf");
+}
+
+body {
+	background: #fff;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+  }
+
+  .swiper-container {
+	width: 100%;
+	padding-top: 200px;
+	padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+	background-position: center;
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+
+  }
+
+.headword{
+	font-family: MyFont;
+	text-align: center;
+	color:rgb(255, 151, 32);
+}
+.padding{
+	padding-bottom: 60px;
+}
+.image{
+	z-index: 0;
+}
+table{
+	margin:auto;
+	}
+td{
+	padding: 10px;
+}
+
+.btn--orange,
+input.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--orange:hover,
+input.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
+
+a.btn--radius {
+   border-radius: 100vh;
+}
+  
+
+
+
+  @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+  
+  .header {
+	display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: rgb(255, 233, 208);
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .main {
+	  margin: 0 auto;
+	  display: block;
+	  height: 100%;
+	  margin-top: 60px;
+  }
+  .mainInner{
+	  display: table;
+	  height: 100%;
+	  width: 100%;
+	  text-align: center;
+  }
+  .mainInner div{
+	  display:table-cell;
+	  vertical-align: middle;
+	  font-size: 3em;
+	  font-weight: bold;
+	  letter-spacing: 1.25px;
+  }
+  #sidebarMenu {
+	  height: 100%;
+	  position: fixed;
+	  left: 0;
+	  width: 250px;
+	  margin-top: 60px;
+	  transform: translateX(-250px);
+	  transition: transform 250ms ease-in-out;
+	  background:rgb(255, 151, 32);
+	  z-index: 5;
+  }
+  .sidebarMenuInner{
+	  margin:0;
+	  padding:0;
+	  border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+  }
+  .sidebarMenuInner li{
+	  list-style: none;
+	  color: #fff;
+	  text-transform: uppercase;
+	  font-weight: bold;
+	  padding: 20px;
+	  cursor: pointer;
+	  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  }
+  .sidebarMenuInner li span{
+	  display: block;
+	  font-size: 14px;
+	  color: rgba(255, 255, 255, 0.50);
+  }
+  .sidebarMenuInner li a{
+	  color: rgb(0, 0, 0);
+	  text-transform: uppercase;
+	  font-weight: bold;
+	  cursor: pointer;
+	  text-decoration: none;
+  }
+  input[type="checkbox"]:checked ~ #sidebarMenu {
+	  transform: translateX(0);
+  }
+  
+  input[type=checkbox] {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  display: none;
+  }
+  .sidebarIconToggle {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  cursor: pointer;
+	  position: absolute;
+	  z-index: 99;
+	  height: 100%;
+	  width: 100%;
+	  top: 22px;
+	  left: 15px;
+	  height: 22px;
+	  width: 22px;
+  }
+  .spinner {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  position: absolute;
+	  height: 3px;
+	  width: 100%;
+	  background-color: rgb(255, 115, 0);
+  }
+  .horizontal {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  position: relative;
+	  float: left;
+	  margin-top: 3px;
+  }
+  .diagonal.part-1 {
+	  position: relative;
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  float: left;
+  }
+  .diagonal.part-2 {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  position: relative;
+	  float: left;
+	  margin-top: 3px;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  opacity: 0;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  transform: rotate(135deg);
+	  margin-top: 8px;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  transform: rotate(-135deg);
+	  margin-top: -9px;
+  }
+  .wrapper{
+    height: 100%;
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer{
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}

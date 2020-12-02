@@ -1,0 +1,76 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/base_student.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/form_student.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+
+    {% block css %} 
+    
+    {% endblock css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+   
+    {% block title %}  {% endblock title %} 
+    
+    
+  </head>
+  <body>  
+   
+    <header class = "base_header">
+      <h1 class = "notebook">
+        +NoteBook
+      </h1>
+
+      <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+          <p><a href="{% url 'students:task' %}" class="btn btn-success">Task</a></p>
+          <p><a href="{% url 'students:propose' %}" >Propose</a></p>
+          <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
+          <p><a href="{% url 'students:tag' %}">Tag</a></p>
+          <p><a href="{% url 'top' %}">Top</a></p>
+
+        </div>
+
+        <div class = "top">
+        <a  href="{% url 'top' %}" >TOP</a>
+        <a href="{% url 'login' %}" >SignOut</a>
+        <p class = "nav-list-item" >ユーザー名：{{ user.username }}</p>
+        </div>
+      </div>   
+    </header>        
+
+   {% block header %}
+   {% endblock header %}
+   <div>
+   {% block content %}
+
+   {% endblock content %}
+  
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+		var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+   
+  </body>
+</html>

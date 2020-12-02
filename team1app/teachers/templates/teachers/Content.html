@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+
+
+    {%if thisclass%}
+    <h2>{{thisclass.class_name}}</h2>
+    <br>
+    <h3><a href="/teacher/class/{{thisclass.id}}/task/create/">宿題を追加</a></h3>
+    <h3><a href="./tasks">宿題一覧</a></h3>
+    <h3><a href="./tags/">タグ</a></h3>
+
+    {%endif%}
+    {%for tag in tags%}
+    <br>
+    ==============================<br>
+    {{tag.tag.tag}}
+    合計:{{tag.all}}
+    正解:{{tag.true}}
+    不正解:{{tag.false}}<br>
+    ==============================
+    <br>
+    {%endfor%}
+    {%if sts%}
+    <h3>生徒一覧</h3>
+    <br>
+    {%for st in sts%}
+    <li><a href="./st/{{st.id}}/">{{st.name}}</a></li>
+    {%endfor%}
+    {%else%}
+    <h4>参加している生徒はいません</h4>
+    {%endif%}
+
+
+
+
+{% endblock content %}

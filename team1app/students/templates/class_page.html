@@ -1,0 +1,29 @@
+{% extends 'base_student.html' %}
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+{% block content %}
+    {%if thisclass%}
+    <h2>{{thisclass.class_name}}</h2>
+    {%endif%}
+    <br>
+
+    {% if tasks %}
+    {% for task in tasks %}
+    <td>{{ task.name }}</td>
+    <td>{{ task.contents }}</td>
+    <td>{{ task.task.limit }}</td>
+
+    {% endfor %}
+    {% else %}
+    <p>No task.</p>
+    {% endif %}
+
+    <br>
+    
+{% block content %}
+
+
+

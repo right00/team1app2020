@@ -1,0 +1,19 @@
+.simpleButton{
+  
+  display: inline-block;
+	width: 80px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background:#F1322C;
+	border-bottom:4px solid #AD2022;
+	border-radius: 10px;
+}
+.simpleHover {
+  cursor: pointer;
+  text-decoration: none;
+  background:#AD2022;
+  transform: translate3d(0, 4px, 0);
+  border-bottom: none;
+}

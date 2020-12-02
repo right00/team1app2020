@@ -15,33 +15,21 @@
 
 <head>
  
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="../package/swiper-bundle.min.css">
 
-  <!-- Demo styles -->
   <style>
-    body {
-      background: #fff;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
 
     .swiper-container {
       width: 100%;
       padding-top: 200px;
       padding-bottom: 50px;
     }
-
     .swiper-slide {
       background-position: center;
       background-size: cover;
-      width: 300px;
-      height: 300px;
-
+      width: 200px;
+      height: 200px;
     }
+    
   </style>
 </head>
 
@@ -49,44 +37,86 @@
   <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-4.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-5.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-6.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-7.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-8.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-9.jpg)"></div>
-      <div class="swiper-slide" style="background-image:url(./images/nature-10.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(../../../static/img/ICON/math.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(../../../static/img/ICON/sience.png)"></div>
+      <div class="swiper-slide" style="background-image:url(../../../static/img/ICON/1-01.png)"></div>
+      <div class="swiper-slide" style="background-image:url(../../../static/img/ICON/1-01.png)"></div>
+
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
   </div>
+  <table>
+    <tr>
+        <td>
+          <form action="" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="type" value="my">
+              <input type="hidden" name="join" value=""> 
+              <input class="btn btn--orange btn--radius" type="submit" value="My_Class"/>
+          </form>
+        </td>
+        <td>
+          <form action="" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="type" value="all">
+              <input type="hidden" name="join" value="">
+              <input class="btn btn--orange btn--radius" type="submit" value="All"/>
+          </form>
+        </td>
+    </tr>
 
-  <!-- Swiper JS -->
-  <script src="../package/swiper-bundle.min.js"></script>
+ </table>
+ {% if classes %}
+ {% if all %}
+ {% for class in classes %}
+ <form action="" method="post">
+     {% csrf_token %}
+     <h4>{{class.class_name}}</h4>
+     <input type="hidden" name="join" value="{{class.id}}">
+     <a href="" ><input type="hidden" name="type" value="all"></a>
+     <input type="submit" value="Join"/> 
+ </form>
+ {% endfor %}
+ {%else%}
+ {% for class in classes %}
+ <h1><a href="/student/home/{{class.id}}">{{class.class_name}}</a></h1>
+ {% endfor %}
+ {%endif%}
+ {%else%}
+ <h4>クラスはまだありません</h4>
+ {%endif%}
+ {%if result%}
+ {%endif%}
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
-  </script>
+
+
 </body>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+</script>
 
 </html>
 

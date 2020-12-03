@@ -1,4 +1,6 @@
-.container-fluid{
+
+.container{
+    position: relative;
     margin-right: 5%;
     margin-left: 5%;
     width: 90%;
@@ -6,7 +8,22 @@
     background-color: aqua;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly
-    /* text-align: center; */
+    /* justify-content: space-evenly; */
 }
+.container > h4 > a{
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.title{
+    /* position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);  */
+    text-align: center;
+}
+.title > h1{
+    font-size: 40px;
+}
+
 

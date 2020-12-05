@@ -7,20 +7,21 @@ from students.tools import *
 def home(request):
     """studentのhome画面"""
     user_student,num = check(request)
+    data = {"html":"background-image:url(../../../static/img/math.png)"}
     if num != 2:
         return redirect('home')
     if request.method != 'POST':
         if (user_student.classes_set.all()):
             classes = user_student.classes_set.all()
-            data = {"classes":classes,"all":False}
+            data = {"classes":classes,"all":False,"html":"background-image:url(../../../static/img/math.png)"}
             return render(request, 'home.html', data)
-        return render(request, 'home.html')
+        return render(request, 'home.html',data)
     elif request.POST["type"] == "my" :
         if (user_student.classes_set.all()):
             classes = user_student.classes_set.all()
-            data = {"classes":classes, "all":False}
+            data = {"classes":classes, "all":False, "html":"background-image:url../../../static/img/math.png)"}
             return render(request,'home.html', data)
-        return render(request, 'home.html')
+        return render(request, 'home.html',data)
     elif request.POST["join"] !="":
         c = Classes.objects.filter(id = int(request.POST["join"]))
         if(c.filter(students = user_student).exists()):
@@ -32,7 +33,7 @@ def home(request):
         base = Base.objects.get(id = user_student.use_base)
         if (base.classes_set.all()):
             classes=base.classes_set.all()
-            data = {"classes":classes,"all":True,"result":result}
+            data = {"classes":classes,"all":True,"result":result,"html":"background-image:url(../../../static/img/math.png)"}
             return render(request,'home.html',data)
             
     else:
@@ -41,7 +42,7 @@ def home(request):
             classes=base.classes_set.all()
             data = {"classes":classes, "all":True}
             return render(request, 'home.html', data)
-    return render(request, 'home.html')
+    return render(request, 'home.html',data)
 
 def class_page(request,class_id):
     """studentのclass_page画面"""
@@ -94,6 +95,7 @@ def task(request):
         return render(request, 'task.html')
     else:
         return redirect('home')
+
     
   
 def propose(request):

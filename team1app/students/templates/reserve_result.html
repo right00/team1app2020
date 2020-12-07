@@ -16,7 +16,14 @@
 
     <h1>Reserve page / 質問・予約機能</h1>
 
-  
+    
+    {%if questions%}
+{%for q in questions%}
+<h1><a href = "{{q.id}}">{{q.title}}</a></h1>
+{%endfor%}
+{%else%}
+<h3>質問はしていません</h3>
+{%endif%}
 
     <p><a href="{% url 'students:task' %}">Task</a></p>
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
@@ -25,32 +32,39 @@
     <p><a href="{% url 'home' %}">home</a></p>
 
 
-     <h2>To {{q.toTe.name}}</h2>
-    <h3>{{q.title}}</h3>
-    <h6> Task → {{q.task.name}}</h6>
-    <h2>最終更新</h2>
-    <h2>{{q.finalup}}</h2>
+    <h5>FROM. {{q.fromSt.name}}</h5>
+    <h5>{{q.title}}</h5>
+    <h6> Task → |{{q.task.name}}|</h6>
+    <h5>最終更新</h5>
+    <h5>{{q.finalup}}</h5>
+</div>
 
-    <h4>日程</h4>
+
+<h4>日程</h4>
 {%for a in Accept%}
-<h4>日程:{{a.day}} {{a.time}}〜</h4>
+<h5>日程:{{a.day}} {{a.time}}〜</h5>
 {%endfor%}
 <br>
 <h4>希望日程</h4>
 {%for a in Appo%}
-<h3>日程:{{a.day}} {{a.time}}〜</h3>
+<h5>日程:{{a.day}} {{a.time}}〜</h5>
 {%endfor%}
-<h4>コメント</h4>
+<h4>コメント一覧</h4>
 {%for c in Comment%}
-<h2>
+<h5>
 {%if c.isStudent%}
     auther:{{student.name}}
 {%else%}
     auther:{{teacher.name}}
 {%endif%}
-</h2>
-<h1>{{c.comment}}</h1>
+</h5>
+<h5>{{c.comment}}</h5>
 {%endfor%}
 
+<form action="" method="post">
+    {% csrf_token %}
+    <textarea name = "comment" minlength="1"　rows="5" cols="40">コメントを書いてください</textarea>
+    <input type="submit" value="create"/>
+</form>
 
 {% endblock content %}

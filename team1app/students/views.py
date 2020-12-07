@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from blog.web_views_private import check
 from blog.models import * 
 from students.tools import * 
+from django.utils import timezone
+import datetime
 
 # Create your views here.
 def home(request):
@@ -103,6 +105,7 @@ def task(request):
         tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
         tasks.save()
     context = {'tasks':tasks}
+
     return render(request, 'task.html', context)
 
 def propose(request):
@@ -114,12 +117,25 @@ def propose(request):
         return redirect('home')
 
 def reserve(request):
-    """reserve画面"""
     _,num = check(request)
     if num == 2:
         return render(request, 'reserve.html')
     else:
         return redirect('home')
+
+#def reserve(request, id):
+ #   """reserve画面"""
+  #  student, num = check(request)
+   # if num != 2:
+    #    return redirect('home') 
+    ##if Question.objects.filter(id = id, fromSt = student).exists():
+      #  q = Question.objects.get(id=id)
+       # if request.method == "POST":
+        #    q.addCommentSt(request.POST["comment"])
+        #data = {"q":q,"Accept":q.addAppo(),"Appo":q.addAppo(), "Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
+        #return render(request,"students/reserve.html", data)
+    #else:
+     #   return redirect('home') 
 
 def tag(request):
     """tag画面"""

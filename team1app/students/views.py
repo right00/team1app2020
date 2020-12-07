@@ -126,4 +126,16 @@ def tag(request):
     else:
         return redirect('home')
 
-
+#
+#def reserve(request, id):
+ #   student, num = check(request)
+  #  if num != 2:
+   #     return redirect('home') 
+    #if Question.objects.filter(id = id,toTe = student).exists():
+     #   q = Question.objects.get(id=id)
+      #  if request.method == "POST":
+       #     q.addCommentT(request.POST["comment"])
+        #data = {"q":q,"Accept":q.getAccept(),"Appo":q.getAppo(),"Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
+        #return render(request,"teachers/questionContent.html",data)
+    #else:
+     #   return redirect('home') 

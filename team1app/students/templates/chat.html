@@ -1,0 +1,28 @@
+<!--質問・予約機能のページ（生徒側）new ver-->
+{% extends 'base_student.html' %}
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+{% block content %}
+<h1>Reserve page / 質問・予約機能 new version</h1>
+<h2>質問・予約する<h2>
+    <div>
+        <form action="/room/" method="post">
+            {% csrf_token %}
+            <input placeholder="ルーム名を入力" type="text" name="room_name" value="">
+            <input type="submit" class="send" name="button" value="作成"> 
+        </form>
+    </div>
+    
+    <h2>トーク一覧</h2>
+    <ul>
+        {%if questions%}
+    {% for q in questions %}
+        <a href="/chat/{{ q.id }}">{{ q.name }}</a>
+    {% endfor %}
+    {%else%}
+<h3>質問はありません</h3>
+{%endif%}
+    </ul>
+
+{% endblock content %}

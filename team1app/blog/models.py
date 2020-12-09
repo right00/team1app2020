@@ -290,16 +290,3 @@ class Comment(models.Model):
     question = models.ForeignKey(Question,on_delete=models.CASCADE)
     comment = models.TextField()
     isStudent = models.BooleanField(default=False)
-    
-    
-
-
-
-
-    
-        
-    
-
-
-
-    

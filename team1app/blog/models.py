@@ -48,7 +48,7 @@ class Students(models.Model):
     use_base = models.IntegerField(default=None,null=True,blank = True)
     def getQuestions(self):
         result = None
-        if(Question.objects.filter(toTe = self).exists):
+        if(Question.objects.filter(fromSt = self).exists):
             result = Question.objects.filter(fromSt = self)
         return result
 

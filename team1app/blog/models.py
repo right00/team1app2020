@@ -214,8 +214,8 @@ class ScheduleData(models.Model):
 
 
 class Question(models.Model):
-    task = models.ForeignKey(Tasks,on_delete=models.CASCADE)
-    title = models.CharField(max_length=32)
+    task = models.ForeignKey(Tasks, on_delete = models.CASCADE)
+    title = models.CharField(max_length = 32)
     fromSt =  models.ForeignKey(Students,on_delete=models.CASCADE)
     toTe = models.ForeignKey(Teachers,on_delete=models.CASCADE)
     finalup = models.DateTimeField(default=timezone.now)

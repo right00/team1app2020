@@ -105,7 +105,6 @@ def task(request):
         tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
         tasks.save()
     context = {'tasks':tasks}
-
     return render(request, 'task.html', context)
 
 def propose(request):

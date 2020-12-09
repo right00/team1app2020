@@ -124,13 +124,22 @@ class StudentTasks(models.Model):
     limit = models.DateField()
     #終わったかどうか
     finish = models.BooleanField(default=False)
+    #正解があるかどうか
+    isResult = models.BooleanField(default=False, blank=True, null=True)
     #宿題の正誤
     result = models.BooleanField(default=False)
     #出された人
     person = models.ForeignKey(Students,on_delete=models.CASCADE)
 
+    def getIsResult(self):
+        if self.isResult == null:
+            return True
+        else:
+            return self.isResult 
+
 class Schedule(models.Model):
     person = models.ForeignKey(Teachers,on_delete=models.CASCADE)
+
     def add(self,week,start_h,start_m,end_h,end_m):
         data = None
         datas = self.getScheduleData()

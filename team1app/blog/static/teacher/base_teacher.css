@@ -1,7 +1,6 @@
 
 .body{
-    
-    height: 200px;
+    height: 630px;
     position: relative;
   }
   .position-absolute{
@@ -21,3 +20,4 @@ h1{
     color:#F00;
     font-size: 22px;
 }
+

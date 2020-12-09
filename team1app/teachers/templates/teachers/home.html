@@ -1,6 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base_teacher.html' %}
 
-
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
 
 
 {% block title %}
@@ -9,8 +12,13 @@
 
 
 {% block content %}
-
-    <h4>Your teacher</h4>
-    <h4><a href="{% url 'teacher:teclass'%}">クラス一覧</a></h4>
+    <div class ="container">
+        <div class ="title">
+            <h1>Title</h1>
+        </div>
+        <hr>
+        <h4>Your teacher</h4>
+        <h4><a href="{% url 'teacher:teclass'%}">クラス一覧</a></h4>
+    </div>
 
 {% endblock content %}

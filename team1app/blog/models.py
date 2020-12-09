@@ -46,7 +46,12 @@ class Students(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank = True)
-    
+    def getQuestions(self):
+        result = None
+        if(Question.objects.filter(toTe = self).exists):
+            result = Question.objects.filter(fromSt = self)
+        return result
+
     def getHomework(self):
         return self.studenttasks_set.all()
     
@@ -119,13 +124,22 @@ class StudentTasks(models.Model):
     limit = models.DateField()
     #終わったかどうか
     finish = models.BooleanField(default=False)
+    #正解があるかどうか
+    isResult = models.BooleanField(default=False, blank=True, null=True)
     #宿題の正誤
     result = models.BooleanField(default=False)
     #出された人
     person = models.ForeignKey(Students,on_delete=models.CASCADE)
 
+    def getIsResult(self):
+        if self.isResult == null:
+            return True
+        else:
+            return self.isResult 
+
 class Schedule(models.Model):
     person = models.ForeignKey(Teachers,on_delete=models.CASCADE)
+
     def add(self,week,start_h,start_m,end_h,end_m):
         data = None
         datas = self.getScheduleData()

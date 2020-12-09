@@ -11,7 +11,7 @@ import datetime
 def home(request):
     _,num = check(request)
     if num == 1:
-        return render(request,'teachers/home.html')
+        return redirect('teacher:teclass')
     else:
         return redirect('home')
 
@@ -268,7 +268,7 @@ def studentContents(request,classid,studentid):
         print(1)
         return redirect("/teacher/class/")
 
-    data = {"Homeworks":st.getHomeworkT(teacher)}
+    data = {"Homeworks":st.getHomeworkT(teacher),"st":st}
     return render(request,'teachers/studentContents.html',data)
 
 def schedule(request):

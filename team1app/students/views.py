@@ -92,7 +92,7 @@ def task(request):
             classes = student.classes_set.all()
             data = {"classes":classes, "all":False}
             return render(request, 'task.html', data)
-        return render(request, 'task.html',data)
+        return render(request, 'task.html')
     elif request.POST["type"] == "my" :
         if (student.classes_set.all()):
             classes = student.classes_set.all()

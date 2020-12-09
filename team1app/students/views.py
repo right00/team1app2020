@@ -145,9 +145,9 @@ def tag(request):
         return redirect('home')
 
 
-def chat(request, id):
+#def chat(request, id):
     #messages = Message.objects.filter(room_name = room_name).order_by('-created_at')
-    messages = Question.objects.filter(room_name = Teachers).order_by('-created_at')
+ #   messages = Question.objects.filter(room_name = Teachers).order_by('-created_at')
 
-    message = Question.objects.filter(id = id, toTe = teacher).
-    room = Question
+  #  message = Question.objects.filter(id = id, toTe = teacher).
+   # room = Question

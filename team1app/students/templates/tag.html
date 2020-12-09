@@ -10,9 +10,98 @@
 
 
 {% block content %}
+<style>
+
+
+    .swiper-container {
+      width: 80px;
+      position: center;
+      
+    }
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      
+      
+    }
+    
+table{
+  width: 100%;
+  border-spacing: 0;
+}
+
+table th{
+  border-bottom: solid 2px #fb5144;
+  padding: 10px 0;
+}
+
+table td{
+  border-bottom: solid 2px #ddd;
+  text-align: center;
+  padding: 10px 0;
+}
+   
+
+
+    
+  </style>
+
 
 
     <h1> Tag page / タグ機能</h1>
+    <table>
+  <tr>
+    <th>課題４</th>
+    <td>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
+                    <div class="swiper-slide">Not</div>
+            
+                </div>
+	        </div>
+        </td>
+  </tr>
+  <tr>
+    <th>課題３</th>
+    <td>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
+                    <div class="swiper-slide">Not</div>
+            
+                </div>
+	        </div>
+        </td>
+  </tr>
+  <tr>
+    <th>課題２</th>
+    <td>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
+                    <div class="swiper-slide">Not</div>
+            
+                </div>
+	        </div>
+        </td>
+  </tr>
+  <tr>
+    <th>課題１</th>
+        <td>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
+                    <div class="swiper-slide">Not</div>
+            
+                </div>
+	        </div>
+        </td>
+  </tr>
+</table>
+  
+    
+    <input type="button" value="Exec" onclick="OnButtonClick();"/><br />
 
     <p><a href="{% url 'students:task' %}">Task</a></p>
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
@@ -20,5 +109,16 @@
     
     <br>
     <p><a href="{% url 'students:home' %}">home</a></p>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+	<script>
+		var mySwiper = new Swiper('.swiper-container');
+        console.log(mySwiper.realIndex);
+        function OnButtonClick() {
+            console.log(mySwiper.realIndex);}
+
+	</script>
 
 {% endblock content %}

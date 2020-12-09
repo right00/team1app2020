@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from blog.web_views_private import check
 from blog.models import * 
 from students.tools import * 
+from django.utils import timezone
+import datetime
 
 # Create your views here.
 def home(request):
@@ -34,8 +36,7 @@ def home(request):
         if (base.classes_set.all()):
             classes=base.classes_set.all()
             data = {"classes":classes,"all":True,"result":result,"html":"background-image:url(../../../static/img/math.png)"}
-            return render(request,'home.html',data)
-            
+            return render(request,'home.html',data)    
     else:
         base = Base.objects.get(id = user_student.use_base)
         if (base.classes_set.all()):
@@ -54,22 +55,19 @@ def class_page(request,class_id):
     have, thisclass = checkCL(student.use_base, class_id)
     #クラスが属していた
     if have :
-
-
             #クラスに生徒がいる場合
             if (thisclass.students.all()!= None):
                 if(student.studenttasks_set.all().exists()):
                     tasks=student.studenttasks_set.all()
                     tasks2=[]
                     for i in tasks:
-                        task=gettask(i)
+                        task = gettask(i)
                         if(task.tarclass==thisclass):
                             data={"task":i,"name":task.name,"contents":task.contents}
                             tasks2.append(data)
                     context = {'tasks':tasks2}
                     return render(request, 'class_page.html', context)
                 return render(request, 'class_page.html')
-
             #クラスに生徒がいない場合
             else:
                 data= { "thisclass" : thisclass }
@@ -77,7 +75,6 @@ def class_page(request,class_id):
     #クラスに属していない
     else:
         return redirect("/student/home/")
-
     # クラスに出された宿題を表示する
     if request.method =='POST':
         tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
@@ -85,19 +82,32 @@ def class_page(request,class_id):
     context = {'tasks':tasks}
     return render(request, 'class_page.html', context)
 
-
-
-
 def task(request):
     """task画面"""
-    _,num = check(request)
-    if num == 2:
-        return render(request, 'task.html')
-    else:
+    student,num = check(request)
+    if num != 2:
         return redirect('home')
+    if request.method != 'POST':
+        if (student.classes_set.all()):
+            classes = student.classes_set.all()
+            data = {"classes":classes, "all":False}
+            return render(request, 'task.html', data)
+        return render(request, 'task.html',data)
+    elif request.POST["type"] == "my" :
+        if (student.classes_set.all()):
+            classes = student.classes_set.all()
+            data = {"classes":classes, "all":False}
+            return render(request,'task.html', data)
+        return render(request, 'task.html', data)
+    else:
+        return redirect("home")
+    if request.method =='POST':
+        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
+        tasks.save()
+    context = {'tasks':tasks}
 
-    
-  
+    return render(request, 'task.html', context)
+
 def propose(request):
     """propose画面"""
     _,num = check(request)
@@ -106,14 +116,26 @@ def propose(request):
     else:
         return redirect('home')
 
-
 def reserve(request):
-    """reserve画面"""
     _,num = check(request)
     if num == 2:
         return render(request, 'reserve.html')
     else:
         return redirect('home')
+
+#def reserve(request, id):
+ #   """reserve画面"""
+  #  student, num = check(request)
+   # if num != 2:
+    #    return redirect('home') 
+    ##if Question.objects.filter(id = id, fromSt = student).exists():
+      #  q = Question.objects.get(id=id)
+       # if request.method == "POST":
+        #    q.addCommentSt(request.POST["comment"])
+        #data = {"q":q,"Accept":q.addAppo(),"Appo":q.addAppo(), "Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
+        #return render(request,"students/reserve.html", data)
+    #else:
+     #   return redirect('home') 
 
 def tag(request):
     """tag画面"""

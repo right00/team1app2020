@@ -19,19 +19,19 @@
   <body class = "body">  
     
     
-    <header>
+    <header style="position: fixed;z-index: 20;">
       <h1 class="headline">
         <a>+NoteBook</a>
       </h1>
       <ul class="nav-list">
-        <li class="nav-list-item">
-          <a href="{% url 'home' %}" >Home</a>
+        <li class="nav-list-item" >
+          <a style="color:white; text-decoration: none;" href="{% url 'home' %}" >Classes</a>
         </li>
-        <li class="nav-list-item"><a  href="{% url 'login' %}" >SignOut</a></li>
+        <li class="nav-list-item" ><a  style="color:white; text-decoration: none;" href="{% url 'teacher:questions' %}" >Questions</a></li>
+        <li class="nav-list-item" ><a  style="color:white; text-decoration: none;" href="{% url 'logout' %}" >SignOut</a></li>
         <li class="nav-list-item">Topic</li>
       </ul>
-
-      <p class = "headline" align="right">ユーザー名：{{ user.username }}</p>
+      <p class = "headline" style="position:absolute; width:20%;margin-left: 80%;">ユーザー名：{{ user.username }}</p>
     </header>        
 
    {% block header %}

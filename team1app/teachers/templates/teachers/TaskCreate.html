@@ -7,29 +7,38 @@
 
 
 {% block title %}
-<title>Document</title>
+<title>宿題作成</title>
 {% endblock title %}
 
 
 
 
 {% block content %}
+<div class="backbutton"><a href="../../">クラス詳細へ<br>戻る</a></div>
     <div class ="container">
-        <div class ="title">
-            <h1>Title</h1>
+        <div class ="Contentstitle">
+            <span>宿題作成</span>
         </div>
         <hr>
+        <div style="margin: 40px;"></div>
+        <div class="formoutbox">
+            <div class="forminbox">
         <form action="" method="post">
             {%if result%}
-            <h4><font color="red">{{result}}</font></h4>
+            <span style="width: 600px;"><font color="red">{{result}}</font></span>
+            <div style="margin: 20px;"></div>
             {%endif%}
             {% csrf_token %}
-            <h4>宿題</h4>
+            <span>宿題</span>
             <input type="input" name="name" minlength="1" maxlength="32">
-            <h4>内容</h4>
-            <textarea name="content" maxlengt="800"　rows="4" cols="60">ここに内容を書いてください。</textarea>
-            <input type="submit" value="create"/>
+            <div style="margin: 20px;"></div>
+            <span>内容</span>
+            <textarea name="content" maxlengt="800"　rows="8" cols="35">ここに内容を書いてください。</textarea>
+            <div style="margin: 20px;"></div>
+            <button type="submit" >create</button>
         </form>
+        </div>
+        </div>
     </div>
 
 

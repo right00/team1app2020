@@ -17,21 +17,28 @@
 
 {% block content %}
     <div class = "container">
-        <div class ="title">
-            <h1>Title</h1>
+        <div class ="Contentstitle">
+            <span>クラス作成</span>
         </div>
-        <hr>
+        <br style="margin: 40px;">
+        <div class="formoutbox">
+            <div class="forminbox">
         <form action="" method="post">
             {%if result%}
-            <h4><font color="red">{{result}}</font></h4>
+            <span style="width: 600px;"><font color="red">{{result}}</font></span>
+            <div style="margin: 20px;"></div>
             {%endif%}
             {% csrf_token %}
-            <h4>クラス名</h4>
+            <span>クラス名 : </span>
             <input type="input" name="name" minlength="1" maxlength="32">
-            <h4>クラスのパスワード</h4>
-            <input type="input" name="password" minlength="4" maxlength="32">
-            <input type="submit" value="create"/>
+            <div style="margin: 20px;"></div>
+            <span>クラスのパスワード : </span>
+            <input type="input" name="password" minlength="4" maxlength="32"><br>
+            <div style="margin: 20px;"></div>
+            <button type="submit" >create</button>
         </form>
+            </div>
+            </div>
     </div>
 
 

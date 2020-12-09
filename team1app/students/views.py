@@ -98,7 +98,7 @@ def task(request):
             classes = student.classes_set.all()
             data = {"classes":classes, "all":False}
             return render(request,'task.html', data)
-        return render(request, 'task.html', data)
+        return render(request, 'task.html')
     else:
         return redirect("home")
     if request.method =='POST':
@@ -146,3 +146,9 @@ def tag(request):
         return redirect('home')
 
 
+def chat(request, id):
+    #messages = Message.objects.filter(room_name = room_name).order_by('-created_at')
+    messages = Question.objects.filter(room_name = Teachers).order_by('-created_at')
+
+    message = Question.objects.filter(id = id, toTe = teacher).
+    room = Question

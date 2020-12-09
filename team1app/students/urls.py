@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from . import views
+from . import views,test
 
 from django.conf.urls import url
 from django.contrib import admin
@@ -18,4 +18,5 @@ urlpatterns = [
     path('home/propose/', views.propose, name = 'propose'),
     path('home/reserve/', views.reserve, name = 'reserve'),
     path('home/tag/', views.tag, name = 'tag'),
+    path('home/test/<int:id>/', test.test),
 ]

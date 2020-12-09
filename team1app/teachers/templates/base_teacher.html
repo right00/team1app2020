@@ -1,0 +1,44 @@
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/base_teacher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/form_teacher.css' %}">
+    {% block css %} 
+    
+    {% endblock css %}
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand:400,700" rel="stylesheet">
+    {% block title %}  {% endblock title %} 
+  </head>
+  <body class = "body">  
+    
+    
+    <header style="position: fixed;z-index: 20;">
+      <h1 class="headline">
+        <a>+NoteBook</a>
+      </h1>
+      <ul class="nav-list">
+        <li class="nav-list-item" >
+          <a style="color:white; text-decoration: none;" href="{% url 'home' %}" >Classes</a>
+        </li>
+        <li class="nav-list-item" ><a  style="color:white; text-decoration: none;" href="{% url 'teacher:questions' %}" >Questions</a></li>
+        <li class="nav-list-item" ><a  style="color:white; text-decoration: none;" href="{% url 'logout' %}" >SignOut</a></li>
+        <li class="nav-list-item">Topic</li>
+      </ul>
+      <p class = "headline" style="position:absolute; width:20%;margin-left: 80%;">ユーザー名：{{ user.username }}</p>
+    </header>        
+
+   {% block header %}
+   {% endblock header %}
+   {% block content %}
+
+   {% endblock content %}
+
+  </body>
+</html>

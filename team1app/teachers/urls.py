@@ -18,7 +18,7 @@ urlpatterns = [
     path('class/<int:classid>/st/<int:studentid>/',views.studentContents),
 
     path('schedule/',views.schedule),
-    path('questions/',views.questions),
+    path('questions/',views.questions,name="questions"),
     path('questions/<int:id>/',views.question),
     
 ]

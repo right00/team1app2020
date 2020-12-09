@@ -84,7 +84,6 @@ def class_page(request,class_id):
 
 def task(request):
     """task画面"""
-    task = {""}
     student,num = check(request)
     if num != 2:
         return redirect('home')

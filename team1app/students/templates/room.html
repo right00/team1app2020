@@ -1,32 +1,21 @@
-{% extends 'base_teacher.html' %}
-{% load static %}
-{% block css %} 
-    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
-{% endblock css %}
-
-
-
+% extends 'base_student.html' %}
 {% block title %}
-<title>質問一覧</title>
+<title>Document</title>
 {% endblock title %}
-
-
 {% block content %}
-<div class="backbutton"><a href="../">一覧へ<br>戻る</a></div>
-<div class ="container">
-    <div class ="Contentstitle">
-        <span>質問詳細</span>
-    </div> 
 
-<div class="messagecontents">
-    <div>FROM. {{q.fromSt.name}}</div>
+<a href="../">一覧へ<br>戻る</a>
+
+        <span>質問詳細</span>
+ 
+    <div>To. {{q.toTe.name}}</div>
     <div>Title : {{q.title}}</div>
     <br>
     <div> Task → |{{q.task.name}}|</div>
     <br>
     <div>最終更新</div>
     <div>{{q.finalup}}</div>
-</div>
+
 <div class="displaybox">
 <div>日程</div>
 {%for a in Accept%}
@@ -42,20 +31,21 @@
 <div class="displaybox" style="height: 200px;">
 <h4>コメント一覧</h4>
 {%for c in Comment%}
-<H5>
+<h5>
 {%if c.isStudent%}
     auther:{{student.name}}
 {%else%}
     auther:{{teacher.name}}
 {%endif%}
-</H5>
+</h5>
 <h6>{{c.comment}}</h6>
 {%endfor%}
 </div>
 <form action="" method="post" class="commentbox" >
     {% csrf_token %}
     <div style="margin-bottom: 20px;">コメントを送信</div>
-    <textarea name = "comment" minlength="1"　rows="5" cols="40">コメントを書いてください</textarea>
+    <textarea name = "comment" minlength="1" rows="5" cols="40">コメントを書いてください</textarea>
     <input type="submit" value="send"/>
 </form>
-{%endblock content%}
+
+{% endblock content %}

@@ -163,3 +163,17 @@ def chat(request):
 
 
 #getQuestion
+
+def room(request, id):
+    student, num = check(request)
+    if num != 2:
+        return redirect('home') 
+    if Question.objects.filter(id = id, flomSt = student).exists():
+        q = Question.objects.get(id = id)
+        if request.method == "POST":
+            q.addCommentSt(request.POST["comment"])
+            q.addAppo(request.POST["appo"])
+        data = {"q":q,"Accept":q.getAccept(),"Appo":q.getAppo() ,"Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
+        return render(request,'room.html', data)
+    else:
+        return redirect('home') 

@@ -145,9 +145,21 @@ def tag(request):
         return redirect('home')
 
 
-#def chat(request, id):
+def chat(request):
+    student,num = check(request)
+    if num != 2:
+        return redirect('home') 
+    q = student.getQuestions()
+    data = {"questions": q }
+    return render(request,'chat.html', data)
+
     #messages = Message.objects.filter(room_name = room_name).order_by('-created_at')
- #   messages = Question.objects.filter(room_name = Teachers).order_by('-created_at')
+    #messages = Question.objects.filter(room_name = Teachers).order_by('-created_at')
 
   #  message = Question.objects.filter(id = id, toTe = teacher).
    # room = Question
+
+#auther toTEに直接つっこむ
+
+
+#getQuestion

@@ -46,6 +46,7 @@ class Students(models.Model):
     name = models.CharField(max_length=32)
     person = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None)
     use_base = models.IntegerField(default=None,null=True,blank = True)
+    
     def getQuestions(self):
         result = None
         if(Question.objects.filter(fromSt = self).exists):
@@ -54,6 +55,24 @@ class Students(models.Model):
 
     def getHomework(self):
         return self.studenttasks_set.all()
+
+    def getClassHomework(self,Class):
+        result = []
+        for homework in self.studenttasks_set.all():
+            if(homework.task.all()[0].tarclass == Class):
+                result.append(homework)
+        return result
+
+    def getMyClassHomework(self):
+        result = []
+        if(Classes.objects.filter(students = self).exists()):
+            cs = Classes.objects.filter(students = self)
+            for c in cs:
+                data = {"class":c,"homeworks":self.getClassHomework(c)}
+                result.append(data)
+
+        return result
+
     
     def getHomeworkT(self,teacher):
         hws = []

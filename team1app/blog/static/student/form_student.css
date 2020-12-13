@@ -29,7 +29,7 @@ body {
 .headword{
 	font-family: MyFont;
 	text-align: center;
-	color:rgb(255, 151, 32);
+	color:rgb(229,232,212);
 }
 .padding{
 	padding-bottom: 60px;
@@ -70,7 +70,7 @@ a.btn--radius {
     width: 100%;
     max-width: 100%;
     box-shadow: none;
-    background-color: rgb(255, 233, 208);
+    background-color: rgb(47,70,45);
     position: fixed;
     height: 60px!important;
     overflow: hidden;
@@ -103,7 +103,7 @@ a.btn--radius {
 	  margin-top: 60px;
 	  transform: translateX(-250px);
 	  transition: transform 250ms ease-in-out;
-	  background:rgb(255, 151, 32);
+	  background:rgb(47,70,45);
 	  z-index: 5;
   }
   .sidebarMenuInner{
@@ -114,12 +114,12 @@ a.btn--radius {
   }
   .sidebarMenuInner li{
 	  list-style: none;
-	  color: #fff;
+	  color:rgb(229,232,212);
 	  text-transform: uppercase;
 	  font-weight: bold;
 	  padding: 20px;
 	  cursor: pointer;
-	  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+	  border-bottom: 1px solid rgb(229,232,212);
   }
   .sidebarMenuInner li span{
 	  display: block;
@@ -161,7 +161,7 @@ a.btn--radius {
 	  position: absolute;
 	  height: 3px;
 	  width: 100%;
-	  background-color: rgb(255, 115, 0);
+	  background-color: #b87d27;
   }
   .horizontal {
 	  transition: all 0.3s;

@@ -138,11 +138,49 @@ def reserve(request):
 
 def tag(request):
     """tag画面"""
-    _,num = check(request)
-    if num == 2:
-        return render(request, 'tag.html')
-    else:
+    #生徒以外はリダイレクト
+    
+
+    student,num = check(request)
+    if num != 2:
         return redirect('home')
+
+    """
+
+    if request.method == "POST":
+            task=Tasks.objects.create(name=request.POST["name"],contents=request.POST["content"],tarclass=thisclass)
+            task.auther.add(teacher)
+            task.save()
+            return redirect("/teacher/class/"+str(classid)+"/task/"+str(task.id)+"/")
+    
+    """
+
+            
+    if(student.studenttasks_set.all().exists()):
+        tasks=student.studenttasks_set.all()
+        tasks2=[]
+        for i in tasks:
+            task = gettask(i)
+            
+            data={"task":i,"name":task.name,"contents":task.contents}
+            tasks2.append(data)
+        context = {'tasks':tasks2}
+        return render(request, 'tag.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
 
 
 def chat(request):

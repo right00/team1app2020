@@ -17,13 +17,28 @@
     <td>{{ task.task.limit }}</td>
 
     {% endfor %}
+    
     {% else %}
     <p>No task.</p>
     {% endif %}
 
     <br>
-    
+    <script>
+    var data = [{% for task in tasks %}
+              ["{{ task.task.limit }}","{{ task.task.isResult }}","{{ task.name }}","{{ task.contents }}"],
+              {% endfor %}
+             ];
+
+    var a = data[0][0];
+    console.log(a);
+
+
+
+
+</script>
+      
 {% endblock content %}
+
 
 
 

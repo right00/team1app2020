@@ -14,8 +14,10 @@
 
 
     .swiper-container {
-      width: 80px;
-      position: center;
+      width: auto;
+      position:relative;
+      padding-bottom: 20px;
+  
       
     }
     .swiper-slide {
@@ -23,103 +25,214 @@
       background-size: cover;
       
       
+      
     }
     
-table{
-  width: 100%;
-  border-spacing: 0;
-}
 
-table th{
-  border-bottom: solid 2px #fb5144;
-  padding: 10px 0;
-}
 
 table td{
   border-bottom: solid 2px #ddd;
   text-align: center;
   padding: 10px 0;
 }
+.col-1 {
+    display: inline-block;
+    
+    border-bottom: solid 2px #fb5144;
+    width: 120px;
+    text-align:center;
+    /* border: solid 1px; */
+}
+.col-2 {
+    display: inline-block;
+    border-bottom: solid 2px #ddd;
+    width: 80px;
+    text-align:center;
+    /* border: solid 1px; */
+}
+.form_line{
+  border-bottom: solid 2px #ddd;
+}
+.padding_x{
+  padding-bottom: 20px;
+}
    
 
 
     
-  </style>
+</style>
 
+<div id = "task_in">
+<!--  タスク1　-->
+  <div class="swiper-container">
 
+    <div class="swiper-wrapper">
 
-    <h1> Tag page / タグ機能</h1>
-    <table>
-  <tr>
-    <th>課題４</th>
-    <td>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
-                    <div class="swiper-slide">Not</div>
+        <div class="swiper-slide">
+
+          <div>
+            <span class="col-1" id = "task1" class = "form_line">要素</span>
+            <span class="col-2" id = "task_limit1">結果１ </span>
+            <input type="radio" name="q1" value="はい" required> 正
+            <input type="radio" name="q1" value="いいえ"> 誤
             
-                </div>
-	        </div>
-        </td>
-  </tr>
-  <tr>
-    <th>課題３</th>
-    <td>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
-                    <div class="swiper-slide">Not</div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #EDF7FF;">
+        Clear!!
+        </div>
+
+      </div>
+  </div>
+
+  <!--  タスク2　-->
+
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+
+          <div>
+            <span class="col-1" id = "task2">要素</span>
+            <span class="col-2" id = "task_limit2">結果１ </span>
+            <button>a</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #EDF7FF;">
+        Clear!!
+        </div>
+
+      </div>
+  </div>
+
+  <!--  タスク3　-->
+
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+
+          <div>
+            <span class="col-1" id = "task3"></span>
+            <span class="col-2" id = "task_limit3"> </span>
+            <button>a</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #EDF7FF;">
+        Clear!!
+        </div>
+
+      </div>
+  </div>
+  <!--  タスク4　-->
+
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+
+          <div>
+            <span class="col-1" id = "task4"></span>
+            <span class="col-2" id = "task_limit4"></span>
             
-                </div>
-	        </div>
-        </td>
-  </tr>
-  <tr>
-    <th>課題２</th>
-    <td>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
-                    <div class="swiper-slide">Not</div>
-            
-                </div>
-	        </div>
-        </td>
-  </tr>
-  <tr>
-    <th>課題１</th>
-        <td>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-color: #EDF7FF;">Not</div>
-                    <div class="swiper-slide">Not</div>
-            
-                </div>
-	        </div>
-        </td>
-  </tr>
-</table>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #EDF7FF;">
+        Clear!!
+        </div>
+
+      </div>
+  </div>
   
-    
-    <input type="button" value="Exec" onclick="OnButtonClick();"/><br />
+  <!--  タスク5　-->
+  <div class="swiper-container">
 
-    <p><a href="{% url 'students:task' %}">Task</a></p>
-    <p><a href="{% url 'students:propose' %}">Propose</a></p>
-    <p><a href="{% url 'students:reserve' %}">Reserve</a></p>
-    <p><a href="{% url 'students:chat' %}">Chat</a></p>
-    
-    <br>
-    <p><a href="{% url 'students:home' %}">home</a></p>
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+
+          <div>
+            <span class="col-1" id = "task5"></span>
+            <span class="col-2" id = "task_limit5"> </span>
+            
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #EDF7FF;">
+        Clear!!
+        </div>
+
+      </div>
+  </div>
+        
+</div>
+<form action="" method="post">
+            
+            {% csrf_token %}
+ 
+            <input type="hidden" name="userid" value="12345" id = "finish1">
+            <input type="hidden" name="userid" value="12345" id = "finish2">
+            <input type="hidden" name="userid" value="12345" id = "finish3">
+            <input type="hidden" name="userid" value="12345" id = "finish4">
+            <input type="hidden" name="userid" value="12345" id = "finish5">
+            
+
+            <button type="submit" onclick="OnButtonClick();">create</button>
+        </form>
+<button type="submit" onclick="OnButtonClick();" name = "" id = "finish11">create</button>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 	<!-- Initialize Swiper -->
-	<script>
-		var mySwiper = new Swiper('.swiper-container');
+
+
+  <script>
+  var mySwiper = new Swiper('.swiper-container');
         console.log(mySwiper.realIndex);
         function OnButtonClick() {
             console.log(mySwiper.realIndex);}
+  var data = [{% for task in tasks %}
+              ["{{ task.task.limit }}","{{ task.name }}","{{ task.task.isResult }}","{{ task.contents }}"],
+              {% endfor %}
+             ];
+  var img0 = document.getElementById("sample2");
+  
+  
+  var element_task = [["task1","task_limit1"],["task2","task_limit2"],["task3","task_limit3"],["task4","task_limit4"],["task5","task_limit5"]];
+  for(let i = 0; i< element_task.length; i++){
+    element_task[i][0] = document.getElementById(element_task[i][0]);
+    element_task[i][1] = document.getElementById(element_task[i][1]);
+    element_task[i][0].innerHTML = data[i][0];
+    element_task[i][1].innerHTML = data[i][1];
+  }
+  
+  function OnButtonClick() {
+            var input1 = document.getElementById("finish1");
+            input1.value = mySwiper[0].realIndex;
+            var input2 = document.getElementById("finish2");
+            input2.value = mySwiper[1].realIndex;
+            var input3 = document.getElementById("finish3");
+            input3.value = mySwiper[2].realIndex;
+            var input4 = document.getElementById("finish4");
+            input4.value = mySwiper[3].realIndex;
+            var input5 = document.getElementById("finish5");
+            input5.value = mySwiper[4].realIndex;
+            console.log(mySwiper[0].realIndex);
+    
+            
+            }
+  
 
-	</script>
+  
+
+
+  </script>
 
 {% endblock content %}

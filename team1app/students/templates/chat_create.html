@@ -1,0 +1,39 @@
+{% extends 'base_student.html' %}
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+{% block content %}
+
+<h3>先生を選択</h3>
+<select name="select_teachers" size = "1">
+    {% for t in teacher %}
+    <option value="サンプル1">{{ t }}</option>
+    {% endfor %}
+</select>
+<h3>予約日時</h3>
+<input type = "datetime-local" name = "datetime">
+
+<h3>質問内容</h3>
+<div>
+    <form action="/student/home/chat/" method="post">
+        {% csrf_token %}
+        <p><textarea class="text" name="comment"></textarea></p>
+        <p><input type = "submit" value="送信"></p>
+     </form>
+</div>
+
+<br>
+    {% if questions %}
+    {% for aquestion in questions %}
+    <p>{{ question.title }}</p>
+    <small>[{{ question.posted_at }}]</small>
+    <div>
+      {{ question.title | linebreaksbr }}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>質問はありません.</p>
+    {% endif %}
+
+
+ {% endblock content %}

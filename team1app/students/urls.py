@@ -20,9 +20,12 @@ urlpatterns = [
     path('home/tag/', views.tag, name = 'tag'),
 
 
-    #path('home/room/', views.room, name = 'room'),
-    path('home/chat/', views.chat, name = 'chat'),
 
-    path('home/test/<int:id>/', test.test),
+    #path('home/room/', views.room, name = 'room'),
+
+
+    path('home/chat/<int:id>/', views.room, name = 'room'),
+    path('home/chat/', views.chat, name = 'chat'),
+    path('home/chat/create/', views.chat_create, name = 'chat_create'),
 
 ]

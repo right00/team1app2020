@@ -155,18 +155,19 @@ def chat(request):
 
 def chat_create(request):
     student, num = check(request)
-    if num == 2:
-        if request.method == 'POST':
-            comment = request.POST['comment']
-        q = student.getQuestions()
-        data = {
+    if num != 2:
+        return redirect('home') 
+    if request.method == 'POST':
+        questions = Question( title = request.POST['comment'], finalup = timezone.now())
+        questions.save()    
+    questions = Question.objects.order_by('-finalup')   
+    #q = student.getQuestions()
+    context = {
             "teacher" : 'toTe',
-            "questions": q
-        }
-        return render(request, 'chat_create.html', data)
-    else:
-        return redirect('home')
-
+            "questions": questions
+    }
+    return render(request, 'chat_create.html', context)
+   
 def room(request, id):
     student, num = check(request)
     if num != 2:

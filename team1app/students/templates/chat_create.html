@@ -22,18 +22,18 @@
      </form>
 </div>
 
-{%if questions%}
-        {% for q in questions %}
-        <!---
-            <a href="/chat/{{ q.id }}">{{ q.toTe.name }}</a>
-        --->
-        <p>{{ q.title }}</p>
-        <p>{{ q.task.name }}</p>
-        <p>{{q.finalup}}</p>
+<br>
+    {% if questions %}
+    {% for aquestion in questions %}
+    <p>{{ question.title }}</p>
+    <small>[{{ question.posted_at }}]</small>
+    <div>
+      {{ question.title | linebreaksbr }}
+    </div>
     {% endfor %}
-    {%else%}
-<h3>質問はありません</h3>
-{%endif%}
+    {% else %}
+    <p>質問はありません.</p>
+    {% endif %}
 
 
  {% endblock content %}

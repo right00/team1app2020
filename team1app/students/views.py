@@ -153,27 +153,26 @@ def chat(request):
     data = {"questions": q }
     return render(request,'chat.html', data)
 
-    #messages = Message.objects.filter(room_name = room_name).order_by('-created_at')
-    #messages = Question.objects.filter(room_name = Teachers).order_by('-created_at')
-
-  #  message = Question.objects.filter(id = id, toTe = teacher).
-   # room = Question
-
-#auther toTEに直接つっこむ
-
-
-#getQuestion
+def chat_create(request):
+    student, num = check(request)
+    if num == 2:
+        if request.method == 'POST':
+            comment = request.POST['comment']
+        q = student.getQuestions()
+        data = {
+            "teacher" : 'toTe',
+            "questions": q
+        }
+        return render(request, 'chat_create.html', data)
+    else:
+        return redirect('home')
 
 def room(request, id):
     student, num = check(request)
     if num != 2:
         return redirect('home') 
-    if Question.objects.filter(id = id, flomSt = student).exists():
-        q = Question.objects.get(id = id)
-        if request.method == "POST":
-            q.addCommentSt(request.POST["comment"])
-            q.addAppo(request.POST["appo"])
-        data = {"q":q,"Accept":q.getAccept(),"Appo":q.getAppo() ,"Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
-        return render(request,'room.html', data)
     else:
-        return redirect('home') 
+        context = {
+            'id' : Question.objects.all()
+        }
+        return render(request, 'room.html', context)

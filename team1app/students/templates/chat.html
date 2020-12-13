@@ -5,20 +5,18 @@
 {% endblock title %}
 {% block content %}
 <h1>Reserve page / 質問・予約機能 new version</h1>
-<h2>質問・予約する<h2>
-    <div>
-        <form action="/room/" method="post">
-            {% csrf_token %}
-            <input placeholder="ルーム名を入力" type="text" name="room" value="">
-            <input type="submit" class="send" name="button" value="作成"> 
-        </form>
-    </div>
+    <p><a href="{% url 'students:chat_create' %}">質問・予約する</a></p>
     
     <h2>トーク一覧</h2>
     <ul>
         {%if questions%}
-    {% for q in questions %}
-        <a href="/chat/{{ q.id }}">{{ q.name }}</a>
+        {% for q in questions %}
+        <!---
+            <a href="/chat/{{ q.id }}">{{ q.toTe.name }}</a>
+        --->
+        <p>{{ q.title }}</p>
+        <p>{{ q.task.name }}</p>
+        <p>{{q.finalup}}</p>
     {% endfor %}
     {%else%}
 <h3>質問はありません</h3>

@@ -145,15 +145,30 @@ def tag(request):
     if num != 2:
         return redirect('home')
 
-    """
+
 
     if request.method == "POST":
-            task=Tasks.objects.create(name=request.POST["name"],contents=request.POST["content"],tarclass=thisclass)
-            task.auther.add(teacher)
+        finish1 = request.POST["userid1"]
+        content = finish1.split(":")
+        
+        for i in range(int(len(content)/3)):
+            if content[i] =="":
+                break
+            task=StudentTasks.objects.get(id = int(content[i * 3]))
+            task.finish = True
+            if(content[i * 3 + 2] == "true"):
+                task.result = True
             task.save()
-            return redirect("/teacher/class/"+str(classid)+"/task/"+str(task.id)+"/")
+
+
+          
+
+
+        
+ 
+            
     
-    """
+
 
             
     if(student.studenttasks_set.all().exists()):

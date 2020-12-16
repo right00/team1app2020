@@ -71,10 +71,12 @@ table td{
         <div class="swiper-slide">
 
           <div>
-            <span class="col-1" id = "task1" class = "form_line">要素</span>
-            <span class="col-2" id = "task_limit1">結果１ </span>
-            <input type="radio" name="q1" value="はい" required> 正
-            <input type="radio" name="q1" value="いいえ"> 誤
+            <span class="col-1" id = "task1" class = "form_line" value = ""></span>
+            <span class="col-2" id = "task_limit1"></span>
+            <form id = "ok1">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
             
           </div>
         </div>
@@ -95,9 +97,12 @@ table td{
         <div class="swiper-slide">
 
           <div>
-            <span class="col-1" id = "task2">要素</span>
-            <span class="col-2" id = "task_limit2">結果１ </span>
-            <button>a</button>
+            <span class="col-1" id = "task2"></span>
+            <span class="col-2" id = "task_limit2"> </span>
+            <form id = "ok2">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
           </div>
         </div>
 
@@ -119,7 +124,10 @@ table td{
           <div>
             <span class="col-1" id = "task3"></span>
             <span class="col-2" id = "task_limit3"> </span>
-            <button>a</button>
+            <form id = "ok3">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
           </div>
         </div>
 
@@ -140,6 +148,10 @@ table td{
           <div>
             <span class="col-1" id = "task4"></span>
             <span class="col-2" id = "task_limit4"></span>
+            <form id = "ok4">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
             
           </div>
         </div>
@@ -161,6 +173,10 @@ table td{
           <div>
             <span class="col-1" id = "task5"></span>
             <span class="col-2" id = "task_limit5"> </span>
+            <form id = "ok5">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
             
           </div>
         </div>
@@ -177,11 +193,11 @@ table td{
             
             {% csrf_token %}
  
-            <input type="hidden" name="userid" value="12345" id = "finish1">
-            <input type="hidden" name="userid" value="12345" id = "finish2">
-            <input type="hidden" name="userid" value="12345" id = "finish3">
-            <input type="hidden" name="userid" value="12345" id = "finish4">
-            <input type="hidden" name="userid" value="12345" id = "finish5">
+            <input type="hidden" name="userid1" value="20" id = "finish1">
+            <input type="hidden" name="userid2" value="" id = "finish2">
+            <input type="hidden" name="userid3" value="" id = "finish3">
+            <input type="hidden" name="userid4" value="" id = "finish4">
+            <input type="hidden" name="userid5" value="" id = "finish5">
             
 
             <button type="submit" onclick="OnButtonClick();">create</button>
@@ -199,23 +215,31 @@ table td{
         function OnButtonClick() {
             console.log(mySwiper.realIndex);}
   var data = [{% for task in tasks %}
-              ["{{ task.task.limit }}","{{ task.name }}","{{ task.task.isResult }}","{{ task.contents }}"],
+                  {% if task.task.finish == 0 %}
+              ["{{ task.task.limit }}","{{ task.name }}","{{ task.task.isResult }}","{{ task.task.id }}","{{ task.contents }}"],
+              {% endif %}
               {% endfor %}
              ];
   var img0 = document.getElementById("sample2");
   
   
   var element_task = [["task1","task_limit1"],["task2","task_limit2"],["task3","task_limit3"],["task4","task_limit4"],["task5","task_limit5"]];
-  for(let i = 0; i< element_task.length; i++){
+  for(let i = 0; i< data.length; i++){
     element_task[i][0] = document.getElementById(element_task[i][0]);
     element_task[i][1] = document.getElementById(element_task[i][1]);
     element_task[i][0].innerHTML = data[i][0];
     element_task[i][1].innerHTML = data[i][1];
+    
   }
+  var submit_content = ["finish1","finish2","finish3","finish4","finish5"];
+
+  var sub_content = ["ok1","ok2","ok3","ok4","ok5"]
   
+
   function OnButtonClick() {
+ 
             var input1 = document.getElementById("finish1");
-            input1.value = mySwiper[0].realIndex;
+            input1.value = mySwiper[0].realIndex;;
             var input2 = document.getElementById("finish2");
             input2.value = mySwiper[1].realIndex;
             var input3 = document.getElementById("finish3");
@@ -225,7 +249,29 @@ table td{
             var input5 = document.getElementById("finish5");
             input5.value = mySwiper[4].realIndex;
             console.log(mySwiper[0].realIndex);
-    
+            for(let i = 0; i< data.length; i++){
+              if(document.getElementById(sub_content[i]).q1.value !=""){
+                submit_content[i] = data[i][3] + ":" + document.getElementById(submit_content[i]).value + ":" + document.getElementById(sub_content[i]).q1.value+ ":";
+              } 
+            }
+            console.log(submit_content);
+            let result = "";
+            for (let i = 0; i < submit_content.length; i++){
+              if (submit_content[i].length != 7){
+                if(mySwiper[i].realIndex == 1){
+                  result = result + submit_content[i];
+                  console.log(submit_content[i].length);
+
+                }
+                
+
+              }
+              
+            }
+            document.getElementById("finish1").value =result;
+            console.log("a");
+            console.log(result);
+            
             
             }
   

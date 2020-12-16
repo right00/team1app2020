@@ -181,6 +181,11 @@ def tag(request):
             tasks2.append(data)
         context = {'tasks':tasks2}
         return render(request, 'tag.html', context)
+    else:
+        return render(request, 'tag.html')
+    
+
+     
 
 
 

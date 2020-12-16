@@ -182,7 +182,7 @@ def chat_create(request):
     if num != 2:
         return redirect('home') 
     if request.method == 'POST':
-        questions = Question( title = request.POST['comment'], finalup = timezone.now())
+        questions = Question(title = request.POST['comment'], finalup = timezone.now())
         questions.save()    
     questions = Question.objects.order_by('-finalup')   
     #q = student.getQuestions()

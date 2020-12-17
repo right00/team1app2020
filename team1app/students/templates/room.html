@@ -18,18 +18,22 @@
 <h6>{{c.comment}}</h6>
 {%endfor%}
 
-<form action="" method="post" class="commentbox" >
+<form name = "form1"  action="" method="post" class="commentbox" >
     {% csrf_token %}
-    <textarea name = "comment" minlength="1" rows="5" cols="40">コメントを書いてください</textarea>
+    <input type = "hidden" name="type" value="comment">
+    <textarea name = "comment" minlength="1" rows="5" cols="40" autofocus></textarea>
     <br>
     <input type="submit" value="send"/>
 </form>
 
 <script>
+    document.form1.comment.value = "{{text}}";
+    var c = document.form1.comment.value;
     var n = function(){
-      window.location.href = '';
+      document.form1.type.value = "text";
+      document.form1.submit();
     } 
-    setInterval(n, 1000);
+    setInterval(n, 15000);
   </script>
 
 {% endblock content %}

@@ -208,11 +208,15 @@ def room(request, id):
     student, num = check(request)
     if num != 2:
         return redirect('home') 
-    
+    text = "コメントを入力"
     if request.method == "POST":
-        Question.objects.get(id = id).addCommentSt(request.POST["comment"])
+        if(request.POST["type"] == "comment"):
+            Question.objects.get(id = id).addCommentSt(request.POST["comment"])
+        else:
+            text = request.POST["comment"]
     context = {
         'Comment' : Question.objects.get(id = id).getComment(),
-        'one' :  Question.objects.get(id = id)
+        'one' :  Question.objects.get(id = id),
+        'text': text,
     }
     return render(request, 'room.html', context)

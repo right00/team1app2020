@@ -1,53 +1,29 @@
-% extends 'base_student.html' %}
+{% extends 'base_student.html' %}
 {% block title %}
 <title>Document</title>
 {% endblock title %}
 {% block content %}
 
-<a href="../">一覧へ<br>戻る</a>
-
-        <span>質問詳細</span>
- 
-    <div>To. {{q.toTe.name}}</div>
-    <div>Title : {{q.title}}</div>
-    <br>
-    <div> Task → |{{q.task.name}}|</div>
-    <br>
-    <div>最終更新</div>
-    <div>{{q.finalup}}</div>
-
-<div class="displaybox">
-<div>日程</div>
-{%for a in Accept%}
-<div>日程:{{a.day}} {{a.time}}〜</div>
-{%endfor%}
-</div>
-<div class="displaybox">
-<div>希望日程</div>
-{%for a in Appo%}
-<div>日程:{{a.day}} {{a.time}}〜</div>
-{%endfor%}
-</div>
-<div class="displaybox" style="height: 200px;">
+<a href="../">一覧へ戻る</a>
+<h1> {{ one.toTe.name }} </h1>
 <h4>コメント一覧</h4>
 {%for c in Comment%}
 <h5>
 {%if c.isStudent%}
-    auther:{{student.name}}
+    {{student.name}}
 {%else%}
-    auther:{{teacher.name}}
+    auther:{{ one.toTe.name }}
 {%endif%}
 </h5>
 <h6>{{c.comment}}</h6>
 {%endfor%}
-</div>
+
 <form action="" method="post" class="commentbox" >
     {% csrf_token %}
     <div style="margin-bottom: 20px;">コメントを送信</div>
     <textarea name = "comment" minlength="1" rows="5" cols="40">コメントを書いてください</textarea>
+    <br>
     <input type="submit" value="send"/>
 </form>
-
-<p>id:{{ id }}</p>
 
 {% endblock content %}

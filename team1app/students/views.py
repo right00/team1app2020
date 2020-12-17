@@ -173,6 +173,12 @@ def chat(request):
     student,num = check(request)
     if num != 2:
         return redirect('home') 
+    if request.method == 'POST':
+        teacher = Teachers.objects.get( id = int(request.POST["select_teachers"]))
+        task = Tasks.objects.get(id = int(request.POST["select_tasks"]))
+        questions = Question.objects.create(title = request.POST['comment'], task = task, toTe = teacher, fromSt = student)
+        print(questions)
+        questions.save()
     q = student.getQuestions()
     data = {"questions": q }
     return render(request,'chat.html', data)
@@ -182,14 +188,19 @@ def chat_create(request):
     if num != 2:
         return redirect('home')   
     if request.method == 'POST':
-        questions.addCommentSt(request.POST['comment'], finalup = timezone.now())
+        teacher = Teachers.objects.get( id = int(request.POST["select_teachers"]))
+        task = Tasks.objects.get(id = int(request.POST["select_tasks"]))
+        questions = Question.objects.create(title = request.POST['comment'], task = task, toTe = teacher, fromSt = student)
+        print(questions)
         questions.save()
     questions = Question.objects.order_by('-finalup')   
     #q = student.getQuestions()
     teacher_name = Teachers.objects.all()
+    task_name = Tasks.objects.all()
     context = {
             "teacher" : teacher_name,
-            "questions": questions
+            "questions": questions,
+            "tasks" : task_name
     }
     return render(request, 'chat_create.html', context)
    
@@ -197,8 +208,11 @@ def room(request, id):
     student, num = check(request)
     if num != 2:
         return redirect('home') 
-    else:
-        context = {
-            'id' : Question.objects.all()
-        }
-        return render(request, 'room.html', context)
+    
+    if request.method == "POST":
+        Question.objects.get(id = id).addCommentSt(request.POST["comment"])
+    context = {
+        'Comment' : Question.objects.get(id = id).getComment(),
+        'one' :  Question.objects.get(id = id)
+    }
+    return render(request, 'room.html', context)

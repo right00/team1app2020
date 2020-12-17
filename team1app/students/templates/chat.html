@@ -11,10 +11,9 @@
     <ul>
         {%if questions%}
         {% for q in questions %}
-        <!---
-            <a href="/chat/{{ q.id }}">{{ q.toTe.name }}</a>
-        --->
-        <p>{{ q.title }}</p>
+        
+        <p><a href="./{{q.id}}/">{{ q.title }}</a></p>
+        <p>{{ q.toTe.name }}</p>
         <p>{{ q.task.name }}</p>
         <p>{{q.finalup}}</p>
     {% endfor %}

@@ -20,10 +20,16 @@
 
 <form action="" method="post" class="commentbox" >
     {% csrf_token %}
-    <div style="margin-bottom: 20px;">コメントを送信</div>
     <textarea name = "comment" minlength="1" rows="5" cols="40">コメントを書いてください</textarea>
     <br>
     <input type="submit" value="send"/>
 </form>
+
+<script>
+    var n = function(){
+      window.location.href = '';
+    } 
+    setInterval(n, 1000);
+  </script>
 
 {% endblock content %}

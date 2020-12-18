@@ -1,4 +1,4 @@
-{% extends 'base_student.html' %}
+{% extends 'base_room.html' %}
 {% block title %}
 <title>Document</title>
 {% endblock title %}
@@ -7,17 +7,27 @@
 <a href="../">一覧へ戻る</a>
 <h1> {{ one.toTe.name }} </h1>
 <h4>コメント一覧</h4>
+<div class="chat">
 {%for c in Comment%}
-<h5>
 {%if c.isStudent%}
-    {{student.name}}
+    <div class = "comment right">
+      student_name:{{one.fromSt.name}}
+      <br>
+    {{c.comment}}
+    </div>
+    
 {%else%}
-    auther:{{ one.toTe.name }}
+    
+    <div class = "comment left">
+      teacher_name:{{ one.toTe.name }}
+      <br>
+      {{c.comment}}
+    </div>
 {%endif%}
-</h5>
-<h6>{{c.comment}}</h6>
 {%endfor%}
+</div>
 
+<br>
 <form name = "form1"  action="" method="post" class="commentbox" >
     {% csrf_token %}
     <input type = "hidden" name="type" value="comment">

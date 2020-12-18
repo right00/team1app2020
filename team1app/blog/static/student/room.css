@@ -1,3 +1,18 @@
+.chat__container{
+    padding: 0;
+    background: #1c6334;
+    overflow: hidden;
+    max-width: 400px;
+    margin: 20px auto;
+    font-size: 80%;
+}
+
+.partner_name{
+    text-align: center;
+    color: #fffaf3;
+}
+
+
 .comment{
     position: relative;
     display: inline-block;
@@ -22,7 +37,7 @@
 }
 .comment.right{
     float: right;
-    background: rgba(140, 255, 140, 0.829);
+    background: #8cff8c;
     margin-right: 62px;
 }
 
@@ -34,13 +49,13 @@
 .comment.right::after{
     right: -10px;
     border-radius: 0 18px 18px  6px/0 18px 18px 1px;
-    box-shadow: inset 3px -15px 0 -5px #7aff7ad2 ;
+    box-shadow: inset 3px -15px 0 -5px #8cff8c ;
 }
 .chat{
     width: 100%;
     overflow: hidden;
     font-size: 16px;
-    background: #a0a0a0c2;
+    background: #99ff71de;
     line-height: 1.4;
     padding: 10px 0;
     margin: 0 auto;

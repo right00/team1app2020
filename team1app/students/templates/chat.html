@@ -12,7 +12,7 @@
         {%if questions%}
         {% for q in questions %}
         
-        <p><a href="./{{q.id}}/">{{ q.title }}</a></p>
+        <p><a href="./{{q.id}}/">Title:{{ q.title }}</a></p>
         <p>{{ q.toTe.name }}</p>
         <p>{{ q.task.name }}</p>
         <p>{{q.finalup}}</p>

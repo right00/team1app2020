@@ -81,7 +81,11 @@ img{
  {% for class in classes %}
 <div class="swiper-slide">
 <a href ="{{class.id}}">
+{% if class.class_name == "数学"  or class.class_name == "math" or class.class_name == "国語" or class.class_name == "nation" or class.class_name == "理科" or class.class_name == "science" or class.class_name == "社会" or class.class_name == "society" %}
 <img   src="../../../static/img/{{class.class_name}}.png" id = "{{class.id}}">
+{% else %}
+<img   src="../../../static/img/noImage.png" id = "{{class.id}}">
+{% endif %}
 </a>
 </div>
 

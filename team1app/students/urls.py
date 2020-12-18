@@ -16,13 +16,7 @@ urlpatterns = [
     path('home/<int:class_id>/', views.class_page, name = "class_page"), 
     path('home/task/', views.task, name = 'task'),
     path('home/propose/', views.propose, name = 'propose'),
-    path('home/reserve/', views.reserve, name = 'reserve'),
     path('home/tag/', views.tag, name = 'tag'),
-
-
-
-    #path('home/room/', views.room, name = 'room'),
-
 
     path('home/chat/<int:id>/', views.room, name = 'room'),
     path('home/chat/', views.chat, name = 'chat'),

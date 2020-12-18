@@ -115,27 +115,6 @@ def propose(request):
     else:
         return redirect('home')
 
-def reserve(request):
-    _,num = check(request)
-    if num == 2:
-        return render(request, 'reserve.html')
-    else:
-        return redirect('home')
-
-#def reserve(request, id):
- #   """reserve画面"""
-  #  student, num = check(request)
-   # if num != 2:
-    #    return redirect('home') 
-    ##if Question.objects.filter(id = id, fromSt = student).exists():
-      #  q = Question.objects.get(id=id)
-       # if request.method == "POST":
-        #    q.addCommentSt(request.POST["comment"])
-        #data = {"q":q,"Accept":q.addAppo(),"Appo":q.addAppo(), "Comment":q.getComment(),"student":q.fromSt,"teacher":q.toTe}
-        #return render(request,"students/reserve.html", data)
-    #else:
-     #   return redirect('home') 
-
 def tag(request):
     """tag画面"""
     cnt = 0
@@ -207,7 +186,6 @@ def chat_create(request):
         print(questions)
         questions.save()
     questions = Question.objects.order_by('-finalup')   
-    #q = student.getQuestions()
     teacher_name = Teachers.objects.all()
     task_name = Tasks.objects.all()
     context = {

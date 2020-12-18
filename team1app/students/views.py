@@ -138,10 +138,13 @@ def reserve(request):
 
 def tag(request):
     """tag画面"""
+    cnt = 0
+    
     #生徒以外はリダイレクト
     student,num = check(request)
     if num != 2:
         return redirect('home')
+    
     if request.method == "POST":
         finish1 = request.POST["userid1"]
         content = finish1.split(":")
@@ -157,16 +160,26 @@ def tag(request):
         
     if(student.studenttasks_set.all().exists()):
         tasks=student.studenttasks_set.all()
+        classes = student.classes_set.all()
+        
         tasks2=[]
         for i in tasks:
+            
+            
             task = gettask(i)
+            if i.finish ==0:
+                cnt +=1
             
             data={"task":i,"name":task.name,"contents":task.contents}
             tasks2.append(data)
-        context = {'tasks':tasks2}
+        context = {'tasks':tasks2,'cnt':cnt,"classes":classes}
         return render(request, 'tag.html', context)
     else:
-        return render(request, 'tag.html')
+        classes = student.classes_set.all()
+        context = {"classes":classes}
+
+        
+        return render(request, 'tag.html',context)
     
 
 def chat(request):

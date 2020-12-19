@@ -14,8 +14,8 @@
   </head>
   <body>  
     <div class="header">
-      <p class = "headword_p">{{ one.toTe.name }}</p>
-     <p class = "room_p"><a href="../" class="room_p_a">一覧へ戻る</a></p> 
+      <li class = "headword_p">{{ one.toTe.name }}</li>
+     <li class = "room_p"><a href="../" class="room_p_a">一覧へ戻る</a></li> 
     </div>
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle" style="position: fixed;">
@@ -33,7 +33,6 @@
 
     </ul>
   </div>
-  
   <div class = "padding"></div>
 
    {% block header %}

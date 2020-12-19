@@ -69,11 +69,14 @@
     font-size:  2em;
     text-align: center;
 }
-.header p{
-    display: inline-block;
+.header{
+    display: flex;
 }
 .room_p{
     text-align: right;
+}
+li{
+    list-style: none;
 }
 
 

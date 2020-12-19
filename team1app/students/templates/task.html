@@ -16,12 +16,13 @@
     <h3>{{data.class.class_name }}</h3>
     {% for homework in data.homeworks %}
     {% for task in homework.task.all%}
-    <p><a href="">{{ task.name}}</a>
+    <p><a onclick="alert('課題名：{{task.name}}\n内容：{{task.contents}}\n{% if homework.finish %}解答済み{% else %}未解答{%endif%}\n期限：{{homework.limit}}\nタグ名：{% for tag in task.tag.all%} {{tag.tag}} {%endfor%}\n')" href="">{{ task.name}}</a>
     {%endfor%}
     {{ homework.limit}}</p>
     {%endfor%}
     {%endfor%}
     {%endif%}
+
 
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
     

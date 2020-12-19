@@ -6,15 +6,18 @@
 
 {% block content %}
     {%if thisclass%}
+    <p>クラス名</p>
     <h2>{{thisclass.class_name}}</h2>
     {%endif%}
     <br>
-
     {% if tasks %}
     {% for task in tasks %}
-    <td>{{ task.name }}</td>
-    <td>{{ task.contents }}</td>
+    <td>課題の名前{{ task.name }}</td>
+    <br>
+    <td>内容：{{ task.contents }}</td>
+    <br>
     <td>{{ task.task.limit }}</td>
+    <br>
 
     {% endfor %}
     

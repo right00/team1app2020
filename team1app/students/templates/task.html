@@ -13,39 +13,20 @@
 
 
     <h1>Task page</h1>
+    {% if datas %}
+    {%  for data in datas %}
+    <h3>{{data.class.class_name }}</h3>
+    {% for homework in data.homeworks %}
+    {% for task in homework.task.all%}
+    <p><a href="">{{ task.name}}</a>
+    {%endfor%}
+    {{ homework.limit}}</p>
+    {%endfor%}
+    {%endfor%}
+    {%endif%}
+    
 
-    <!--ここにクラス名を表示
-    例：国語-->
-    {% if classes %}
-    {% if all %}
-    {% for class in classes %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <h4>{{class.class_name}}</h4>
-    </form>
-    {% endfor %}
-    {%else%}
-    {% for class in classes %}
-    <h4>{{class.class_name}}</h4>
-    {% endfor %}
-    {%endif%}
-    {%else%}
-    <h4>クラスはまだありません</h4>
-    {%endif%}
-    {%if result%}
-    {%endif%}
-    <!---ここに課題を表示
-    例：ごんぎつねを読む-->
-    {% if tasks %}
-    {% for task in tasks %}
-    <td>{{ task.name }}</td>
-    <td>{{ task.contents }}</td>
-    <td>{{ task.task.limit }}</td>
-
-    {% endfor %}
-    {% else %}
-    <p>No task.</p>
-    {% endif %}
+   
 
 
     <p><a href="{% url 'students:propose' %}">Propose</a></p>

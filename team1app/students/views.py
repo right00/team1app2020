@@ -87,25 +87,11 @@ def task(request):
     student,num = check(request)
     if num != 2:
         return redirect('home')
-    if request.method != 'POST':
-        if (student.classes_set.all()):
-            classes = student.classes_set.all()
-            data = {"classes":classes, "all":False}
-            return render(request, 'task.html', data)
-        return render(request, 'task.html')
-    elif request.POST["type"] == "my" :
-        if (student.classes_set.all()):
-            classes = student.classes_set.all()
-            data = {"classes":classes, "all":False}
-            return render(request,'task.html', data)
-        return render(request, 'task.html')
-    else:
-        return redirect("home")
-    if request.method =='POST':
-        tasks = Tasks(name = request.POST["name"], contents = request.POST['contents'], tarclass = thisclass)
-        tasks.save()
-    context = {'tasks':tasks}
-    return render(request, 'task.html', context)
+    datas = student.getMyClassHomework()
+    data  = {
+        'datas' : datas
+    }
+    return render(request, 'task.html', data)
 
 def propose(request):
     """propose画面"""
@@ -118,7 +104,6 @@ def propose(request):
 def tag(request):
     """tag画面"""
     cnt = 0
-    
     #生徒以外はリダイレクト
     student,num = check(request)
     if num != 2:
@@ -140,15 +125,11 @@ def tag(request):
     if(student.studenttasks_set.all().exists()):
         tasks=student.studenttasks_set.all()
         classes = student.classes_set.all()
-        
         tasks2=[]
         for i in tasks:
-            
-            
             task = gettask(i)
             if i.finish ==0:
                 cnt +=1
-            
             data={"task":i,"name":task.name,"contents":task.contents}
             tasks2.append(data)
         context = {'tasks':tasks2,'cnt':cnt,"classes":classes}
@@ -156,8 +137,6 @@ def tag(request):
     else:
         classes = student.classes_set.all()
         context = {"classes":classes}
-
-        
         return render(request, 'tag.html',context)
     
 

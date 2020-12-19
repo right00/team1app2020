@@ -310,3 +310,33 @@ footer{
     position: absolute;/*←絶対位置*/
     bottom: 0; /*下に固定*/
 }
+
+/*chat.htmlのCSS*/
+ul.chat_talk_ul{
+	padding: 0;
+	position: relative;
+}
+ul li.chat_talk_list{
+	color: white;
+	background: #2d8fdd;
+	line-height: 1.5;
+	padding: 0.5em 0.5em 0.5em 4em;
+	border-bottom: 1px dashed white;
+
+}
+ul li.chat_talk_list::before{
+	content: "\f303";
+	position: absolute;
+	left: 0.5em;
+	color: white;
+}
+ul li.chat_talk_list:last-of-type{
+	border-bottom: none;
+}
+p.chat_finalup{
+	font-size: 5px;
+	color: rgb(70, 66, 66);
+}
+.chat_a{
+	text-decoration: none;
+}

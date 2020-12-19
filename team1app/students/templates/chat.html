@@ -5,13 +5,14 @@
 {% endblock title %}
 {% block content %}
 <h1>質問・予約画面</h1>
-    <p><a href="{% url 'students:chat_create' %}">質問・予約する</a></p>
+    <p><a href="{% url 'students:chat_create' %}" class="chat_a">質問・予約する</a></p>
     
     <h2>トーク一覧</h2>
+    
     <ul class="chat_talk_ul">
         {%if questions%}
         {% for q in questions %}
-        <a href="./{{q.id}}/">
+        <a href="./{{q.id}}/" class="chat_a">
         <li class="chat_talk_list">Title:{{ q.title }}
             {{ q.toTe.name }}
             {{ q.task.name }}

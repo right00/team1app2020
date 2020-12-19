@@ -10,9 +10,7 @@
 
 
 {% block content %}
-
-
-    <h1>Task page</h1>
+    <h1>課題一覧</h1>
     {% if datas %}
     {%  for data in datas %}
     <h3>{{data.class.class_name }}</h3>
@@ -24,10 +22,6 @@
     {%endfor%}
     {%endfor%}
     {%endif%}
-    
-
-   
-
 
     <p><a href="{% url 'students:propose' %}">Propose</a></p>
     

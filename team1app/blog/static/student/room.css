@@ -1,6 +1,5 @@
 .chat__container{
     padding: 0;
-    background: #1c6334;
     overflow: hidden;
     max-width: 400px;
     margin: 20px auto;
@@ -60,4 +59,14 @@
     padding: 10px 0;
     margin: 0 auto;
     max-width: 500px;
+}
+
+.base_room_a{
+    text-align: right;
+}
+
+.headword_p{
+	font-family: MyFont;
+	text-align: center;
+	color:rgb(229,232,212);
 }

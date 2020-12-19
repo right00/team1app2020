@@ -6,11 +6,26 @@
     <title>room.htmlのCSS</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'student/room.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/base_student.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/form_student.css' %}">
     {% block css %} 
     {% endblock css %}
     {% block title %}  {% endblock title %} 
   </head>
   <body>  
+    <div class="header">
+      <p class = "headword_p">{{ one.toTe.name }} </p>
+      <p  class="base_room_a"><a href="../">一覧へ戻る</a></p>
+      
+    </div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle" style="position: fixed;">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  
+  <div class = "padding"></div>
 
    {% block header %}
    {% endblock header %}

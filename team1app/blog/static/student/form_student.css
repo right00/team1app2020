@@ -317,11 +317,12 @@ ul.chat_talk_ul{
 	position: relative;
 }
 ul li.chat_talk_list{
-	color: white;
+	color: rgb(229,232,212);
 	background:  rgb(47,70,45);
 	line-height: 1.5;
 	padding: 0.5em 0.5em 0.5em 4em;
 	border-bottom: 1px dashed white;
+	list-style-type: none!important;
 
 }
 ul li.chat_talk_list::before{
@@ -340,7 +341,33 @@ p.chat_finalup{
 .chat_a{
 	text-decoration: none;
 }
-
+.chat_p{
+	font-size: 1.5em;
+	text-align: center;
+}
+.chat_p_div{
+	position: relative;
+}
+.chat_a_btn{
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	font-weight: bold;
+	padding: 0.25em 0;
+	text-decoration: none;
+	color:  #b87d27;
+}
+.chat_a_btn::before{
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 4px;
+	top: 100%;
+	left: 0;
+	border-radius: 3px;
+	background:  #b87d27;
+	transition: .2s;
+}
 
 /*bodyの背景色*/
 body{

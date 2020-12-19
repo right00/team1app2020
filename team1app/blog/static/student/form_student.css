@@ -318,7 +318,7 @@ ul.chat_talk_ul{
 }
 ul li.chat_talk_list{
 	color: white;
-	background: #2d8fdd;
+	background:  rgb(47,70,45);
 	line-height: 1.5;
 	padding: 0.5em 0.5em 0.5em 4em;
 	border-bottom: 1px dashed white;
@@ -339,4 +339,10 @@ p.chat_finalup{
 }
 .chat_a{
 	text-decoration: none;
+}
+
+
+/*bodyの背景色*/
+body{
+	background: rgb(229,232,212);
 }

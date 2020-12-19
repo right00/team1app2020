@@ -8,18 +8,22 @@
     <p><a href="{% url 'students:chat_create' %}">質問・予約する</a></p>
     
     <h2>トーク一覧</h2>
-    <ul>
+    <ul class="chat_talk_ul">
         {%if questions%}
         {% for q in questions %}
-        
-        <p><a href="./{{q.id}}/">Title:{{ q.title }}</a></p>
-        <p>{{ q.toTe.name }}</p>
-        <p>{{ q.task.name }}</p>
-        <p>{{q.finalup}}</p>
-    {% endfor %}
-    {%else%}
-<h3>質問はありません</h3>
-{%endif%}
+        <a href="./{{q.id}}/">
+        <li class="chat_talk_list">Title:{{ q.title }}
+            {{ q.toTe.name }}
+            {{ q.task.name }}
+            <br>
+            <p class="chat_finalup">{{q.finalup}}</p>
+        </li>
+        </a>
+        {% endfor %}
+        {%else%}
+        <li class="chat_talk_list">質問はありません</li>
+        {%endif%}
     </ul>
+    
 
 {% endblock content %}

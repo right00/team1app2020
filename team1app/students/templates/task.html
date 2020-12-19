@@ -10,6 +10,7 @@
 
 
 {% block content %}
+<div class = "task_body">
     <h1>課題一覧</h1>
     {% if datas %}
     {%  for data in datas %}
@@ -23,11 +24,6 @@
     {%endfor%}
     {%endif%}
 
-
-    <p><a href="{% url 'students:propose' %}">Propose</a></p>
-    
-    <p><a href="{% url 'students:tag' %}">Tag</a></p>
-    <br>
-    <p><a href="{% url 'home' %}">home</a></p>
-
+    <p><a href="{% url 'home' %}" class="btn_home">戻る</a></p>
+</div>
 {% endblock content %}

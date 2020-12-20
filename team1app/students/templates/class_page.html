@@ -12,17 +12,20 @@
     <br>
     {% if tasks %}
     {% for task in tasks %}
-    <td>課題の名前{{ task.name }}</td>
-    <br>
-    <td>内容：{{ task.contents }}</td>
-    <br>
-    <td>{{ task.task.limit }}</td>
-    <br>
+    <div class="class_page_div">
+    <div class="class_page_div2"><p>課題名：{{ task.name }}</p></div>
+    <p class="class_page_p">内容：{{ task.contents }}</p>
+    <p class="class_page_p">しめきり：{{ task.task.limit }}</p>
+    </div>
+   
 
     {% endfor %}
     
     {% else %}
-    <p>No task.</p>
+    <div class="class_page_div">
+        <div class="class_page_div2">課題名：</div>
+    <p class="class_page_p">課題は出されていません。</p>
+    </div>
     {% endif %}
 
     <br>

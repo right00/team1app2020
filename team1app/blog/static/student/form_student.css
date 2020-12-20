@@ -312,61 +312,146 @@ footer{
 }
 
 /*chat.htmlのCSS*/
-ul.chat_talk_ul{
+ul.chat_talk_ul, ol{
 	padding: 0;
-	position: relative;
 }
 ul li.chat_talk_list{
-	color: rgb(229,232,212);
-	background:  rgb(47,70,45);
+	position: relative;
+	margin-bottom: 5px;
+	color: rgb(47,70,45);
+	background:  rgb(229,232,212);
 	line-height: 1.5;
-	padding: 0.5em 0.5em 0.5em 4em;
-	border-bottom: 1px dashed white;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-radius: 15px 0px 0px 15px;
+	border: solid;
+	border-color: #b87d27;/*リストの枠線の色*/
+	vertical-align: middle;
 	list-style-type: none!important;
 
 }
 ul li.chat_talk_list::before{
-	content: "\f303";
-	position: absolute;
-	left: 0.5em;
-	color: white;
+	display: inline-block;
+	vertical-align: middle;
+	content: '';
+	width: 1em;
+	height: 1em;
+	background:  #b87d27;
+	border-radius: 50%;
+	margin-right: 8px;
 }
+/*
 ul li.chat_talk_list:last-of-type{
 	border-bottom: none;
 }
+*/
 p.chat_finalup{
 	font-size: 5px;
-	color: rgb(70, 66, 66);
+	color:  #b87d27;
 }
 .chat_a{
 	text-decoration: none;
 }
 .chat_p{
-	font-size: 1.5em;
-	text-align: center;
+	font-size: 1.3em;
+	padding: 0.25em 0.5em;
+	color:  rgb(82, 121, 78);
+	background: transparent;
+	border-left: solid 5px rgb(82, 121, 78);
+	
 }
 .chat_p_div{
 	position: relative;
 }
+.chat_p_div p{
+	display: inline-block;
+}
 .chat_a_btn{
 	text-decoration: none;
 	position: relative;
-	display: inline-block;
 	font-weight: bold;
 	padding: 0.25em 0;
 	text-decoration: none;
-	color:  #b87d27;
+	color:  rgb(82, 121, 78);
 }
 .chat_a_btn::before{
 	position: absolute;
 	content: '';
 	width: 100%;
-	height: 4px;
+	height: 2px;
 	top: 100%;
 	left: 0;
 	border-radius: 3px;
-	background:  #b87d27;
+	background: rgb(82, 121, 78);
 	transition: .2s;
+}
+
+/*task.htmlのCSS*/
+.task_p{
+	display: inline-block;
+	max-width: 180px;
+	text-align: left;
+	background-color: rgb(82, 121, 78);
+	font-size: 16px;
+	color: rgb(229,232,212);
+	
+	font-weight: bold;
+	padding: 5px 16px;
+	border: 1px dashed rgb(229,232,212);
+	box-shadow: 0px 0px 0px 5px rgb(82, 121, 78);
+}
+.task_a_btn{
+	text-decoration: none;
+	color: rgb(229,232,212);
+}
+.task_p:hover{
+	border-style: solid;
+}
+.task_h3{
+	color: #b87d27;
+}
+
+.btn_home{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+	color: #799dec;
+	
+}
+.btn_home:active{
+	top:4px;
+	text-shadow: none;
+}
+
+/*class_pagenのCSS*/
+.class_page_div{
+	margin: 2em 0;
+	background: #f1f1f1;
+	box-shadow: 0 2px 4px rgba(0,0,0, 0.22);
+}
+.class_page_div .class_page_div2{
+	font-size: 1.2em;
+	background: #5fc2f5;
+	padding: 4px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+}
+.class_page_div .class_page_p{
+	padding: 15px 20px;
+	margin: 0;
+}
+
+/*chat_create.htmlのCSS*/
+.chat_create_div{
+	padding: 0.5em 1em;
+	margin: 1em 0;
+	background: #f4f4f4;
+	border-left: solid 6px #b87d27;
+	box-shadow: 0px 2px 3px rgba(0,0,0, 0.33);
+}
+.chat_create_submit{
+
 }
 
 /*bodyの背景色*/

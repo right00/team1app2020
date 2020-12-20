@@ -1,25 +1,23 @@
 <!--宿題機能のページ（生徒側）-->
 {% extends 'base_student.html' %}
-
-
-
 {% block title %}
 <title>Document</title>
 {% endblock title %}
-
-
 
 {% block content %}
 <div class = "task_body">
     <h1>課題一覧</h1>
     {% if datas %}
     {%  for data in datas %}
-    <h3>{{data.class.class_name }}</h3>
+    <h3 class="task_h3">クラス：{{data.class.class_name }}</h3>
     {% for homework in data.homeworks %}
     {% for task in homework.task.all%}
-    <p><a onclick="alert('課題名：{{task.name}}\n内容：{{task.contents}}\n{% if homework.finish %}解答済み{% else %}未解答{%endif%}\n期限：{{homework.limit}}\nタグ名：{% for tag in task.tag.all%} {{tag.tag}} {%endfor%}\n')" href="">{{ task.name}}</a>
-    {%endfor%}
-    {{ homework.limit}}</p>
+    <div>
+    <p class="task_p"><a onclick="alert('課題名：{{task.name}}\n内容：{{task.contents}}\n{% if homework.finish %}解答済み{% else %}未解答{%endif%}\n期限：{{homework.limit}}\nタグ名：{% for tag in task.tag.all%} {{tag.tag}} {%endfor%}\n')" href="" class="task_a_btn">{{ task.name}}</a>
+       <br> {{ homework.limit}}</p>
+        {%endfor%}
+   
+    </div>
     {%endfor%}
     {%endfor%}
     {%endif%}

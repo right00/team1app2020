@@ -1,14 +1,10 @@
-{% extends 'base_room.html' %}
+{% extends 'base_student.html' %}
 {% block title %}
 <title>Document</title>
 {% endblock title %}
 {% block content %}
 
-<div class = "chat__container">
-
-
-
-<div class="chat scroll">
+<h1 class="room_h1">{{ one.toTe.name }} </h1>
 {%for c in Comment%}
 {%if c.isStudent%}
     <div class = "comment right">
@@ -26,8 +22,7 @@
     </div>
 {%endif%}
 {%endfor%}
-</div>
-</div>
+
 
 <br>
 <form name = "form1"  action="" method="post" class="commentbox" >

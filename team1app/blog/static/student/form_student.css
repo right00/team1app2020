@@ -451,8 +451,24 @@ p.chat_finalup{
 	box-shadow: 0px 2px 3px rgba(0,0,0, 0.33);
 }
 .chat_create_submit{
-
+	display: inline-block;
+	border-radius: 5%;
+	font-size: 18px;
+	text-align: center;
+	cursor: pointer;
+	padding: 12px 12px;
+	background: #b87d27;
+	color: #fff;
+	line-height: 1em;
+	transition: .3s;
+	border: 2px solid #b87d27;
 }
+.chat_create_submit:hover{
+	color:  #b87d27;
+	background: #fff;
+}
+/*room.htmlのCSS*/
+
 
 /*bodyの背景色*/
 body{

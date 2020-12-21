@@ -2,6 +2,9 @@
 * {
 	margin:0; padding:0;
   }
+  .base_header{
+	  background:  rgb(47,70,45);
+  }
   header {
 	height: 100px;
 	width: 100%;
@@ -14,6 +17,9 @@
 	  float: left;
 	  font-size: 30px;
 	  margin-left: 100px;
+  }
+  header .headline.head{
+	color: rgb(229,232,212);
   }
   .nav-list {
 	  line-height: 100px;

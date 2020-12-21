@@ -3,14 +3,16 @@
 <title>Document</title>
 {% endblock title %}
 {% block content %}
-
 <h1 class="room_h1">{{ one.toTe.name }} </h1>
+
 {%for c in Comment%}
+<div class="room_talk">
 {%if c.isStudent%}
     <div class = "comment right">
       <!--   student_name:{{one.fromSt.name}}
       <br>  -->
-    {{c.comment}}
+    <p>{{c.comment}}</p>
+    <br>
     </div>
     
 {%else%}
@@ -18,10 +20,14 @@
       <!--  teacher_name:{{ one.toTe.name }} 
       <br>
       -->
-      {{c.comment}}
+      <p>{{c.comment}}</p>
+      <br>
     </div>
+
 {%endif%}
+</div>
 {%endfor%}
+
 
 
 <br>

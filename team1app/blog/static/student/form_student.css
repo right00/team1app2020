@@ -468,6 +468,63 @@ p.chat_finalup{
 	background: #fff;
 }
 /*room.htmlのCSS*/
+.room_h1{
+	padding: 5px 1px;
+	border-bottom: 3px solid rgb(82, 121, 78);
+	background: #f4f4f4;
+	text-align: center;
+	color: rgb(82, 121, 78);
+	margin-top: 0;
+}
+.room_talk{
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #333;
+	line-height: 1.0;
+	overflow: hidden;
+}
+.room_talk .comment{
+	position: relative;
+	display: inline-block;
+	border-radius: 19px;
+	max-width: 192px;
+	margin: 1px 5px 6px;
+	padding: 5px 14px;
+	overflow-wrap: break-word;
+	clear: both;
+	box-sizing: content-box;
+}
+.room_talk .comment.left{
+	float: left;
+	background: #e9e9ed;
+}
+.room_talk .comment.right{
+	float: right;
+	background: #2793fa;
+	color: white;
+}
+.room_talk .comment::after{
+	position: absolute;
+	content: '';
+	width: 17px;
+	height: 17px;
+	bottom: 0;
+}
+.room_talk .comment.left::after{
+	left: -6px;
+	border-radius: 0px 0 17px 0px/0px 0 13px 0;
+	box-shadow: -14px 2px 0 -3px #e9e9ed inset;
+}
+.room_talk .comment.right::after{
+	right: -6px;
+	border-radius: 0px 0 0 17px/0px 0 0 13px;
+	box-shadow: 14px 2px 0 -3px #2793fa inset;
+}
+
+
 
 
 /*bodyの背景色*/

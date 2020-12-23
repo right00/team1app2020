@@ -1,0 +1,50 @@
+{% extends 'base_student.html' %}
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+{% block content %}
+    {%if thisclass%}
+    <p>クラス名</p>
+    <h2>{{thisclass.class_name}}</h2>
+    {%endif%}
+    <br>
+    {% if tasks %}
+    {% for task in tasks %}
+    <div class="class_page_div">
+    <div class="class_page_div2"><p>課題名：{{ task.name }}</p></div>
+    <p class="class_page_p">内容：{{ task.contents }}</p>
+    <p class="class_page_p">しめきり：{{ task.task.limit }}</p>
+    </div>
+   
+
+    {% endfor %}
+    
+    {% else %}
+    <div class="class_page_div">
+        <div class="class_page_div2">課題名：</div>
+    <p class="class_page_p">課題は出されていません。</p>
+    </div>
+    {% endif %}
+
+    <br>
+    <script>
+    var data = [{% for task in tasks %}
+              ["{{ task.task.limit }}","{{ task.task.isResult }}","{{ task.name }}","{{ task.contents }}"],
+              {% endfor %}
+             ];
+
+    var a = data[0][0];
+    console.log(a);
+
+
+
+
+</script>
+      
+{% endblock content %}
+
+
+
+

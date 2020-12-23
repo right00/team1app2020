@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 
+Join
+{% endblock title %}
+
+{% block content %}
+{%if poste %}
+<h4 ><font color="red">{{error}}</font></h4>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h4>グループ名</h4>
+    <input type="text" minlength = "1" name="groupname" />
+    <h4>パスワード1(教師用)</h4>
+    <h5>※4文字以上</h5>
+    <input type="text" maxlength = "32" minlength="4" name="password" />
+    <h4>パスワード2(生徒用)</h4>
+    <h5>※4文字以上</h5>
+    <input type="text" maxlength = "32" minlength="4" name="password2" />
+    <h4>ユーザーネーム</h4>
+    <input type="text" maxlength = "32" minlength="4" name="name" />     
+    <input type="submit" />
+</form>
+{% endblock content %}

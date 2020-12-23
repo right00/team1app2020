@@ -1,0 +1,48 @@
+{% extends 'base_teacher.html' %}
+
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+{% block title %}
+<title>宿題作成</title>
+{% endblock title %}
+
+
+
+
+{% block content %}
+<div class="backbutton"><a href="../../">クラス詳細へ<br>戻る</a></div>
+    <div class ="container">
+        <div class ="Contentstitle">
+            <span>宿題作成</span>
+        </div>
+        <hr>
+        <div style="margin: 40px;"></div>
+        <div class="formoutbox">
+            <div class="forminbox">
+        <form action="" method="post">
+            {%if result%}
+            <span style="width: 600px;"><font color="red">{{result}}</font></span>
+            <div style="margin: 20px;"></div>
+            {%endif%}
+            {% csrf_token %}
+            <span>宿題</span>
+            <input type="input" name="name" minlength="1" maxlength="32">
+            <div style="margin: 20px;"></div>
+            <span>内容</span>
+            <textarea name="content" maxlengt="800"　rows="8" cols="35">ここに内容を書いてください。</textarea>
+            <div style="margin: 20px;"></div>
+            <button type="submit" >create</button>
+        </form>
+        </div>
+        </div>
+    </div>
+
+
+
+{% endblock content %}
+
+

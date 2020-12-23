@@ -1,0 +1,63 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/base_student.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/form_student.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+
+    {% block css %} 
+    
+    {% endblock css %}
+    
+    
+   
+    {% block title %}  {% endblock title %} 
+    
+    
+  </head>
+  <body>  
+    
+  <div class="header"><h1 class = "headword">+notebook</h1></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle" style="position: fixed;">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <a href="{% url 'students:task' %}"><li>課題 <span>かだい</span></li></a>
+      <a href="{% url 'students:tag' %}"><li>タグ</li></a>
+      <a href="{% url 'students:chat' %}"><li>チャット</li></a>
+      <a href="{% url 'home' %}"><li>トップ</li></a>
+      <li>設定  <span>せってい</span></li>
+
+    </ul>
+  </div>
+  <div class = "padding"></div>
+  
+
+  
+      
+   
+
+   {% block header %}
+   {% endblock header %}
+   
+   {% block content %}
+
+   {% endblock content %}
+  
+
+  <!-- Swiper JS -->
+
+  
+   
+  </body>
+</html>

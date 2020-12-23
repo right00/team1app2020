@@ -1,0 +1,45 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/base_teacher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/form_teacher.css' %}">
+    {% block css %} 
+    
+    {% endblock css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand:400,700" rel="stylesheet">
+    {% block title %}  {% endblock title %} 
+  </head>
+  <body class = "body">  
+     
+    <header class="base_header">
+      <h1 class="headline head">
+        <a>+NoteBook</a>
+      </h1>
+      <ul class="nav-list">
+        <li class="nav-list-item">
+          <a href="{% url 'home' %}" >Home</a>
+        </li>
+        <li class="nav-list-item"><a  href="{% url 'login' %}" >SignOut</a></li>
+        <li class="nav-list-item">Topic</li>
+      </ul>
+
+      <p class = "headline" align="right">ユーザー名：{{ user.username }}</p>
+    </header>        
+
+   {% block header %}
+   {% endblock header %}
+   {% block content %}
+
+   {% endblock content %}
+
+    <!-- java html -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

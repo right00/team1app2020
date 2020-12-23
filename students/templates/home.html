@@ -1,0 +1,186 @@
+<!--HOMEページ（生徒側）-->
+
+
+{% extends 'base_student.html' %}
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<head>
+ 
+
+  <style>
+
+
+    .swiper-container {
+      width: 100%;
+      padding-top: 200px;
+      padding-bottom: 50px;
+    }
+    
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 200px;
+      height: 200px;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      
+    }
+    .s-fade-text {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 5vw;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+    
+    
+  </style>
+</head>
+
+
+<body>
+ {% if classes %}
+ {% if all %}
+ {% for class in classes %}
+ <form action="" method="post">
+     {% csrf_token %}
+     <h4>{{class.class_name}}</h4>
+     <input type="hidden" name="join" value="{{class.id}}">
+     <a href="" ><input type="hidden" name="type" value="all"></a>
+     <input type="submit" value="Join"/> 
+ </form>
+ {% endfor %}
+ {%else%}
+ <div class="swiper-container">
+    <div class="swiper-wrapper">
+ {% for class in classes %}
+<div class="swiper-slide">
+<a href ="{{class.id}}">
+{% if class.class_name == "数学"  or class.class_name == "math" or class.class_name == "国語" or class.class_name == "nation" or class.class_name == "理科" or class.class_name == "science" or class.class_name == "社会" or class.class_name == "society" %}
+<img   src="../../../static/img/{{class.class_name}}.png" id = "{{class.id}}">
+{% else %}
+<img   src="../../../static/img/noImage.png" id = "{{class.id}}">
+{% endif %}
+</a>
+</div>
+
+ <!-- <h1><a href="/student/home/{{class.id}}">{{class.class_name}}</a></h1> -->
+ {% endfor %}
+
+ </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+ {%endif%}
+ {%else%}
+ <h4>クラスはまだありません</h4>
+ {%endif%}
+ {%if result%}
+ {%endif%}
+ 
+  <table>
+    <tr>
+        <td>
+          <form action="" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="type" value="my">
+              <input type="hidden" name="join" value=""> 
+              <input class="simpleButton" type="submit" value="My_Class">
+          </form>
+        </td>
+        <td>
+          <form action="" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="type" value="all">
+              <input type="hidden" name="join" value="">
+              <input class="simpleButton" type="submit" value="All"/>
+          </form>
+        </td>
+    </tr>
+
+ </table>
+
+
+</body>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+  var data = [{% for class in classes %}
+              "{{ class.class_name }}",
+              {% endfor %}
+             ];
+  for (let i = 0; i < data.length; i++){
+    
+    if(data[i]=="数学"){
+      var img0 = document.getElementById("0");
+      console.log(data[i]);
+      //img0.style = "background-image:url(../../../static/img/math.png)";
+    }
+    else if(data[i] =="理科"){
+      var img1 = document.getElementById("1");
+      img1.src = "science.png";
+    }
+    else if(data[i] =="社会"){
+      var img2 = document.getElementById("2");
+      img2.src = "society.png";
+    }
+    else{
+      var img3 = document.getElementById("3");
+      img3.src = "nation.png";
+
+    }
+  }
+  function effect(){
+    var img0 = document.getElementById("sample2");
+      console.log(data[0]);
+      img0.style ="background-image:url(../../../static/img/math.png)";
+
+  }
+
+</script>
+
+</html>
+{% endblock content %}

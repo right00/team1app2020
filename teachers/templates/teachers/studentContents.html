@@ -1,0 +1,54 @@
+{% extends 'base_teacher.html' %}
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+{% block title %}
+<title>{{st.name}}の課題状況</title>
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="backbutton"><a href="../../">クラス詳細へ<br>戻る</a></div>
+<div class ="container">
+    <div class ="Contentstitle">
+        <span>{{st.name}}の課題状況</span>
+    </div> 
+    <div class="listbox">
+        <div class="listblock">
+            <div>宿題名</div>
+            <div>期限</div>
+            <div>提出状況</div>
+            </div>
+ {%for hw in Homeworks%}
+ {%for task in hw.task.all%}
+ <div style="margin: 20px;"></div>
+ <div class="listblock">
+ <div><a href="../../../{{task.tarclass.id}}/task/{{task.id}}/">{{task.name}}</a></div>
+ <span style="width:10px"></span>
+ {%endfor%}
+ <div>{{hw.limit}}</div>
+ <span style="width:10px"></span>
+ {%if hw.finish%}
+ <div>済
+ <span style="width:10px"></span>
+ {%if hw.result%}
+ 正</div>
+ {%else%}
+ 誤</div>
+ {%endif%}
+ {%else%}
+ <div>未</div>
+ {%endif%}
+ </div> 
+ {%endfor%}
+</div>
+</div>
+
+
+
+
+{% endblock content %}

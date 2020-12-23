@@ -1,0 +1,51 @@
+{% extends 'base_teacher.html' %}
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+
+{% block title %}
+<title>クラス一覧</title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="backbutton"><a href="../">クラス詳細へ<br>戻る</a></div>
+<div class ="container">
+    <div class ="Contentstitle">
+        <span>宿題一覧</span>
+    </div> 
+    {%if tasks%}
+    <div class="listbox">
+
+        <div class="listblock">
+            <div>宿題名</div>
+            <div style = "color:red;">
+            <div>付けられたタグ</div>
+            </div>
+            <div>作成日時</div>
+            </div>
+
+    {%for task in tasks%}
+    <div class="listblock">
+    <div><a href="../task/{{task.id}}/">{{task.name}}</a></div>
+    {%if task.tag.all%}
+    <div style = "color:red;">
+    {%for tag in task.tag.all %}
+    <div>{{tag.tag}}</div>
+    {%endfor%}
+    </div>
+    {%else%}
+    <div><div>なし</div></div>
+    {%endif%}
+    <div>{{task.make}}</div>
+    </div>
+    {%endfor%}
+    </div>
+    {%else%}
+    <h4>まだ宿題は作成されていません</h4>
+    {%endif%}
+</div>
+    {%endblock content%}

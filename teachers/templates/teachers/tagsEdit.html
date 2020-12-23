@@ -1,0 +1,56 @@
+{% extends 'base_teacher.html' %}
+
+{% load static %}
+{% block css %} 
+<link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+{% block title %}
+<title>タグ作成</title>
+{% endblock title %}
+
+{% block content %}
+<div class="backbutton"><a href="../">クラス詳細へ<br>戻る</a></div>
+<div class ="container">
+    <div class ="Contentstitle">
+    <span>タグの管理</span>
+    </div>
+    <div style="margin-top: 50px;"></div>
+    <div class="formoutbox">
+    <div class="forminbox">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="add"/>
+        <h2>タグ作成</h2>
+        <div style="margin-top: 20px;"></div>
+        <spab>タグ名</span>
+        <input type="input" name="name" minlength="1" maxlength="32" value="{{task.name}}">
+        <button type="submit" >create</button>
+    </form>
+    </div>
+    </div>
+    <div style="margin-top: 50px;"></div>
+    <div class="formoutbox">
+    <div class="forminbox">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="delete"/>
+        <span>タグ一覧</span>
+        <div class="outbox">
+        {%for tag in tags%}
+        <input type="checkbox" id="tags{{tag.id}}" name="tags" value="{{tag.id}}">
+        <label for="tags{{tag.id}}" style="margin:7px;">{{tag.tag}}</label>
+        {%endfor%}
+        </div>
+        <div style="margin-top: 20px;"></div>
+        <button type="submit" >delete</button>
+    </form>
+    {%if alert%}
+    <script>alert("{{alert}}")</script>
+    {%endif%}
+    </div>
+    </div>
+    <div style="margin-top: 50px;"></div>
+    </div>
+    {% endblock content %}

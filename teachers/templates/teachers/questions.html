@@ -1,0 +1,43 @@
+{% extends 'base_teacher.html' %}
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+
+{% block title %}
+<title>質問一覧</title>
+{% endblock title %}
+
+
+{% block content %}
+<div class ="container">
+    <div class ="Contentstitle">
+        <span>質問一覧</span>
+    </div> 
+    <div class="listbox">
+
+        <div class="listblock2">
+            <div>質問した生徒</div>
+            <div>タイトル</div>
+            <div>宿題名</div>
+            <div>最終更新日時</div>
+            </div>
+{%if questions%}
+{%for q in questions%}
+<div class="listblock2">
+<div>FROM. {{q.fromSt.name}}</div>
+    <div><a href = "./{{q.id}}">{{q.title}}</a></div>
+    <div> {{q.task.name}}</div>
+    <div>{{q.finalup}}</div>
+</div>
+{%endfor%}
+</div>
+{%else%}
+</div>
+<div style="width: 100%;text-align: center;">
+<h3 style="display: inline;">質問はありません</h3>
+</div>
+{%endif%}
+{%endblock content%}

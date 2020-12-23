@@ -1,0 +1,120 @@
+{% extends 'base_teacher.html' %}
+
+{% load static %}
+{% block css %} 
+<link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+{% block title %}
+<title>宿題作成</title>
+{% endblock title %}
+
+{% block content %}
+
+{%if task%}
+<div class ="container">
+<div class ="Contentstitle">
+<span>宿題詳細</span>
+</div>
+<div style="margin: 40px;"></div>
+<div class="formoutbox">
+<div class="forminbox">
+<form action="" method="post">
+{% csrf_token %}
+<input type="hidden" name="type" value="change"/>
+<span>宿題</span>
+<input type="input" name="name" minlength="1" maxlength="32" value="{{task.name}}">
+<div style="margin-top: 20px;"></div>
+<span>内容</span>
+<textarea name="content" maxlengt="800"　rows="4" cols="60">{{task.contents}}</textarea>
+<div style="margin-top: 20px;"></div>
+<span>作成日: </span><span>{{task.make}}</span>
+<div style="margin: 20px;"></div>
+<button type="submit" >change</button>
+</form>
+</div>
+</div>
+{%endif%}
+<div style="margin: 20px;"></div>
+<div class="formoutbox">
+<div class="forminbox">
+<form action="" method="post">
+{% csrf_token %}
+<input type="hidden" name="type" value="delete"/>
+<span>付けられたタグ</span>
+<div class="outbox">
+{% for tag in thistags %}
+    <div class="inbox">
+<input type="checkbox" id="tags{{tag.id}}" name="tags" value="{{tag.id}}">
+<label for="tags{{tag.id}}">{{tag.tag}}</label>
+</div>
+{%endfor%}
+</div>
+<div style="margin: 20px;"></div>
+<button type="submit" >delete</button>
+</form>
+</div>
+</div>
+
+<div style="margin: 40px;"></div>
+<div class="formoutbox">
+<div class="forminbox">
+<form action="" method="post">
+{% csrf_token %}
+<input type="hidden" name="type" value="addtags"/>
+<span>タグ一覧</span>
+<div class="outbox">
+{%for tag in tags%}
+<div class="inbox">
+<input type="checkbox" id="tags{{tag.id}}" name="tags" value="{{tag.id}}">
+<label for="tags{{tag.id}}">{{tag.tag}}</label>
+</div>
+{%endfor%}
+</div>
+<div style="margin: 20px;"></div>
+<button type="submit" >add</button>
+</form>
+<br>
+{%if students%}
+</div>
+</div>
+
+<div style="margin: 40px;"></div>
+<div class="formoutbox">
+<div class="forminbox">
+<form action="" method="post">
+<span>宿題を出す</span>
+<div style="margin: 20px;"></div>
+{% csrf_token %}
+<span>期限</span>
+<div style="margin: 20px;"></div>
+<input type="hidden" name="type" value="students"/>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="0">1日後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="1">2日後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="2">3日後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="3">4日後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="4">5日後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="5">6日後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="6">1週間後</span>
+    <span class="radio-contents"><input class="radios" type="radio" name="days" value="7">2週間後</span>
+<span class="radio-contents"><input class="radios" type="radio" name="days" value="8">4週間後</span>
+<div style="margin: 20px;"></div>
+<span>課題を行う生徒</span>
+<div style="margin: 20px;"></div>
+<div class="studentsbox">
+    <ul>
+{% for student in students %}
+<li><input type="checkbox" name="students" value ="{{student.id}}"/>{{student.name}}</li>
+{%endfor%}
+</ul>
+</div>
+<div style="margin: 20px;"></div>
+<button type="submit" >create</button>
+</form>
+</div>
+</div>
+<div style="margin: 80px;"></div>
+{%endif%}
+
+{% endblock content %}

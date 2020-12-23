@@ -1,0 +1,16 @@
+.btn_home{
+    display: inline-block;
+    position: relative;
+    padding: 0.35em 1em;
+    background: rgb(47,70,45);
+    color:rgb(229,232,212);
+    text-decoration: none;
+}
+
+body{
+    background: rgb(229,232,212);
+}
+
+/*rgb(47,70,45)*/
+
+

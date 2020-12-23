@@ -1,0 +1,45 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>room.htmlのCSS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/room.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/base_student.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/form_student.css' %}">
+    {% block css %} 
+    {% endblock css %}
+    {% block title %}  {% endblock title %} 
+  </head>
+  <body>  
+    <div class="header">
+      <li class = "headword_p">{{ one.toTe.name }}</li>
+     <li class = "room_p"><a href="../" class="room_p_a">一覧へ戻る</a></li> 
+    </div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle" style="position: fixed;">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <a href="{% url 'students:task' %}"><li>課題 <span>かだい</span></li></a>
+      <a href="{% url 'students:tag' %}"><li>タグ</li></a>
+      <a href="{% url 'students:chat' %}"><li>チャット</li></a>
+      <a href="{% url 'home' %}"><li>トップ</li></a>
+      <li>設定  <span>せってい</span></li>
+
+    </ul>
+  </div>
+  <div class = "padding"></div>
+
+   {% block header %}
+   {% endblock header %}
+   
+   {% block content %}
+
+   {% endblock content %} 
+  </body>
+</html>

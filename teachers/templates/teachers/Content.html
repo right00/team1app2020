@@ -1,0 +1,80 @@
+{% extends 'base_teacher.html' %}
+
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/graph.css' %}">
+{% endblock css %}
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+<div class = "container">
+    <div class ="Contentstitle">
+        <span>クラス詳細〜{{thisclass.class_name}}〜</span>
+    </div>
+    <br>
+    <div class="buttonsBox">
+    <div class="buttonContent">
+    <span class="buttonsLabel"><a href="/teacher/class/{{thisclass.id}}/task/create/">宿題を追加</a></span>
+    </div>
+        <div class="buttonContent">
+        <span class="buttonsLabel"><a href="./tasks">宿題一覧</a></span>
+        </div>
+        <div class="buttonContent">
+        <span class="buttonsLabel"><a href="./tags/">タグを管理</a></span>
+        </div>
+    </div>
+    <h3>タグごとの問題の正解率</h3>
+    <div style="margin-top: 20px;"></div>
+    <div class="tagsbox">
+    {%for tag in tags%}
+    <div>{{tag.tag.tag}}</div>
+    <span id='tag{{tag.tag.id}}'></span>　
+    <div class="graph"><div class="graphleft" id="graph{{tag.tag.id}}"></div></div>
+    <br>
+    {%endfor%}
+    </div>
+    <div style="margin-top: 20px;"></div>
+
+    {%if sts%}
+    <div style="margin-top: 20px;"></div>
+    <h3>生徒一覧</h3>
+    <br>
+    {%for st in sts%}
+    <div class="listbox">
+        <div class="formboxtitle"><li><a href="./st/{{st.id}}/">{{st.name}}</a></li></div>
+    </div>
+    {%endfor%}
+    {%else%}
+    <h4>参加している生徒はいません</h4>
+    {%endif%}
+    <div style="margin:50px;"></div>
+
+</div>
+<script>
+    function effect(id,t,f) { 
+	    var element = document.getElementById('graph'+id);
+        console.log('tag'+id);
+        let t2 = Math.floor(t / (t+f)*100);  
+	    element.style.width = t2+'%'; 
+        console.log(t2+'%');
+        document.getElementById('tag'+id).textContent = '合計;'+(t+f)+' 正解:'+t+'('+t2+'%) 不正解:'+f+'('+(100-t2)+'%)';
+	}
+    let t = 0;
+    let f = 0;
+    let id = 0;
+    {%for tag in tags%}
+    t = {{tag.true}};
+    f = {{tag.false}};
+    id = {{tag.tag.id}};
+    console.log('tag'+id);
+    console.log(t,f,id);
+    effect(id,t,f);
+    {%endfor%}
+</script>
+    {% endblock content %}

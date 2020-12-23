@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <p class= "top_p">こんにちは、 {{ user.username }}!</p>
+    <p class= "top_p"><a href="{% url 'home' %}">home</a></p>
+    <p class= "top_p"><a href="{% url 'logout' %}">ログアウト</a></p>
+    {% else %}
+    <p class="top_p">まだログインしていません。</p>
+    <p class= "top_p"><a href="{% url 'login' %}">ログイン</a></p>
+    {% endif %}
+    {% endblock  %}
+</body>
+</html>
+

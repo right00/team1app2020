@@ -1,0 +1,32 @@
+<!--質問・予約機能のページ（生徒側）new ver-->
+{% extends 'base_student.html' %}
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+{% block content %}
+    
+    
+    <div class="chat_p_div">
+        <p class="chat_p">トーク一覧</p>
+        <p class="chat_p_a"><a href="{% url 'students:chat_create' %}" class="chat_a_btn">質問・予約する</a></p>
+    </div>
+    
+    <ul class="chat_talk_ul">
+        {%if questions%}
+        {% for q in questions %}
+        <a href="./{{q.id}}/" class="chat_a">
+        <li class="chat_talk_list">Title:{{ q.title }}
+            {{ q.toTe.name }}
+            {{ q.task.name }}
+            <br>
+            <p class="chat_finalup">{{q.finalup}}</p>
+        </li>
+        </a>
+        {% endfor %}
+        {%else%}
+        <li class="chat_talk_list">質問はありません</li>
+        {%endif%}
+    </ul>
+    
+
+{% endblock content %}

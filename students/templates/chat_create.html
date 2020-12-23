@@ -1,0 +1,39 @@
+{% extends 'base_student.html' %}
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+{% block content %}
+
+<form action ="/student/home/chat/" method="POST">
+<div class="chat_create_div">
+    <h3>先生を選択</h3>
+    <select name="select_teachers" size = "1">
+        {% for t in teacher %}
+        <option value="{{t.id}}">{{ t.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="chat_create_div">
+    <h3>予約日時</h3>
+    <input type = "datetime-local" name = "datetime" value = "">
+</div>
+
+<div class="chat_create_div">
+    <h3>課題を選択</h3>
+    <select name="select_tasks" size = "1">
+        {% for task in  tasks %}
+        <option value="{{task.id}}">{{ task.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="chat_create_div">
+    <h3>質問内容</h3>
+        {% csrf_token %}
+        <p><textarea class="text" name="comment" value = ""></textarea></p>    
+</div>
+<input type = "submit" value="送信" class="chat_create_submit">
+</form>
+
+ {% endblock content %}

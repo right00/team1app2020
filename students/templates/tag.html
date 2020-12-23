@@ -1,0 +1,401 @@
+<!--タグ機能のページ（生徒側）-->
+{% extends 'base_student.html' %}
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+{% block content %}
+<style>
+
+
+    .swiper-container {
+      width: auto;
+      position:relative;
+      padding-bottom: 20px;
+  
+      
+    }
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      
+      
+      
+    }
+    
+
+
+table td{
+  border-bottom: solid 2px  rgb(229,232,212);
+  text-align: center;
+  padding: 10px 0;
+}
+.col-1 {
+    display: inline-block;
+    
+
+    border-bottom: solid 2px white;
+
+    width: 120px;
+    text-align:center;
+    color: rgb(229,232,212);
+    /* border: solid 1px; */
+}
+.col-2 {
+    display: inline-block;
+    border-bottom: solid 2px  rgb(229,232,212);
+    width: 80px;
+    text-align:center;
+    color: rgb(229,232,212);
+    /* border: solid 1px; */
+}
+.form_line{
+  border-bottom: solid 2px  rgb(229,232,212);
+}
+.padding_x{
+  padding-bottom: 20px;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.btn-push {
+ 
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  background-color:rgb(47,70,45);;
+  font-size: 16px;
+  color:  rgb(229,232,212);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  border-bottom: 4px solid rgb(47,70,45);;
+  
+}
+.center{
+  text-align: center;
+}
+
+.btn-push:active {
+    transform: translateY(4px);
+    border-bottom: none;
+}
+body{
+  background-color: rgb(229,232,212);
+  color: rgb(229,232,212);
+  
+}
+
+
+    
+</style>
+
+
+<img src = "../../../static/img/task1.png" id = "image">
+
+<div id = "task_in">
+<!--  タスク1　-->
+{% if cnt == 0 %}
+<h1 class = "center" style="background-color: rgb(47,70,45);">You Complete!!</h1>
+{% endif %}
+{% if cnt > 0 %}
+  <div class="swiper-container" >
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide" style="background-color: rgb(47,70,45);">
+
+          <div>
+            <span class="col-1" id = "task1" class = "form_line" value = ""></span>
+            <span class="col-2" id = "task_limit1"></span>
+            <form id = "ok1">
+            <input type="radio"  name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
+            
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #b87d27;">
+        
+        <h3 class = "center" >Clear!!
+        </div>
+
+      </div>
+  </div>
+  {% endif %}
+
+  <!--  タスク2　-->
+  {% if cnt > 1 %}
+
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide" style="background-color: rgb(47,70,45);">
+
+          <div>
+            <span class="col-1" id = "task2"></span>
+            <span class="col-2" id = "task_limit2"> </span>
+            <form id = "ok2">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #b87d27;">
+        
+        <h3 class = "center" >Clear!!
+        </div>
+
+      </div>
+  </div>
+  {% endif %}
+
+  <!--  タスク3　-->
+  {% if cnt > 2 %}
+
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide" style="background-color: rgb(47,70,45);">
+
+          <div>
+            <span class="col-1" id = "task3"></span>
+            <span class="col-2" id = "task_limit3"> </span>
+            <form id = "ok3">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #b87d27;">
+        
+        <h3 class = "center" >Clear!!
+        </div>
+
+      </div>
+  </div>
+  {% endif %}
+ 
+  <!--  タスク4　-->
+  {% if cnt > 3 %}
+
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide" style="background-color: rgb(47,70,45);">
+
+          <div>
+            <span class="col-1" id = "task4"></span>
+            <span class="col-2" id = "task_limit4"></span>
+            <form id = "ok4">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
+            
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #b87d27;">
+        
+        <h3 class = "center" >Clear!!
+        </div>
+
+      </div>
+  </div>
+  {% endif %}
+  
+  <!--  タスク5　-->
+  {% if cnt > 4 %}
+  <div class="swiper-container">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide" style="background-color: rgb(47,70,45);">
+
+          <div>
+            <span class="col-1" id = "task5"></span>
+            <span class="col-2" id = "task_limit5"> </span>
+            <form id = "ok5">
+            <input type="radio" name="q1" value="true" required> 正
+            <input type="radio" name="q1" value="false"> 誤
+            </form>
+            
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="background-color: #b87d27;">
+        
+        <h3 class = "center" >Clear!!
+        </div>
+
+      </div>
+  </div>
+        
+</div>
+{% endif %}
+<form action="" method="post" class = "center">
+            
+            {% csrf_token %}
+ 
+            <input type="hidden" name="userid1" value="20" id = "finish1">
+            <input type="hidden" name="userid2" value="" id = "finish2">
+            <input type="hidden" name="userid3" value="" id = "finish3">
+            <input type="hidden" name="userid4" value="" id = "finish4">
+            <input type="hidden" name="userid5" value="" id = "finish5">
+            
+
+            <button type="submit" onclick="OnButtonClick();" class="btn-push">Submit</button>
+        </form>
+
+
+
+
+        
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+
+
+  <script>
+  var mySwiper = new Swiper('.swiper-container');
+        console.log(mySwiper.realIndex);
+        function OnButtonClick() {
+            console.log(mySwiper.realIndex);}
+
+  var data = [{% for task in tasks %}
+                  {% if task.task.finish == 0 %}
+              ["{{ task.task.limit }}","{{ task.name }}","{{ task.task.isResult }}","{{ task.task.id }}","{{ task.contents }}"],
+              {% endif %}
+              {% endfor %}
+             ];
+  var img0 = document.getElementById("sample2");
+  
+  
+  var element_task = [["task1","task_limit1"],["task2","task_limit2"],["task3","task_limit3"],["task4","task_limit4"],["task5","task_limit5"]];
+  for(let i = 0; i< data.length; i++){
+    element_task[i][0] = document.getElementById(element_task[i][0]);
+    element_task[i][1] = document.getElementById(element_task[i][1]);
+    element_task[i][0].innerHTML = data[i][0];
+    element_task[i][1].innerHTML = data[i][1];
+    
+  }
+  var submit_content = ["finish1","finish2","finish3","finish4","finish5"];
+
+  var sub_content = ["ok1","ok2","ok3","ok4","ok5"]
+
+
+  //画像の数指定
+  var task_image = document.getElementById("image");
+  if(data.length == 0){
+    
+    task_image.src = "../../../static/img/task1.png"
+  }
+  else if(data.length == 1){
+    task_image.src = "../../../static/img/task2.png"
+  }
+  else if(data.length == 2){
+    task_image.src = "../../../static/img/task3.png"
+  }
+  else if(data.length == 3){
+    task_image.src = "../../../static/img/task4.png"
+  }
+  else{
+    task_image.src = "../../../static/img/task5.png"
+  }
+
+  
+
+  
+  
+  
+
+  function OnButtonClick() {
+            {% if cnt == 1 %}
+            var input1 = document.getElementById("finish1");
+            input1.value = mySwiper.realIndex;
+            {% endif %}
+            {% if cnt > 1 %}
+            var input1 = document.getElementById("finish1");
+            input1.value = mySwiper[0].realIndex;
+            {% endif %}
+            
+            {% if cnt > 1 %}
+            var input2 = document.getElementById("finish2");
+            input2.value = mySwiper[1].realIndex;
+            {% endif %}
+
+            {% if cnt > 2 %}
+            var input3 = document.getElementById("finish3");
+            input3.value = mySwiper[2].realIndex;
+            {% endif %}
+
+            {% if cnt > 3 %}
+            var input4 = document.getElementById("finish4");
+            input4.value = mySwiper[3].realIndex;
+            {% endif %}
+
+            {% if cnt > 4 %}
+            var input5 = document.getElementById("finish5");
+            input5.value = mySwiper[4].realIndex;
+            {% endif %}
+            
+            for(let i = 0; i< data.length; i++){
+              if(document.getElementById(sub_content[i]).q1.value !=""){
+                submit_content[i] = data[i][3] + ":" + document.getElementById(submit_content[i]).value + ":" + document.getElementById(sub_content[i]).q1.value+ ":";
+              } 
+            }
+            
+            let result = "";
+            for (let i = 0; i < submit_content.length; i++){
+              if (submit_content[i].length != 7){
+                if(data.length == 1){
+                  if(mySwiper.realIndex ==1){
+                    result = result + submit_content[i];
+                    console.log(submit_content[i].length);
+                    break;
+                  }
+                }
+                if(mySwiper[i].realIndex == 1){
+                  result = result + submit_content[i];
+                  console.log(submit_content[i].length);
+
+                }
+                
+
+              }
+              
+            }
+            document.getElementById("finish1").value =result;
+            
+            console.log(result);
+            console.log(submit_content);
+            console.log(data.length)
+            
+            
+            }
+            
+
+            
+  
+
+  
+
+
+  </script>
+
+{% endblock content %}

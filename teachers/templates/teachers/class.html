@@ -1,0 +1,76 @@
+{% extends 'base_teacher.html' %}
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+
+{% block title %}
+<title>クラス一覧</title>
+{% endblock title %}
+
+
+{% block content %}
+    <div class ="container">
+        <div class ="Contentstitle">
+            <span>クラス一覧</span>
+        </div> 
+        <hr>
+        <div class="buttonsBox">
+            <div class="buttonContent">
+        <span class="buttonsLabel"><a href="{% url 'teacher:CreateClass'%}">クラス作成</a></span>
+        </div>
+        <div class="buttonContent">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="my">
+            <input type="hidden" name="join" value="">
+            <label for="myclass" class="buttonsLabel">MyClass</label> 
+            <input id="myclass" class="buttonsInput" type="submit" value="MyClass"/>
+        </form>
+        </div>
+        <div class="buttonContent">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="all">
+            <input type="hidden" name="join" value="">
+            <label for="all"class="buttonsLabel" >All</label> 
+            <input id="all" class="buttonsInput" type="submit" value="All"/>
+        </form>
+        </div>
+        </div>
+        {% if classes %}
+        {% if all %}
+        <ui>
+        {% for class in classes %}
+        <form action="" method="post" class="listbox">
+            {% csrf_token %}
+            <div class="formboxtitle"><li>{{class.class_name}}</li></div>
+            <input type="hidden" name="join" value="{{class.id}}">
+            <input type="hidden" name="type" value="all">
+            <div class="formboxbutton"><input type="submit" value="join"/></div>
+        </form>
+        {% endfor %}
+        </ui>
+        {%else%}
+        <ul>
+        {% for class in classes %}
+        <div class="listbox">
+            <div class="formboxtitle"><li><a href="/teacher/class/{{class.id}}/">{{class.class_name}}</a></li></div>
+        </div>
+        {% endfor %}
+        </ul>
+        {%endif%}
+        {%else%}
+        <h4 class = "a">クラスはまだありません</h4>
+        {%endif%}
+        {%if result%}
+        <script>
+            alert("{{result}}");
+        </script>
+        {%endif%}
+    </div>   
+    
+
+{%  endblock content%}

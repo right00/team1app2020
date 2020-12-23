@@ -1,0 +1,45 @@
+{% extends 'base_teacher.html' %}
+
+{% load static %}
+{% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'teacher/class_teacher.css' %}">
+{% endblock css %}
+
+
+
+
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+
+
+
+
+{% block content %}
+    <div class = "container">
+        <div class ="Contentstitle">
+            <span>クラス作成</span>
+        </div>
+        <br style="margin: 40px;">
+        <div class="formoutbox">
+            <div class="forminbox">
+        <form action="" method="post">
+            {%if result%}
+            <span style="width: 600px;"><font color="red">{{result}}</font></span>
+            <div style="margin: 20px;"></div>
+            {%endif%}
+            {% csrf_token %}
+            <span>クラス名 : </span>
+            <input type="input" name="name" minlength="1" maxlength="32">
+            <div style="margin: 20px;"></div>
+            <span>クラスのパスワード : </span>
+            <input type="input" name="password" minlength="4" maxlength="32"><br>
+            <div style="margin: 20px;"></div>
+            <button type="submit" >create</button>
+        </form>
+            </div>
+            </div>
+    </div>
+
+
+{% endblock content %}

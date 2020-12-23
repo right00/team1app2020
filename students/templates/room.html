@@ -1,0 +1,52 @@
+{% extends 'base_student.html' %}
+{% block title %}
+<title>Document</title>
+{% endblock title %}
+{% block content %}
+<h1 class="room_h1">{{ one.toTe.name }} </h1>
+
+{%for c in Comment%}
+<div class="room_talk">
+{%if c.isStudent%}
+    <div class = "comment right">
+      <!--   student_name:{{one.fromSt.name}}
+      <br>  -->
+    <p>{{c.comment}}</p>
+    <br>
+    </div>
+    
+{%else%}
+    <div class = "comment left">
+      <!--  teacher_name:{{ one.toTe.name }} 
+      <br>
+      -->
+      <p>{{c.comment}}</p>
+      <br>
+    </div>
+
+{%endif%}
+</div>
+{%endfor%}
+
+
+
+<br>
+<form name = "form1"  action="" method="post" class="commentbox" >
+    {% csrf_token %}
+    <input type = "hidden" name="type" value="comment">
+    <textarea name = "comment" minlength="1" rows="5" cols="40" autofocus></textarea>
+    <br>
+    <input type="submit" value="send"/>
+</form>
+
+<script>
+    document.form1.comment.value = "{{text}}";
+    var c = document.form1.comment.value;
+    var n = function(){
+      document.form1.type.value = "text";
+      document.form1.submit();
+    } 
+    setInterval(n, 15000);
+  </script>
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+.chat__container{
+    padding: 0;
+    overflow: hidden;
+    max-width: 400px;
+    margin: 20px auto;
+    font-size: 80%;
+}
+
+.partner_name{
+    text-align: center;
+    color: #fffaf3;
+}
+
+
+.comment{
+    position: relative;
+    display: inline-block;
+    border-radius: 19px;
+    margin: 8px 0 0;
+    padding: 9px 14px;
+    max-width: 192px;
+    overflow-wrap: break-word;
+    clear: both;
+}
+.comment::after{
+    position: absolute;
+    top: -21px;
+    width: 24px;
+    height: 36px;
+    content: "";
+}
+.comment.left{
+    float: left;
+    background: #b4e2ff;
+    margin-left: 62px;
+}
+.comment.right{
+    float: right;
+    background: #8cff8c;
+    margin-right: 62px;
+}
+
+.comment.left::after{
+    left: -10px;
+   border-radius: 18px 0 6px 18px/18px 0 1px 18px;
+   box-shadow: -3px -15px 0 -5px #b4e2ff inset;
+}
+.comment.right::after{
+    right: -10px;
+    border-radius: 0 18px 18px  6px/0 18px 18px 1px;
+    box-shadow: inset 3px -15px 0 -5px #8cff8c ;
+}
+.chat{
+    width: 100%;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 10px 0;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.room_p_a{
+    color: #b87d27;
+}
+.headword_p{
+	font-family: MyFont;
+    color:rgb(229,232,212);
+    font-size:  2em;
+    text-align: center;
+}
+.header{
+    display: flex;
+}
+.room_p{
+    text-align: right;
+}
+li{
+    list-style: none;
+}
+
+

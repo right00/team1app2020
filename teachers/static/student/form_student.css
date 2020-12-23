@@ -1,0 +1,533 @@
+@font-face {
+	font-family: 'MyFont';
+	src: url("../img/SansitaSwashed-Black.ttf");
+}
+
+body {
+	background: #fff;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+  }
+
+  .swiper-container {
+	width: 100%;
+	padding-top: 200px;
+	padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+	background-position: center;
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+
+  }
+  .cp_ipradio {
+	width: 90%;
+	margin: 2em auto;
+	text-align: left;
+}
+@keyframes click-wave {
+	0% {
+		position: relative;
+		width: 30px;
+		height: 30px;
+		opacity: 0.35;
+	}
+	100% {
+		width: 200px;
+		height: 200px;
+		margin-top: -80px;
+		margin-left: -80px;
+		opacity: 0;
+	}
+}
+.cp_ipradio .option-input {
+	position: relative;
+	position: relative;
+	top: 13.33333px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	margin-right: 0.5rem;
+	cursor: pointer;
+	transition: all 0.15s ease-out 0s;
+	color: #ffffff;
+	border: none;
+	outline: none;
+	background: #d7cbcb;
+	-webkit-appearance: none;
+	        appearance: none;
+}
+.cp_ipradio .option-input:hover {
+	background: #d6a9a9;
+}
+.cp_ipradio .option-input:checked {
+	background: #da3c41;
+}
+.cp_ipradio .option-input:checked::before {
+	font-size: 20px;
+	line-height: 30px;
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	content: '✔';
+	text-align: center;
+}
+.cp_ipradio .option-input:checked::after {
+	position: relative;
+	display: block;
+	content: '';
+	-webkit-animation: click-wave 0.65s;
+	        animation: click-wave 0.65s;
+	background: #da3c41;
+}
+.cp_ipradio .option-input.radio {
+	border-radius: 50%;
+}
+.cp_ipradio .option-input.radio::after {
+	border-radius: 50%;
+}
+.cp_ipradio label {
+	line-height: 40px;
+	display: block;
+}
+.cp_ipradio .option-input:disabled {
+	cursor: not-allowed;
+	background: #b8b7b7;
+}
+.cp_ipradio .option-input:disabled::before {
+	font-size: 20px;
+	line-height: 30px;
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	content: '✖︎';
+	text-align: center;
+}
+.cp_ipradio .disabled {
+	color: #9e9e9e;
+}
+
+.headword{
+	font-family: MyFont;
+	text-align: center;
+	color:rgb(229,232,212);
+}
+.padding{
+	padding-bottom: 60px;
+}
+.image{
+	z-index: 0;
+}
+table{
+	margin:auto;
+	}
+td{
+	padding: 10px;
+}
+
+.btn--orange,
+input.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--orange:hover,
+input.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
+
+a.btn--radius {
+   border-radius: 100vh;
+}
+  
+
+
+
+  @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+  
+  .header {
+	display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: rgb(47,70,45);
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .main {
+	  margin: 0 auto;
+	  display: block;
+	  height: 100%;
+	  margin-top: 60px;
+  }
+  .mainInner{
+	  display: table;
+	  height: 100%;
+	  width: 100%;
+	  text-align: center;
+  }
+  .mainInner div{
+	  display:table-cell;
+	  vertical-align: middle;
+	  font-size: 3em;
+	  font-weight: bold;
+	  letter-spacing: 1.25px;
+  }
+  #sidebarMenu {
+	  height: 100%;
+	  position: fixed;
+	  left: 0;
+	  width: 250px;
+	  margin-top: 0px;
+	  transform: translateX(-250px);
+	  transition: transform 250ms ease-in-out;
+	  background:rgb(47,70,45);
+	  z-index: 5;
+  }
+  .sidebarMenuInner{
+	  margin:0;
+	  padding:0;
+	  border-top: 1px solid rgba(255, 255, 255, 0.10);
+	  z-index: 20;
+	  padding-top: 60px;
+
+  }
+  .sidebarMenuInner li{
+	  list-style: none;
+	  color:rgb(229,232,212);
+	  text-transform: uppercase;
+	  font-weight: bold;
+	  padding: 20px;
+	  cursor: pointer;
+	  border-bottom: 1px solid rgb(229,232,212);
+  }
+  .sidebarMenuInner li span{
+	  display: block;
+	  font-size: 14px;
+	  color: rgba(255, 255, 255, 0.50);
+  }
+  .sidebarMenuInner > a {
+	  color: rgb(229,232,212);
+	  text-transform: uppercase;
+	  font-weight: bold;
+	  cursor: pointer;
+	  text-decoration: none;
+  }
+  input[type="checkbox"]:checked ~ #sidebarMenu {
+	  transform: translateX(0);
+  }
+  
+  input[type=checkbox] {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  display: none;
+  }
+  .sidebarIconToggle {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  cursor: pointer;
+	  position: absolute;
+	  z-index: 99;
+	  height: 100%;
+	  width: 100%;
+	  top: 22px;
+	  left: 15px;
+	  height: 22px;
+	  width: 22px;
+  }
+  .spinner {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  position: absolute;
+	  height: 3px;
+	  width: 100%;
+	  background-color: #b87d27;
+  }
+  .horizontal {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  position: relative;
+	  float: left;
+	  margin-top: 3px;
+  }
+  .diagonal.part-1 {
+	  position: relative;
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  float: left;
+  }
+  .diagonal.part-2 {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  position: relative;
+	  float: left;
+	  margin-top: 3px;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  opacity: 0;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  transform: rotate(135deg);
+	  margin-top: 8px;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+	  transition: all 0.3s;
+	  box-sizing: border-box;
+	  transform: rotate(-135deg);
+	  margin-top: -9px;
+  }
+  .wrapper{
+    height: 100%;
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer{
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+
+/*chat.htmlのCSS*/
+ul.chat_talk_ul, ol{
+	padding: 0;
+}
+ul li.chat_talk_list{
+	position: relative;
+	margin-bottom: 5px;
+	color: rgb(47,70,45);
+	background:  rgb(229,232,212);
+	line-height: 1.5;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-radius: 15px 0px 0px 15px;
+	border: solid;
+	border-color: #b87d27;/*リストの枠線の色*/
+	vertical-align: middle;
+	list-style-type: none!important;
+
+}
+ul li.chat_talk_list::before{
+	display: inline-block;
+	vertical-align: middle;
+	content: '';
+	width: 1em;
+	height: 1em;
+	background:  #b87d27;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+/*
+ul li.chat_talk_list:last-of-type{
+	border-bottom: none;
+}
+*/
+p.chat_finalup{
+	font-size: 5px;
+	color:  #b87d27;
+}
+.chat_a{
+	text-decoration: none;
+}
+.chat_p{
+	font-size: 1.3em;
+	padding: 0.25em 0.5em;
+	color:  rgb(82, 121, 78);
+	background: transparent;
+	border-left: solid 5px rgb(82, 121, 78);
+	
+}
+.chat_p_div{
+	position: relative;
+}
+.chat_p_div p{
+	display: inline-block;
+}
+.chat_a_btn{
+	text-decoration: none;
+	position: relative;
+	font-weight: bold;
+	padding: 0.25em 0;
+	text-decoration: none;
+	color:  rgb(82, 121, 78);
+}
+.chat_a_btn::before{
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 2px;
+	top: 100%;
+	left: 0;
+	border-radius: 3px;
+	background: rgb(82, 121, 78);
+	transition: .2s;
+}
+
+/*task.htmlのCSS*/
+.task_p{
+	display: inline-block;
+	max-width: 180px;
+	text-align: left;
+	background-color: rgb(82, 121, 78);
+	font-size: 16px;
+	color: rgb(229,232,212);
+	
+	font-weight: bold;
+	padding: 5px 16px;
+	border: 1px dashed rgb(229,232,212);
+	box-shadow: 0px 0px 0px 5px rgb(82, 121, 78);
+}
+.task_a_btn{
+	text-decoration: none;
+	color: rgb(229,232,212);
+}
+.task_p:hover{
+	border-style: solid;
+}
+.task_h3{
+	color: #b87d27;
+}
+
+.btn_home{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+	color: #799dec;
+	
+}
+.btn_home:active{
+	top:4px;
+	text-shadow: none;
+}
+
+/*class_pagenのCSS*/
+.class_page_div{
+	margin: 2em 0;
+	background: #f1f1f1;
+	box-shadow: 0 2px 4px rgba(0,0,0, 0.22);
+}
+.class_page_div .class_page_div2{
+	font-size: 1.2em;
+	background: #5fc2f5;
+	padding: 4px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+}
+.class_page_div .class_page_p{
+	padding: 15px 20px;
+	margin: 0;
+}
+
+/*chat_create.htmlのCSS*/
+.chat_create_div{
+	padding: 0.5em 1em;
+	margin: 1em 0;
+	background: #f4f4f4;
+	border-left: solid 6px #b87d27;
+	box-shadow: 0px 2px 3px rgba(0,0,0, 0.33);
+}
+.chat_create_submit{
+	display: inline-block;
+	border-radius: 5%;
+	font-size: 18px;
+	text-align: center;
+	cursor: pointer;
+	padding: 12px 12px;
+	background: #b87d27;
+	color: #fff;
+	line-height: 1em;
+	transition: .3s;
+	border: 2px solid #b87d27;
+}
+.chat_create_submit:hover{
+	color:  #b87d27;
+	background: #fff;
+}
+/*room.htmlのCSS*/
+.room_h1{
+	padding: 5px 1px;
+	border-bottom: 3px solid rgb(82, 121, 78);
+	background: #f4f4f4;
+	text-align: center;
+	color: rgb(82, 121, 78);
+	margin-top: 0;
+}
+.room_talk{
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #333;
+	line-height: 1.0;
+	overflow: hidden;
+}
+.room_talk .comment{
+	position: relative;
+	display: inline-block;
+	border-radius: 19px;
+	max-width: 192px;
+	margin: 1px 5px 6px;
+	padding: 5px 14px;
+	overflow-wrap: break-word;
+	clear: both;
+	box-sizing: content-box;
+}
+.room_talk .comment.left{
+	float: left;
+	background: #e9e9ed;
+}
+.room_talk .comment.right{
+	float: right;
+	background: #2793fa;
+	color: white;
+}
+.room_talk .comment::after{
+	position: absolute;
+	content: '';
+	width: 17px;
+	height: 17px;
+	bottom: 0;
+}
+.room_talk .comment.left::after{
+	left: -6px;
+	border-radius: 0px 0 17px 0px/0px 0 13px 0;
+	box-shadow: -14px 2px 0 -3px #e9e9ed inset;
+}
+.room_talk .comment.right::after{
+	right: -6px;
+	border-radius: 0px 0 0 17px/0px 0 0 13px;
+	box-shadow: 14px 2px 0 -3px #2793fa inset;
+}
+
+
+
+
+/*bodyの背景色*/
+body{
+	background: rgb(229,232,212);
+}

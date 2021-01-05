@@ -4,14 +4,12 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-    <p class= "top_p">こんにちは、 {{ user.username }}!</p>
-    <p class= "top_p"><a href="{% url 'home' %}">home</a></p>
-    <p class= "top_p"><a href="{% url 'logout' %}">ログアウト</a></p>
+    <p class= "c_p">こんにちは、 {{ user.username }}!</p>
+    <p class= "c_p"><a href="{% url 'home' %}">home</a></p>
+    <p class= "c_p"><a href="{% url 'logout' %}">ログアウト</a></p>
     {% else %}
-    <p class="top_p">まだログインしていません。</p>
-    <p class= "top_p"><a href="{% url 'login' %}">ログイン</a></p>
+    <div class= "c_p"><span style="display: inline-block;width:100%;text-align: center;">まだログインしていません。</span></div>
+    <div class= "c_p"><a href="{% url 'login' %}">ログイン</a></div>
     {% endif %}
     {% endblock  %}
-</body>
-</html>
 

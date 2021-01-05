@@ -3,7 +3,6 @@
 {% block title %}
 <title></title>
 
-Top
 {% endblock title %}
 
 
@@ -13,13 +12,10 @@ Top
 
 {% endblock header %}
 {% block content %}
-<div class='container'> 
-
-<div class="alert alert-primary" role="alert">
-  <p>選択してください</P>
-  <a href="{% url 'newgroup' %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">グループを作成する</a>
-  <a href="{% url 'join' %}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">グループに参加する</a>
-
-</div>
+  <!--<p style = "width: 100%;text-align: center;">選択してください</P>-->
+  <div style="text-align: center;width: 100%;min-height: 100%;margin-top: 30px;">
+  <a class= "select-link" href="{% url 'newgroup' %}" style="display:inset-block;">グループを作成する</a>
+  <a class= "select-link" href="{% url 'join' %}" display="display:inline-block;">グループに参加する</a>
+  </div>
 {% endblock content %}
 
